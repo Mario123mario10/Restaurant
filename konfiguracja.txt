@@ -1,0 +1,15 @@
+czas trwania: 1000
+nazwa restauracji: Epicka restauracja
+
+rozmiary stolików:
+    mały: 2
+    średni: 4
+    duży: 8
+
+stoliki małe: 4
+stoliki średnie: 2
+stoliki duże: 1
+
+liczba kelnerów: 4
+liczba kucharzy: 3
+
