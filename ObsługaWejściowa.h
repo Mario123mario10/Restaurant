@@ -1,3 +1,4 @@
+#pragma once
 #include <fstream>
 using std::ios; using std::fstream; using std::getline;
 #include <memory>

@@ -1,4 +1,5 @@
-
+#include <iostream>
+using std::cout;	using std::cerr;	using std::endl;
 
 template<typename Typ>
 void drukuj(Typ cos)
@@ -6,6 +7,4 @@ void drukuj(Typ cos)
 
 template<typename Typ>
 void drukuj_bl(Typ cos)
-{
-  cerr << cos << endl;
-}
+{ cerr << cos << endl ;}

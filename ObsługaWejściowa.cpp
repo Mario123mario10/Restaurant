@@ -86,10 +86,6 @@ void ObslugaWejsciowa::pobierz_linie()
   // {
 
   // }
-  else
-  {
-
-  }
   linia.clear();
 }
 

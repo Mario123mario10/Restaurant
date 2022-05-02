@@ -1,22 +1,21 @@
 #include "ObsługaWejściowa.h"
 
-template<typename Typ>
-void drukuj(Typ cos)
-{ cout << cos << endl ;}
+#include "Funkcje_pomocnicze.cpp"
 
-template<typename Typ>
-int drukuj_bl(Typ cos)
-{
-  cerr << cos << endl;
-  return 1;
-}
 
 int main(int argc, char const *argv[])
 {
   if (argc != 2)
-  { return drukuj_bl("Zbyt mało argumentów")  ;}
+  {
+    drukuj_bl("Zbyt mało argumentów");
+    return 1;
+  }
   // else if (argc > 3)
-  // { return drukuj_bl("Za dużo argumentów")    ;}
+  //
+  // {
+  //   drukuj_bl("Za dużo argumentów");
+  //   return 1;
+  // }
   else
   {
     try
@@ -24,28 +23,9 @@ int main(int argc, char const *argv[])
       ObslugaWejsciowa O(argv[1]);
     }
     catch(const std::exception& e)
-    {
-      std::cerr << e.what() << '\n';
-    }
+    { drukuj_bl(e.what()) ;}
 
 
-    // fstream file;
-    // file.open("test.txt", ios::in);
-    // if (file.is_open())
-    // {
-
-    //   while (not file.eof())
-    //   {
-    //     string line               ;
-    //     smatch capturing_groups   ;
-    //     std::getline(file, line)  ;
-
-    //     string senders_phone_number = "", text = "";
-
-    //     if (sms_flag)
-    //     {
-
-    //       vector<Recipient> recipients  ;
     //       while ((not file.eof()) and sms_flag)
     //       {
     //         if      (regex_match(line, capturing_groups, PHONE_LINE))
