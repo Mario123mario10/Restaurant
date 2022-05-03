@@ -93,28 +93,17 @@ void ObslugaWejsciowa::sprawdz_dane()
 {
   if
   (
-    rozmiar_duzy
-    and rozmiar_sredni
-    and rozmiar_maly
-    and male
-    and srednie
-    and duze
-    and czas_trwania_symulacji
-    and ( not nazwa_restauracji.empty() )
+    not(
+      rozmiar_duzy
+      and rozmiar_sredni
+      and rozmiar_maly
+      and male
+      and srednie
+      and duze
+      and czas_trwania_symulacji
+      and ( not nazwa_restauracji.empty() )
+    )
   )
-  {
-    Restauracja
-    (
-      nazwa_restauracji,
-      rozmiar_maly,
-      rozmiar_sredni,
-      rozmiar_duzy,
-      male,
-      srednie,
-      duze
-    );
-  }
-  else
   { zdefiniuj_blad() ;}
 }
 

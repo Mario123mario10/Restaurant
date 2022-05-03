@@ -15,5 +15,5 @@ class Restauracja
       unsigned int male,
       unsigned int sredni,
       unsigned int duze
-    );
+    ) {};
 };

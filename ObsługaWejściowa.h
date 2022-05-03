@@ -13,21 +13,29 @@ using std::string;
 class ObslugaWejsciowa
 {
   private:
-    unique_ptr<Restauracja> restauracja; //
     fstream plik;
     string sciezka;
-    string nazwa_restauracji            = "";
-    unsigned int rozmiar_maly           = 0;
-    unsigned int rozmiar_sredni         = 0;
-    unsigned int rozmiar_duzy           = 0;
-    unsigned int male                   = 0;
-    unsigned int srednie                = 0;
-    unsigned int duze                   = 0;
+    string nazwa_restauracji = "";
+    unsigned int rozmiar_maly = 0;
+    unsigned int rozmiar_sredni = 0;
+    unsigned int rozmiar_duzy = 0;
+    unsigned int male = 0;
+    unsigned int srednie = 0;
+    unsigned int duze = 0;
     unsigned int czas_trwania_symulacji = 0;
 
   public:
     ObslugaWejsciowa(string sciezka);
-    // ObslugaWejsciowa(string sciezka, string nazwa_pliku_wyjscia)
+
+    string daj_nazwe_restauracji();
+    unsigned int daj_rozmiar_maly();
+    unsigned int daj_rozmiar_sredni();
+    unsigned int daj_rozmiar_duzy();
+    unsigned int daj_male_stoliki();
+    unsigned int daj_srednie_stoliki();
+    unsigned int daj_duze_stoliki();
+    unsigned int daj_czas_symulacji();
+
     void pobierz_linie();
     void sprawdz_rozmiary();
     void odczytaj_dane();
