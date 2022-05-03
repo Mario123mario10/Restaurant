@@ -9,18 +9,20 @@ using std::cout;	using std::cerr;  using std::endl;
 #include <regex>
 using std::regex;  using std::smatch; using std::regex_search;  using std::regex_match;
 
+#include "BłędyWejścia.h"
 #include "ObsługaWejściowa.h"
 
-const regex L_NAZWA_RESTAURACJI   (" *\t*nazwa *\t*restauracji *\t*(.+) *\t*");
-const regex L_CZAS_TRWANIA        (" *\t*czas *\t*trwania *\t*(\\d+) *\t*");
-const regex L_R_MALYCH_STOLIKOW   (" *\t*mały: *\t*(\\d+) *\t*");
-const regex L_R_SREDNICH_STOLIKOW (" *\t*średni: *\t*(\\d+) *\t*");
-const regex L_R_DUZYCH_STOLIKOW   (" *\t*duży: *\t*(\\d+) *\t*");
-const regex L_L_MALYCH_STOLIKOW   (" *\t*stoliki *\t*małe *\t*(\\d+) *\t*");
-const regex L_L_SREDNICH_STOLIKOW (" *\t*stoliki *\t*średnie *\t*(\\d+) *\t*");
-const regex L_L_DUZYCH_STOLIKOW   (" *\t*stoliki *\t*duże *\t*(\\d+) *\t*");
-const regex L_L_KELNEROW          (" *\t*liczba *\t*kelnerów: *\t*(\\d+) *\t*");
-const regex L_L_KUCHARZY          (" *\t*liczba *\t*kucharzy: *\t*(\\d+) *\t*");
+
+const extern regex L_NAZWA_RESTAURACJI;
+const extern regex L_CZAS_TRWANIA;
+const extern regex L_R_MALYCH_STOLIKOW;
+const extern regex L_R_SREDNICH_STOLIKOW;
+const extern regex L_R_DUZYCH_STOLIKOW;
+const extern regex L_L_MALYCH_STOLIKOW;
+const extern regex L_L_SREDNICH_STOLIKOW;
+const extern regex L_L_DUZYCH_STOLIKOW;
+const extern regex L_L_KELNEROW;
+const extern regex L_L_KUCHARZY;
 
 
 
@@ -36,9 +38,7 @@ ObslugaWejsciowa::ObslugaWejsciowa(string sciezka)
     sprawdz_dane();
   }
   else
-  {
-    // throw
-  }
+  { throw NieZnalezionoPliku(sciezka) ;}
 }
 
 void ObslugaWejsciowa::pobierz_linie()
@@ -143,8 +143,6 @@ void ObslugaWejsciowa::zdefiniuj_blad()
 
   if ( not nazwa_restauracji.empty() )
   { komunikat += "nazwy restauracji | ";}
-
-  // throw wyjątek(komunikat)
-
+  throw NieprawidlowaKonfiguracja(komunikat);
 }
 
