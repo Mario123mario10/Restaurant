@@ -3,6 +3,7 @@ using std::regex;  using std::smatch;  using std::regex_search;  using std::rege
 
 
 // Linie wczytywania pliku
+const regex L_NAZWA_PLIKU_WYJSCIA (" *\t*zapisz do: *\t*(.+) *\t*");
 const regex L_NAZWA_RESTAURACJI   (" *\t*nazwa *\t*restauracji *\t*(.+) *\t*");
 const regex L_CZAS_TRWANIA        (" *\t*czas *\t*trwania *\t*(\\d+) *\t*");
 const regex L_R_MALYCH_STOLIKOW   (" *\t*mały: *\t*(\\d+) *\t*");
