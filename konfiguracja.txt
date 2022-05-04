@@ -1,5 +1,6 @@
 czas trwania: 1000
 nazwa restauracji: Epicka restauracja
+zapisz do: testowa_restauracja
 
 rozmiary stolików:
     mały: 2
