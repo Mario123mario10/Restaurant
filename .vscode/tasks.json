@@ -8,9 +8,9 @@
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
-				"${fileDirname}/**.cpp",
+				// "${fileDirname}/**.cpp",
 				// "${fileDirname}/Testowanie/**.cpp",
-				// "${fileDirname}/test.cpp",
+				"${fileDirname}/test.cpp",
 				"-o",
 				"${fileDirname}/${fileBasenameNoExtension}"
 			],

@@ -4,7 +4,7 @@ using std::cout;	using std::cerr;	using std::endl;
 #include "Przystawka.hpp"
 
 Przystawka::Przystawka(string nazwa, unsigned int koszt_przygotowania):
-  Danie(nazwa, koszt_przygotowania, 2, BazaKategoriiPotraw::PRZYSTAWKA) {}
+  Danie(nazwa, koszt_przygotowania, 2, KategoriaPotrawy::PRZYSTAWKA) {}
 
 void Przystawka::wyswietl()
 {

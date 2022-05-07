@@ -4,7 +4,7 @@ using std::cout;	using std::cerr;	using std::endl;
 #include "Deser.hpp"
 
 Deser::Deser(string nazwa, unsigned int koszt_przygotowania):
-Danie(nazwa, koszt_przygotowania, 3, BazaKategoriiPotraw::DESER) {};
+Danie(nazwa, koszt_przygotowania, 3, KategoriaPotrawy::DESER) {};
 
 
 void Deser::wyswietl()

@@ -15,6 +15,7 @@ using std::regex;  using std::smatch; using std::regex_search;  using std::regex
 const extern regex L_NAZWA_PLIKU_WYJSCIA;
 const extern regex L_NAZWA_RESTAURACJI;
 const extern regex L_CZAS_TRWANIA;
+const extern regex L_CZAS_RAPORTOWANIA;
 const extern regex L_R_MALYCH_STOLIKOW;
 const extern regex L_R_SREDNICH_STOLIKOW;
 const extern regex L_R_DUZYCH_STOLIKOW;
@@ -98,14 +99,15 @@ void ObslugaWejsciowa::sprawdz_dane()
   if
   (
     not(
-      rozmiar_duzy
+      ( not nazwa_restauracji.empty() )
+      and ( not nazwa_pliku_wyjscia.empty() )
+      and rozmiar_duzy
       and rozmiar_sredni
       and rozmiar_maly
       and male
       and srednie
       and duze
       and czas_trwania_symulacji
-      and ( not nazwa_restauracji.empty() )
       and liczba_kelnerow
       and liczba_kucharzy
     )
@@ -138,6 +140,9 @@ void ObslugaWejsciowa::zdefiniuj_blad()
 
   if ( not nazwa_restauracji.empty() )
   { komunikat += "nazwy restauracji | ";}
+
+  if ( not nazwa_pliku_wyjscia.empty() )
+  { komunikat += "nazwy pliku wyjścia | ";}
 
   if (liczba_kelnerow)
   { komunikat += "liczby kelnerów | ";}

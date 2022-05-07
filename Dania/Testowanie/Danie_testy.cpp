@@ -7,7 +7,7 @@ using std::string;
 #include "../Danie.hpp"
 
 
-using BKP = BazaKategoriiPotraw;
+using KP = KategoriaPotrawy;
 
 
 TEST_CASE("Dawacze i ustawiacze", "[Danie]")

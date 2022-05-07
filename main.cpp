@@ -22,9 +22,10 @@ int main(int argc, char const *argv[])
     try
     {
       ObslugaWejsciowa We(argv[1]);
-      ObslugaWyjsciowa Wy(We.daj_nazwe_pliku_wyjscia());
-      unique_ptr<Symulator> S = make_unique<Symulator>(
+      // ObslugaWyjsciowa Wy();
+      Symulator S(
         We.daj_czas_symulacji(),
+        We.daj_nazwe_pliku_wyjscia(),
         We.daj_nazwe_restauracji(),
         We.daj_rozmiar_maly(),
         We.daj_rozmiar_sredni(),

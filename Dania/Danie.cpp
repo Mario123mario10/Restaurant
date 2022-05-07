@@ -4,7 +4,7 @@ using std::string;
 #include "Danie.hpp"
 #include "wyjątki.hpp"
 
-using BKP = BazaKategoriiPotraw;
+using KP = KategoriaPotrawy;
 
 
 Danie::Danie
@@ -12,7 +12,7 @@ Danie::Danie
 	string nazwa,
 	unsigned int koszt_przygotowania,
 	unsigned int czas_przygotowania,
-	BazaKategoriiPotraw kategoria
+	KategoriaPotrawy kategoria
 )
 {
 	if (nazwa.empty())
@@ -36,7 +36,7 @@ Danie::Danie
 Danie::~Danie()
 {}
 
-BKP Danie::daj_kategorie()
+KP Danie::daj_kategorie()
 { return kategoria;}
 
 unsigned int Danie::daj_koszt_przygotowania()
@@ -57,7 +57,7 @@ string Danie::daj_nazwe()
 bool Danie::czy_przygotowane()
 { return przygotowane	;}
 
-void Danie::ustaw_kategorie(BKP nowa_kategoria)
+void Danie::ustaw_kategorie(KP nowa_kategoria)
 { kategoria = nowa_kategoria ;}
 
 void Danie::ustaw_koszt_przygotowania(unsigned int nowy_koszt_przygotowania)
@@ -105,7 +105,7 @@ unsigned int Danie::policz_cene(float modyfikator)
 
 int Danie::policz_priorytet(int modyfikator)
 {
-	unsigned int priorytet_podstawowy = static_cast<unsigned int>(BKP::SUMA) - static_cast<unsigned int>(kategoria);
+	unsigned int priorytet_podstawowy = static_cast<unsigned int>(KP::SUMA) - static_cast<unsigned int>(kategoria);
 	return priorytet_podstawowy + czas_oczekiwania - czas_przygotowania;
 }
 

@@ -1,4 +1,5 @@
 czas trwania: 1000
+czas raportu: 10
 nazwa restauracji: Epicka restauracja
 zapisz do: testowa_restauracja
 

@@ -9,11 +9,20 @@ class Symulator
 {
   private:
     unique_ptr<Restauracja> restauracja;
-    unsigned int licznik_czasu;
+    unsigned int czas_trwania_symulacji;
+    unsigned int licznik_klientow;
+    unsigned int licznik_kelnerow;
+    unsigned int licznik_kucharzy;
+    unsigned int licznik_potraw; // wyszczególnić
+    unsigned int liczba_kucharzy;
+    unsigned int liczba_kelnerow;
+
+    // unsigned int identyfikator_dania;
   public:
     Symulator
     (
       unsigned int czas_trwania_symulacji,
+      string nazwa_pliku_wyjscia,
       string nazwa_restauracji,
       unsigned int rozmiar_maly,
       unsigned int rozmiar_sredni,
@@ -24,11 +33,12 @@ class Symulator
       unsigned int liczba_kucharzy,
       unsigned int liczba_kelnerow
     );
-    void inicjuj_restauracje();
-    void losuj_dane_początkowe();
+    void rozpocznij_sumulacje();
+    void utworz_personel();
     void losuj_wydarzenia();
-    void losuj_kelnera();
-    void losuj_kucharza();
+    void losuj_kelnera(unsigned int identyfikator);
+    void losuj_kucharza(unsigned int identyfikator);
     void losuj_klienta();
     void losuj_danie();
+    int generuj_liczbe();
 };
