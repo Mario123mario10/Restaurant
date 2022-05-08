@@ -1,9 +1,11 @@
 #include <string>
 using std::string;
+
 #include <memory>
 using std::unique_ptr;  using std::make_unique;
 
-
+#include <random>
+#include <chrono>
 
 #include "Symulator.h"
 #include "Restauracja.h"
@@ -57,8 +59,9 @@ void Symulator::rozpocznij_sumulacje()
   utworz_personel();
   for (int licznik = 0; licznik < czas_trwania_symulacji; licznik++)
   {
-    // restauracja -> tiktok();
-    // losuj_wydarzenia();
+    if (generuj_liczbe() % 2)
+    { losuj_klientow()  ;}
+    restauracja -> tiktok();
   }
 }
 
@@ -71,20 +74,45 @@ void Symulator::utworz_personel()
   { losuj_kelnera(licznik) ;}
 }
 
-void Symulator::losuj_wydarzenia()
-{}
+void Symulator::losuj_klientow()
+{
+  unsigned int nowi_klienci = generuj_liczbe() % 3;
+  while (nowi_klienci != 0)
+  {
+    losuj_klienta();
+    nowi_klienci--;
+  }
+}
+
 
 void Symulator::losuj_kelnera(unsigned int identyfikator)
-{}
+{
+
+}
 
 void Symulator::losuj_kucharza(unsigned int identyfikator)
-{}
+{
+
+}
 
 void Symulator::losuj_klienta()
-{}
+{
+
+
+  restauracja -> dodaj_klienta();
+}
+
 
 void Symulator::losuj_danie()
-{}
+{
 
-int  Symulator::generuj_liczbe()
-{}
+
+}
+
+unsigned int Symulator::generuj_liczbe()
+{
+  unsigned int nasiono = std::chrono::system_clock::now().time_since_epoch().count();
+  std::mt19937 generator(nasiono);
+  return generator();
+}
+

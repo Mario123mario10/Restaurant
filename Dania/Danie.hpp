@@ -14,13 +14,13 @@ enum class KategoriaPotrawy
 class Danie
 {
   private:
-    KategoriaPotrawy kategoria            ;
+    KategoriaPotrawy    kategoria            ;
+    string              nazwa                ;
     unsigned int        koszt_przygotowania  ;
     unsigned int        czas_przygotowania   ;
     unsigned int        czas_oczekiwania     ;
-    string              nazwa                ;
-    bool                przygotowane         ;
     unsigned int        postep_przygotowania ;
+    bool                przygotowane         ;
 
   public:
     Danie
@@ -34,7 +34,7 @@ class Danie
     virtual bool operator== (Danie& inne_Danie);
     virtual bool operator!= (Danie& inne_Danie);
 
-    KategoriaPotrawy daj_kategorie();
+    KategoriaPotrawy    daj_kategorie();
     unsigned int        daj_koszt_przygotowania();
     unsigned int        daj_czas_przygotowania();
     unsigned int        daj_czas_oczekiwania();
@@ -42,19 +42,19 @@ class Danie
     string              daj_nazwe();
     bool                czy_przygotowane();
 
-    virtual void ustaw_kategorie(KategoriaPotrawy nowa_kategoria);
-    virtual void ustaw_koszt_przygotowania(unsigned int nowy_koszt_przygotowania);
-    virtual void ustaw_czas_przygotowania(unsigned int nowy_czas_przygotowania);
-    virtual void ustaw_czas_oczekiwania(unsigned int new_czas_oczekiwania);
-    virtual void ustaw_postep_przygotowania(unsigned int nowy_postep_przygotowania);
-    virtual void ustaw_czy_przygotowane(bool nowy_status);
-    virtual void ustaw_nazwe(string nowa_nazwa);
+    void ustaw_kategorie(KategoriaPotrawy nowa_kategoria);
+    void ustaw_koszt_przygotowania(unsigned int nowy_koszt_przygotowania);
+    void ustaw_czas_przygotowania(unsigned int nowy_czas_przygotowania);
+    void ustaw_czas_oczekiwania(unsigned int new_czas_oczekiwania);
+    void ustaw_postep_przygotowania(unsigned int nowy_postep_przygotowania);
+    void ustaw_czy_przygotowane(bool nowy_status);
+    void ustaw_nazwe(string nowa_nazwa);
 
     virtual unsigned int  policz_cene(float modyfikator = 1);
     virtual int           policz_priorytet(int modyfikator = 0);
     virtual void          przygotowuj();
     virtual void          wyswietl();
-
+    friend std::ostream&  operator<<(std::ostream& os, Danie& Danie);
 };
 
 

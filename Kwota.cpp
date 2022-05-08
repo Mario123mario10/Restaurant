@@ -20,17 +20,35 @@ Kwota::Kwota(int zlote, int grosze)
 
 Kwota& Kwota::operator+= (const Kwota&  inna_kwota)
 {
-  ustaw_zlote(inna_kwota.daj_zlote() + zlote);
-  ustaw_grosze(inna_kwota.daj_grosze() + grosze);
+  zlote += inna_kwota.daj_zlote();
+  ustaw_grosze(grosze + inna_kwota.daj_grosze());
 }
+
 Kwota  Kwota::operator+  (const Kwota&  inna_kwota) const
-{}
+{
+  Kwota kwota = *this;
+  kwota += inna_kwota;
+  return kwota;
+}
+
 Kwota& Kwota::operator-= (const Kwota&  inna_kwota)
-{}
+{
+  zlote -= inna_kwota.daj_zlote();
+  ustaw_grosze(grosze - inna_kwota.daj_grosze());
+}
+
 Kwota  Kwota::operator-  (const Kwota&  inna_kwota) const
-{}
+{
+  Kwota kwota = *this;
+  kwota -= inna_kwota;
+  return kwota;
+}
 Kwota& Kwota::operator*= (const Kwota&  inna_kwota)
-{}
+{
+  // zlote *= inna_kwota.daj_zlote();
+  // ustaw_grosze(grosze - inna_kwota.daj_grosze());
+}
+
 Kwota  Kwota::operator*  (const Kwota&  inna_kwota) const
 {}
 Kwota& Kwota::operator/= (const Kwota&  inna_kwota)
@@ -68,10 +86,10 @@ std::ostream& operator<<(std::ostream& os, Kwota& Kwota)
 
 
 int Kwota::daj_grosze() const
-{}
+{ return grosze ;}
 
 int Kwota::daj_zlote() const
-{}
+{ return zlote  ;}
 
 void Kwota::ustaw_grosze(int nowe_grosze)
 {

@@ -1,5 +1,4 @@
-
-
+#pragma once
 
 
 class Restauracja
@@ -17,4 +16,6 @@ class Restauracja
       unsigned int duze
     );
     void tiktok();
+    void dodaj_klienta();
+
 };

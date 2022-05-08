@@ -15,3 +15,5 @@ const regex L_L_SREDNICH_STOLIKOW (" *\t*stoliki *\t*średnie *\t*(\\d+) *\t*");
 const regex L_L_DUZYCH_STOLIKOW   (" *\t*stoliki *\t*duże *\t*(\\d+) *\t*");
 const regex L_L_KELNEROW          (" *\t*liczba *\t*kelnerów: *\t*(\\d+) *\t*");
 const regex L_L_KUCHARZY          (" *\t*liczba *\t*kucharzy: *\t*(\\d+) *\t*");
+// regex DODAJ(" *dodaj +(przystawka|zupa|danie mięsne|danie wegetariańskie|deser|zimny napój|ciepły napój) +(.+) +(\\d+) *");
+// regex SKASUJ(" *skasuj +(przystawka|zupa|danie mięsne|danie wegetariańskie|deser|zimny napój|ciepły napój) +(.+) *");

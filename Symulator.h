@@ -35,10 +35,10 @@ class Symulator
     );
     void rozpocznij_sumulacje();
     void utworz_personel();
-    void losuj_wydarzenia();
     void losuj_kelnera(unsigned int identyfikator);
     void losuj_kucharza(unsigned int identyfikator);
+    void losuj_klientow();
     void losuj_klienta();
     void losuj_danie();
-    int generuj_liczbe();
+    unsigned int generuj_liczbe();
 };

@@ -2,7 +2,7 @@
 using std::string;
 
 #include "Danie.hpp"
-#include "wyjątki.hpp"
+
 
 using KP = KategoriaPotrawy;
 
@@ -16,11 +16,14 @@ Danie::Danie
 )
 {
 	if (nazwa.empty())
-	{	throw	NiepoprawnaNazwa(nazwa)	;}
+	// {	throw	NiepoprawnaNazwa(nazwa)	;}
+	{}
 	else if (koszt_przygotowania == 0)
-	{ throw NiepoprawnyKoszt(koszt_przygotowania)	;}
+	// { throw NiepoprawnyKoszt(koszt_przygotowania)	;}
+	{}
 	else if (czas_przygotowania == 0)
-	{ throw NiepoprawnyCzasPrzygotowania(czas_przygotowania)	;}
+	{}
+	// { throw NiepoprawnyCzasPrzygotowania(czas_przygotowania)	;}
 	else
 	{
     this -> kategoria = kategoria ;
@@ -63,7 +66,9 @@ void Danie::ustaw_kategorie(KP nowa_kategoria)
 void Danie::ustaw_koszt_przygotowania(unsigned int nowy_koszt_przygotowania)
 {
 	if (nowy_koszt_przygotowania == 0)
-	{ throw	NiepoprawnyKoszt(nowy_koszt_przygotowania)	;}
+	// { throw	NiepoprawnyKoszt(nowy_koszt_przygotowania)	;}
+	{}
+
 	else
 	{ koszt_przygotowania = nowy_koszt_przygotowania ;}
 }
@@ -71,7 +76,9 @@ void Danie::ustaw_koszt_przygotowania(unsigned int nowy_koszt_przygotowania)
 void Danie::ustaw_czas_przygotowania(unsigned int nowy_czas_przygotowania)
 {
 	if (nowy_czas_przygotowania == 0)
-	{	throw NiepoprawnyCzasPrzygotowania(nowy_czas_przygotowania)	;}
+	// {	throw NiepoprawnyCzasPrzygotowania(nowy_czas_przygotowania)	;}
+	{}
+
 	else
 	{ czas_przygotowania = nowy_czas_przygotowania ;}
 }
@@ -84,7 +91,9 @@ void Danie::ustaw_postep_przygotowania(unsigned int nowy_postep_przygotowania)
   if (nowy_postep_przygotowania < czas_przygotowania)
   { postep_przygotowania = nowy_postep_przygotowania  ;}
   else
-  { throw NiepoprawnyPostepPrzygotowania(nowy_postep_przygotowania) ;}
+  // { throw NiepoprawnyPostepPrzygotowania(nowy_postep_przygotowania) ;}
+	{}
+
 }
 
 void Danie::ustaw_czy_przygotowane(bool nowy_status)
@@ -95,7 +104,9 @@ void Danie::ustaw_nazwe(string nowa_nazwa)
 	if (not nowa_nazwa.empty())
 	{	nazwa = nowa_nazwa	;}
 	else
-	{ throw NiepoprawnaNazwa(nowa_nazwa)  ;}
+	// { throw NiepoprawnaNazwa(nowa_nazwa)  ;}
+	{}
+
 }
 
 unsigned int Danie::policz_cene(float modyfikator)
@@ -136,3 +147,4 @@ bool Danie::operator== (Danie& inne_danie)
 
 bool Danie::operator!= (Danie& inne_danie)
 { return not (*this == inne_danie)  ;}
+

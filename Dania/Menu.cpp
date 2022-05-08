@@ -12,7 +12,7 @@ using std::unique_ptr ;
 using std::find; using std::remove;
 
 #include "Menu.hpp"
-#include "wyjątki.hpp"
+// #include "wyjątki.hpp"
 
 
 // Menu::Menu(vector<unique_ptr<Danie>> inicjalizujace_dania)

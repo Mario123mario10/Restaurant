@@ -23,3 +23,39 @@ class NieprawidlowaKonfiguracja: public invalid_argument
     NieprawidlowaKonfiguracja(string komunikat);
 };
 
+
+// class NiepoprawnaNazwa: public invalid_argument
+// {
+//   public:
+//     NiepoprawnaNazwa(string zla_nazwa);
+// };
+
+// class NiepoprawnyKoszt: public invalid_argument
+// {
+//   public:
+//     NiepoprawnyKoszt(unsigned int zly_koszt);
+// };
+
+// class NiepoprawnyCzasPrzygotowania: public invalid_argument
+// {
+//   public:
+//     NiepoprawnyCzasPrzygotowania(unsigned int zly_czas);
+// };
+
+// class NiepoprawnyPostepPrzygotowania: public invalid_argument
+// {
+//   public:
+//     NiepoprawnyPostepPrzygotowania(unsigned int zly_czas);
+// };
+
+// class DanieJuzIstnieje: public invalid_argument
+// {
+//   public:
+//     DanieJuzIstnieje(unique_ptr<Danie> wskaznik_na_danie);
+// };
+
+// class DanieNieIstnieje: public invalid_argument
+// {
+//   public:
+//     DanieNieIstnieje(unique_ptr<Danie> wskaznik_na_danie);
+// };
