@@ -45,18 +45,13 @@ Symulator::Symulator
   this -> czas_trwania_symulacji = czas_trwania_symulacji;
   this -> liczba_kelnerow = liczba_kelnerow;
   this -> liczba_kucharzy = liczba_kucharzy;
-  this -> licznik_klientow;
-  // this -> licznik_kelnerow;
-  // this -> licznik_kucharzy;
   this -> licznik_potraw; // wyszczególnić
-  this -> liczba_kucharzy;
-  this -> liczba_kelnerow;
 
 }
 
 void Symulator::rozpocznij_sumulacje()
 {
-  utworz_personel();
+  inicjuj_restauracje();
   for (int licznik = 0; licznik < czas_trwania_symulacji; licznik++)
   {
     if (generuj_liczbe() % 2)
@@ -65,7 +60,7 @@ void Symulator::rozpocznij_sumulacje()
   }
 }
 
-void Symulator::utworz_personel()
+void Symulator::inicjuj_restauracje()
 {
   for (int licznik = 1; licznik <= liczba_kucharzy; licznik++)
   { losuj_kucharza(licznik) ;}

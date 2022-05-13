@@ -13,9 +13,11 @@ using std::string;
 class ObslugaWejsciowa
 {
   private:
-    fstream plik;
-    string sciezka;
+    fstream plik_konfiguracyjny;
+    fstream plik_menu;
+    string sciezka_konfiguracyjna;
     string nazwa_pliku_wyjscia;
+    string sciezka_menu;
     string nazwa_restauracji;
     unsigned int rozmiar_maly;
     unsigned int rozmiar_sredni;
@@ -42,10 +44,14 @@ class ObslugaWejsciowa
     unsigned int daj_liczbe_kucharzy();
     unsigned int daj_liczbe_kelnerow();
 
-    void pobierz_linie();
+    void pobierz_konfiguracje();
+    void pobierz_menu();
+    void pobierz_linie_konfiguracji();
+    void pobierz_linie_menu();
+    void sprawdz_konfiguracje();
+    void sprawdz_menu();
+
     void sprawdz_rozmiary();
-    void odczytaj_dane();
-    void sprawdz_dane();
     void zdefiniuj_blad();
 };
 

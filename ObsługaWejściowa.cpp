@@ -14,6 +14,7 @@ using std::regex;  using std::smatch; using std::regex_search;  using std::regex
 
 const extern regex L_NAZWA_PLIKU_WYJSCIA;
 const extern regex L_NAZWA_RESTAURACJI;
+const extern regex L_NAZWA_PLIKU_MENU;
 const extern regex L_CZAS_TRWANIA;
 const extern regex L_CZAS_RAPORTOWANIA;
 const extern regex L_R_MALYCH_STOLIKOW;
@@ -25,11 +26,21 @@ const extern regex L_L_DUZYCH_STOLIKOW;
 const extern regex L_L_KELNEROW;
 const extern regex L_L_KUCHARZY;
 
+const extern regex L_M_PRZYSTAWKA;
+const extern regex L_M_ZUPA;
+const extern regex L_M_DANIE_MIESNE;
+const extern regex L_M_DANIE_WEGE;
+const extern regex L_M_DESER;
+const extern regex L_M_NAPOJ_CIEPLY;
+const extern regex L_M_NAPOJ_ZIMNY;
+
 
 
 ObslugaWejsciowa::ObslugaWejsciowa(string sciezka)
 {
+
   nazwa_pliku_wyjscia = "";
+  sciezka_menu = "";
   nazwa_restauracji = "";
   rozmiar_maly = 0;
   rozmiar_sredni = 0;
@@ -40,24 +51,79 @@ ObslugaWejsciowa::ObslugaWejsciowa(string sciezka)
   czas_trwania_symulacji = 0;
   liczba_kelnerow = 0;
   liczba_kucharzy = 0;
-
-  plik.open(sciezka, ios::in);
-  if (plik.is_open())
-  {
-    while (not plik.eof())
-    { pobierz_linie() ;}
-    plik.close();
-    sprawdz_dane();
-  }
-  else
-  { throw NieZnalezionoPliku(sciezka) ;}
+  sciezka_konfiguracyjna = sciezka;
+  pobierz_konfiguracje();
+  pobierz_menu();
 }
 
-void ObslugaWejsciowa::pobierz_linie()
+void ObslugaWejsciowa::pobierz_konfiguracje()
+{
+  plik_konfiguracyjny.open(sciezka_konfiguracyjna, ios::in);
+  if (plik_konfiguracyjny.is_open())
+  {
+    while (not plik_konfiguracyjny.eof())
+    { pobierz_linie_konfiguracji() ;}
+    plik_konfiguracyjny.close();
+    sprawdz_konfiguracje();
+  }
+  else
+  { throw NieZnalezionoPliku(sciezka_konfiguracyjna) ;}
+
+}
+
+
+void ObslugaWejsciowa::pobierz_menu()
+{
+  plik_menu.open(sciezka_menu, ios::in);
+  if (plik_menu.is_open())
+  {
+    while (not plik_menu.eof())
+    { pobierz_linie_menu() ;}
+    plik_menu.close();
+    sprawdz_menu();
+  }
+  else
+  { throw NieZnalezionoPliku(sciezka_menu) ;}
+}
+
+
+void ObslugaWejsciowa::pobierz_linie_konfiguracji()
 {
   string linia;
   smatch przechwycone;
-  getline(plik, linia);
+  getline(plik_menu, linia);
+  if (regex_match(linia, przechwycone, L_M_PRZYSTAWKA))
+  { nazwa_restauracji = przechwycone[1] ;}
+
+  else if (regex_match(linia, przechwycone, L_M_ZUPA))
+  { nazwa_pliku_wyjscia = przechwycone[1] ;}
+
+  else if (regex_match(linia, przechwycone, L_M_DANIE_MIESNE))
+  { nazwa_pliku_wyjscia = przechwycone[1] ;}
+
+  else if (regex_match(linia, przechwycone, L_M_DANIE_WEGE))
+  { nazwa_pliku_wyjscia = przechwycone[1] ;}
+
+  else if (regex_match(linia, przechwycone, L_M_DESER))
+  { nazwa_pliku_wyjscia = przechwycone[1] ;}
+
+  else if (regex_match(linia, przechwycone, L_M_NAPOJ_CIEPLY))
+  { liczba_kucharzy = stoul(przechwycone[1]) ;}
+
+  else if (regex_match(linia, przechwycone, L_M_NAPOJ_ZIMNY))
+  { liczba_kucharzy = stoul(przechwycone[1]) ;}
+
+  else if (regex_match(linia, przechwycone, L_M_NAPOJ_CIEPLY))
+  { liczba_kucharzy = stoul(przechwycone[1]) ;}
+
+  linia.clear();
+}
+
+void ObslugaWejsciowa::pobierz_linie_menu()
+{
+  string linia;
+  smatch przechwycone;
+  getline(plik_konfiguracyjny, linia);
   if (regex_match(linia, przechwycone, L_NAZWA_RESTAURACJI))
   { nazwa_restauracji = przechwycone[1] ;}
 
@@ -91,16 +157,38 @@ void ObslugaWejsciowa::pobierz_linie()
   else if (regex_match(linia, przechwycone, L_L_KUCHARZY))
   { liczba_kucharzy = stoul(przechwycone[1]) ;}
 
+  else if (regex_match(linia, przechwycone, L_NAZWA_PLIKU_MENU))
+  { sciezka_menu = przechwycone[1] ;}
+
+  // else if (regex_match(linia, przechwycone, L_L_KUCHARZY))
+  // { liczba_kucharzy = stoul(przechwycone[1]) ;}
+
+  // else if (regex_match(linia, przechwycone, L_L_KUCHARZY))
+  // { liczba_kucharzy = stoul(przechwycone[1]) ;}
+
+  // else if (regex_match(linia, przechwycone, L_L_KUCHARZY))
+  // { liczba_kucharzy = stoul(przechwycone[1]) ;}
+
+  // else if (regex_match(linia, przechwycone, L_L_KUCHARZY))
+  // { liczba_kucharzy = stoul(przechwycone[1]) ;}
+
+  // else if (regex_match(linia, przechwycone, L_L_KUCHARZY))
+  // { liczba_kucharzy = stoul(przechwycone[1]) ;}
+
   linia.clear();
 }
 
-void ObslugaWejsciowa::sprawdz_dane()
+
+
+
+void ObslugaWejsciowa::sprawdz_konfiguracje()
 {
   if
   (
     not(
       ( not nazwa_restauracji.empty() )
       and ( not nazwa_pliku_wyjscia.empty() )
+      and ( not sciezka_menu.empty() )
       and rozmiar_duzy
       and rozmiar_sredni
       and rozmiar_maly
@@ -119,10 +207,13 @@ void ObslugaWejsciowa::zdefiniuj_blad()
 {
   string komunikat = "| Brakuje następujących danych: ";
   komunikat.clear();
+
   if (rozmiar_duzy)
   { komunikat += "rozmiaru dużych stolików | ";}
+
   if (rozmiar_maly)
   { komunikat += "rozmiaru małych stolików | ";}
+
   if (rozmiar_sredni)
   { komunikat += "rozmiaru średnich stolików | ";}
 
@@ -144,13 +235,16 @@ void ObslugaWejsciowa::zdefiniuj_blad()
   if ( not nazwa_pliku_wyjscia.empty() )
   { komunikat += "nazwy pliku wyjścia | ";}
 
+  if ( not sciezka_menu.empty() )
+  { komunikat += "ścieżki do menu | ";}
+
   if (liczba_kelnerow)
   { komunikat += "liczby kelnerów | ";}
 
   if (liczba_kucharzy)
   { komunikat += "liczby kucharzy | ";}
 
-  throw NieprawidlowaKonfiguracja(komunikat);
+  throw NiepelnaKonfiguracja(komunikat);
 }
 
 string ObslugaWejsciowa::daj_nazwe_pliku_wyjscia()
@@ -185,3 +279,5 @@ unsigned int ObslugaWejsciowa::daj_liczbe_kucharzy()
 
 unsigned int ObslugaWejsciowa::daj_liczbe_kelnerow()
 { return liczba_kucharzy ;}
+
+

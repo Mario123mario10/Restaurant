@@ -1,6 +1,7 @@
 czas trwania: 1000
-czas raportu: 10
+czas raportowania: 10
 nazwa restauracji: Epicka restauracja
+ścieżka menu: menu.txt
 zapisz do: testowa_restauracja
 
 rozmiary stolików:

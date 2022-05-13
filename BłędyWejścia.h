@@ -17,11 +17,25 @@ class NieZnalezionoPliku: public invalid_argument
     NieZnalezionoPliku(string zla_sciezka);
 };
 
-class NieprawidlowaKonfiguracja: public invalid_argument
+class NiepelnaKonfiguracja: public invalid_argument
 {
   public:
-    NieprawidlowaKonfiguracja(string komunikat);
+    NiepelnaKonfiguracja(string komunikat);
 };
+
+class NieprawidloweMenu: public invalid_argument
+{
+  public:
+    NieprawidloweMenu(string komunikat);
+};
+
+class NieprawidloweRozmiaryStolow: public invalid_argument
+{
+  public:
+    NieprawidloweRozmiaryStolow(string komunikat);
+};
+
+
 
 
 // class NiepoprawnaNazwa: public invalid_argument

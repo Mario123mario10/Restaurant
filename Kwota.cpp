@@ -43,6 +43,7 @@ Kwota  Kwota::operator-  (const Kwota&  inna_kwota) const
   kwota -= inna_kwota;
   return kwota;
 }
+
 Kwota& Kwota::operator*= (const Kwota&  inna_kwota)
 {
   // zlote *= inna_kwota.daj_zlote();
@@ -51,6 +52,7 @@ Kwota& Kwota::operator*= (const Kwota&  inna_kwota)
 
 Kwota  Kwota::operator*  (const Kwota&  inna_kwota) const
 {}
+
 Kwota& Kwota::operator/= (const Kwota&  inna_kwota)
 {}
 Kwota  Kwota::operator/  (const Kwota&  inna_kwota) const
@@ -69,11 +71,14 @@ Kwota  Kwota::operator--(int)
 {}
 
 bool Kwota::operator== (const Kwota&  inna_kwota) const
-{}
+{ return (zlote == inna_kwota.daj_zlote() and grosze == inna_kwota.daj_grosze()) ;}
+
 bool Kwota::operator!= (const Kwota&  inna_kwota) const
-{}
+{ return not (*this == inna_kwota)  ;}
 bool Kwota::operator<  (const Kwota&  inna_kwota) const
-{}
+{
+
+}
 bool Kwota::operator>  (const Kwota&  inna_kwota) const
 {}
 bool Kwota::operator<= (const Kwota&  inna_kwota) const

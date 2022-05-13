@@ -43,7 +43,7 @@ int main(int argc, char const *argv[])
       drukuj_bl(blad.what());
       return 1;
     }
-    catch(const NieprawidlowaKonfiguracja& blad)
+    catch(const NiepelnaKonfiguracja& blad)
     {
       drukuj_bl(blad.what());
       return 1;

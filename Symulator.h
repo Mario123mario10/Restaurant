@@ -11,8 +11,6 @@ class Symulator
     unique_ptr<Restauracja> restauracja;
     unsigned int czas_trwania_symulacji;
     unsigned int licznik_klientow;
-    unsigned int licznik_kelnerow;
-    unsigned int licznik_kucharzy;
     unsigned int licznik_potraw; // wyszczególnić
     unsigned int liczba_kucharzy;
     unsigned int liczba_kelnerow;
@@ -34,7 +32,7 @@ class Symulator
       unsigned int liczba_kelnerow
     );
     void rozpocznij_sumulacje();
-    void utworz_personel();
+    void inicjuj_restauracje();
     void losuj_kelnera(unsigned int identyfikator);
     void losuj_kucharza(unsigned int identyfikator);
     void losuj_klientow();

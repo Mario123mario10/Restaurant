@@ -21,9 +21,9 @@ class Kwota
     Kwota& operator%= (const Kwota&  inna_kwota)      ;
     Kwota  operator%  (const Kwota&  inna_kwota) const;
     Kwota& operator++ ();
-    Kwota operator++(int);
+    Kwota  operator++(int);
     Kwota& operator-- ();
-    Kwota operator--(int);
+    Kwota  operator--(int);
 
     bool operator== (const Kwota&  inna_kwota) const;
     bool operator!= (const Kwota&  inna_kwota) const;

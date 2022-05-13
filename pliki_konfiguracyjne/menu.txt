@@ -1,0 +1,42 @@
+Menu
+w formacie:
+kategoria nazwa potrawy koszt składników
+Przystawki:
+P Sałatka śródziemnomorska  3
+P Chleb z oliwą             2
+P Śledziki                  2
+
+Dania główne:
+Z Rosół                     2
+Z Barszcz czerwony          2
+Z Barszcz biały             2
+Z Zupa pomidorowa           2
+
+M Schabowy z ziemniakami    2
+M Dewolaj                   2
+M Pyzy z mięsem             2
+M Pizza farmerska           4
+
+W Jakieś tam roślinki       2
+W Falafel                   2
+W Pyzy bez mięsa            2
+W Pizza margherita          2
+
+Desery:
+D Budyń                     2
+D Kisiel z owocami          2
+D Lody                      2
+D Sernik                    2
+
+Napoje:
+Z Sok pomarańczowy          2
+Z Sok jabłkowy              2
+Z Kawa mrożona              2
+
+C Kawa                      2
+C Herbata                   2
+C Czekolada na gorąco       2
+
+
+
+
