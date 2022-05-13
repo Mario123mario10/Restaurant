@@ -2,6 +2,8 @@
 #include "Kwota.h"
 
 
+using std::to_string;
+
 
 Kwota::Kwota()
 {
@@ -10,13 +12,22 @@ Kwota::Kwota()
 }
 
 Kwota::Kwota(int zlote, int grosze)
-{
+{ // dodać warian ujemny
   this -> zlote = zlote;
   this -> grosze = grosze;
 }
 
+Kwota::Kwota(int a_grosze)
+{
+
+  ustaw_grosze(a_grosze);
+}
+
 // Kwota::Kwota(float kwota)
 // {}
+
+Kwota::operator string()
+{ return to_string(zlote) + " zł " + to_string(grosze) + " gr" ;}
 
 Kwota& Kwota::operator+= (const Kwota&  inna_kwota)
 {

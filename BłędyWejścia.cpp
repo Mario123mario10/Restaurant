@@ -22,8 +22,17 @@ invalid_argument(komunikat) {}
 NieprawidloweMenu::NieprawidloweMenu(string komunikat):
 invalid_argument(komunikat) {}
 
-
-
+NieprawidloweRozmiary::NieprawidloweRozmiary
+(
+  unsigned int rozmiar_maly,
+  unsigned int rozmiar_sredni,
+  unsigned int rozmiar_duzy
+): invalid_argument
+  (
+    "Nieprawidłowa kombinacja rozmiarów stołów: "
+    + to_string(rozmiar_maly) + " "
+    + to_string(rozmiar_sredni) + " "
+    + to_string(rozmiar_duzy)) {}
 
 
 

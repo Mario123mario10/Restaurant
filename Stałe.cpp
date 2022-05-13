@@ -1,5 +1,5 @@
 #include <regex>
-using std::regex;  using std::smatch;  using std::regex_search;  using std::regex_match;
+using std::regex;
 
 // przerwa == [ \\t]*
 // nazwa   == (.+)
@@ -30,6 +30,3 @@ const regex L_M_DESER             ("[ \\t]*D[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*");
 const regex L_M_NAPOJ_CIEPLY      ("[ \\t]*Z[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*");
 const regex L_M_NAPOJ_ZIMNY       ("[ \\t]*C[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*");
 
-
-// regex DODAJ(" *dodaj +(przystawka|zupa|danie mięsne|danie wegetariańskie|deser|zimny napój|ciepły napój) +(.+) +(\\d+) *");
-// regex SKASUJ(" *skasuj +(przystawka|zupa|danie mięsne|danie wegetariańskie|deser|zimny napój|ciepły napój) +(.+) *");

@@ -29,10 +29,15 @@ class NieprawidloweMenu: public invalid_argument
     NieprawidloweMenu(string komunikat);
 };
 
-class NieprawidloweRozmiaryStolow: public invalid_argument
+class NieprawidloweRozmiary: public invalid_argument
 {
   public:
-    NieprawidloweRozmiaryStolow(string komunikat);
+    NieprawidloweRozmiary
+    (
+      unsigned int rozmiar_maly,
+      unsigned int rozmiar_sredni,
+      unsigned int rozmiar_duzy
+    );
 };
 
 

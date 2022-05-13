@@ -49,7 +49,7 @@ Symulator::Symulator
 
 }
 
-void Symulator::rozpocznij_sumulacje()
+void Symulator::rozpocznij_symulacje()
 {
   inicjuj_restauracje();
   for (int licznik = 0; licznik < czas_trwania_symulacji; licznik++)

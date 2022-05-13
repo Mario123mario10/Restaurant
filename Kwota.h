@@ -1,6 +1,9 @@
 #include <iostream>
 using std::cout;	using std::cerr;	using std::endl;
 
+#include <string>
+using std::string;
+
 class Kwota
 {
   private:
@@ -8,8 +11,13 @@ class Kwota
     int grosze;
   public:
     Kwota();
+    Kwota(int grosze);
     Kwota(int zlote, int grosze);
-    Kwota(float kwota);
+    Kwota(string kwota);
+    // Kwota(float kwota);
+
+    operator string();
+
     Kwota& operator+= (const Kwota&  inna_kwota)      ;
     Kwota  operator+  (const Kwota&  inna_kwota) const;
     Kwota& operator-= (const Kwota&  inna_kwota)      ;
@@ -38,10 +46,6 @@ class Kwota
     void ustaw_grosze(int nowe_grosze);
 
     friend std::ostream& operator<<(std::ostream& os, Kwota& Kwota);
-
-
-
-
 };
 
 // Point& Point::operator++()

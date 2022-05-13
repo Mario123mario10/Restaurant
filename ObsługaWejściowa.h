@@ -52,7 +52,7 @@ class ObslugaWejsciowa
     void sprawdz_menu();
 
     void sprawdz_rozmiary();
-    void zdefiniuj_blad();
+    void zdefiniuj_blad_konfiguracji();
 };
 
 

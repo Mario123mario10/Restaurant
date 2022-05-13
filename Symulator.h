@@ -31,7 +31,7 @@ class Symulator
       unsigned int liczba_kucharzy,
       unsigned int liczba_kelnerow
     );
-    void rozpocznij_sumulacje();
+    void rozpocznij_symulacje();
     void inicjuj_restauracje();
     void losuj_kelnera(unsigned int identyfikator);
     void losuj_kucharza(unsigned int identyfikator);

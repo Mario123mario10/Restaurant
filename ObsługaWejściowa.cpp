@@ -11,29 +11,7 @@ using std::regex;  using std::smatch; using std::regex_search;  using std::regex
 
 #include "BłędyWejścia.h"
 #include "ObsługaWejściowa.h"
-
-const extern regex L_NAZWA_PLIKU_WYJSCIA;
-const extern regex L_NAZWA_RESTAURACJI;
-const extern regex L_NAZWA_PLIKU_MENU;
-const extern regex L_CZAS_TRWANIA;
-const extern regex L_CZAS_RAPORTOWANIA;
-const extern regex L_R_MALYCH_STOLIKOW;
-const extern regex L_R_SREDNICH_STOLIKOW;
-const extern regex L_R_DUZYCH_STOLIKOW;
-const extern regex L_L_MALYCH_STOLIKOW;
-const extern regex L_L_SREDNICH_STOLIKOW;
-const extern regex L_L_DUZYCH_STOLIKOW;
-const extern regex L_L_KELNEROW;
-const extern regex L_L_KUCHARZY;
-
-const extern regex L_M_PRZYSTAWKA;
-const extern regex L_M_ZUPA;
-const extern regex L_M_DANIE_MIESNE;
-const extern regex L_M_DANIE_WEGE;
-const extern regex L_M_DESER;
-const extern regex L_M_NAPOJ_CIEPLY;
-const extern regex L_M_NAPOJ_ZIMNY;
-
+#include "Stałe.h"
 
 
 ObslugaWejsciowa::ObslugaWejsciowa(string sciezka)
@@ -87,7 +65,7 @@ void ObslugaWejsciowa::pobierz_menu()
 }
 
 
-void ObslugaWejsciowa::pobierz_linie_konfiguracji()
+void ObslugaWejsciowa::pobierz_linie_menu()
 {
   string linia;
   smatch przechwycone;
@@ -119,7 +97,7 @@ void ObslugaWejsciowa::pobierz_linie_konfiguracji()
   linia.clear();
 }
 
-void ObslugaWejsciowa::pobierz_linie_menu()
+void ObslugaWejsciowa::pobierz_linie_konfiguracji()
 {
   string linia;
   smatch przechwycone;
@@ -160,21 +138,6 @@ void ObslugaWejsciowa::pobierz_linie_menu()
   else if (regex_match(linia, przechwycone, L_NAZWA_PLIKU_MENU))
   { sciezka_menu = przechwycone[1] ;}
 
-  // else if (regex_match(linia, przechwycone, L_L_KUCHARZY))
-  // { liczba_kucharzy = stoul(przechwycone[1]) ;}
-
-  // else if (regex_match(linia, przechwycone, L_L_KUCHARZY))
-  // { liczba_kucharzy = stoul(przechwycone[1]) ;}
-
-  // else if (regex_match(linia, przechwycone, L_L_KUCHARZY))
-  // { liczba_kucharzy = stoul(przechwycone[1]) ;}
-
-  // else if (regex_match(linia, przechwycone, L_L_KUCHARZY))
-  // { liczba_kucharzy = stoul(przechwycone[1]) ;}
-
-  // else if (regex_match(linia, przechwycone, L_L_KUCHARZY))
-  // { liczba_kucharzy = stoul(przechwycone[1]) ;}
-
   linia.clear();
 }
 
@@ -185,25 +148,25 @@ void ObslugaWejsciowa::sprawdz_konfiguracje()
 {
   if
   (
-    not(
-      ( not nazwa_restauracji.empty() )
-      and ( not nazwa_pliku_wyjscia.empty() )
-      and ( not sciezka_menu.empty() )
-      and rozmiar_duzy
-      and rozmiar_sredni
-      and rozmiar_maly
-      and male
-      and srednie
-      and duze
-      and czas_trwania_symulacji
-      and liczba_kelnerow
-      and liczba_kucharzy
-    )
+    ( not nazwa_restauracji.empty() )
+    and ( not nazwa_pliku_wyjscia.empty() )
+    and ( not sciezka_menu.empty() )
+    and rozmiar_duzy
+    and rozmiar_sredni
+    and rozmiar_maly
+    and male
+    and srednie
+    and duze
+    and czas_trwania_symulacji
+    and liczba_kelnerow
+    and liczba_kucharzy
   )
-  { zdefiniuj_blad() ;}
+  { sprawdz_rozmiary()  ;}
+  else
+  { zdefiniuj_blad_konfiguracji() ;}
 }
 
-void ObslugaWejsciowa::zdefiniuj_blad()
+void ObslugaWejsciowa::zdefiniuj_blad_konfiguracji()
 {
   string komunikat = "| Brakuje następujących danych: ";
   komunikat.clear();
@@ -245,6 +208,12 @@ void ObslugaWejsciowa::zdefiniuj_blad()
   { komunikat += "liczby kucharzy | ";}
 
   throw NiepelnaKonfiguracja(komunikat);
+}
+
+void ObslugaWejsciowa::sprawdz_rozmiary()
+{
+  if ((rozmiar_duzy <= rozmiar_sredni) or (rozmiar_sredni <= rozmiar_maly))
+  { throw NieprawidloweRozmiary(rozmiar_maly, rozmiar_sredni, rozmiar_duzy) ;}
 }
 
 string ObslugaWejsciowa::daj_nazwe_pliku_wyjscia()
