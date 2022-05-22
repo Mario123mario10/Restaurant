@@ -8,7 +8,7 @@ class DanieWegetarianskie: public DanieGlowne
     DanieWegetarianskie
     (
       string nazwa,
-      unsigned int koszt_przygotowania
+      Kwota koszt_przygotowania
     );
 
     void wyswietl() override;

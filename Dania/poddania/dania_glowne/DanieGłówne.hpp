@@ -8,7 +8,7 @@ class DanieGlowne: public Danie
     DanieGlowne
     (
       string nazwa,
-      unsigned int koszt_przygotowania,
+      Kwota koszt_przygotowania,
       unsigned int czas_przygotowania
     );
 };

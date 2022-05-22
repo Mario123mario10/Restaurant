@@ -9,7 +9,7 @@ using std::unique_ptr;  using std::make_unique;
 
 #include "Symulator.h"
 #include "Restauracja.h"
-
+#include "Funkcje_pomocnicze.h"
 
 
 // unique_ptr<Restauracja> restauracja;
@@ -104,10 +104,10 @@ void Symulator::losuj_danie()
 
 }
 
-unsigned int Symulator::generuj_liczbe()
-{
-  unsigned int nasiono = std::chrono::system_clock::now().time_since_epoch().count();
-  std::mt19937 generator(nasiono);
-  return generator();
-}
+// unsigned int Symulator::generuj_liczbe()
+// {
+//   unsigned int nasiono = std::chrono::system_clock::now().time_since_epoch().count();
+//   std::mt19937 generator(nasiono);
+//   return generator();
+// }
 

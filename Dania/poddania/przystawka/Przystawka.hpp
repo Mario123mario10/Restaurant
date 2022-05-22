@@ -1,4 +1,5 @@
 #include "Danie.hpp"
+#include "../Kwota.h"
 
 class Przystawka: public Danie
 {
@@ -6,7 +7,7 @@ class Przystawka: public Danie
     Przystawka
     (
       string nazwa,
-      unsigned int koszt_przygotowania
+      Kwota koszt_przygotowania
     );
 
     void wyswietl() override;

@@ -7,8 +7,8 @@ using std::to_string;
 
 Kwota::Kwota()
 {
-  zlote = 0;
-  grosze = 0;
+  this -> zlote = 0;
+  this -> grosze = 0;
 }
 
 Kwota::Kwota(int zlote, int grosze)

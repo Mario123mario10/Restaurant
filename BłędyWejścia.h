@@ -40,9 +40,6 @@ class NieprawidloweRozmiary: public invalid_argument
     );
 };
 
-
-
-
 class NiepoprawnaNazwa: public invalid_argument
 {
   public:

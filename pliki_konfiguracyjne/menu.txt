@@ -2,40 +2,40 @@ Menu
 w formacie:
 kategoria nazwa potrawy koszt składników
 Przystawki:
-P Sałatka śródziemnomorska  3
-P Chleb z oliwą             2
-P Śledziki                  2
+P Sałatka śródziemnomorska  3 zł 50 gr
+P Chleb z oliwą             2 zł 50 gr
+P Śledziki                  2 zł 50 gr
 
 Dania główne:
-Z Rosół                     2
-Z Barszcz czerwony          2
-Z Barszcz biały             2
-Z Zupa pomidorowa           2
+Z Rosół                     2 zł 50 gr
+Z Barszcz czerwony          2 zł 50 gr
+Z Barszcz biały             2 zł 50 gr
+Z Zupa pomidorowa           2 zł 50 gr
 
-M Schabowy z ziemniakami    2
-M Dewolaj                   2
-M Pyzy z mięsem             2
-M Pizza farmerska           4
+M Schabowy z ziemniakami    2 zł 50 gr
+M Dewolaj                   2 zł 50 gr
+M Pyzy z mięsem             2 zł 50 gr
+M Pizza farmerska           4 zł 50 gr
 
-W Jakieś tam roślinki       2
-W Falafel                   2
-W Pyzy bez mięsa            2
-W Pizza margherita          2
+W Jakieś tam roślinki       2 zł 50 gr
+W Falafel                   2 zł 50 gr
+W Pyzy bez mięsa            2 zł 50 gr
+W Pizza margherita          2 zł 50 gr
 
 Desery:
-D Budyń                     2
-D Kisiel z owocami          2
-D Lody                      2
-D Sernik                    2
+D Budyń                     2 zł 50 gr
+D Kisiel z owocami          2 zł 50 gr
+D Lody                      2 zł 50 gr
+D Sernik                    2 zł 50 gr
 
 Napoje:
-Z Sok pomarańczowy          2
-Z Sok jabłkowy              2
-Z Kawa mrożona              2
+Z Sok pomarańczowy          2 zł 50 gr
+Z Sok jabłkowy              2 zł 50 gr
+Z Kawa mrożona              2 zł 50 gr
 
-C Kawa                      2
-C Herbata                   2
-C Czekolada na gorąco       2
+C Kawa                      2 zł 50 gr
+C Herbata                   2 zł 50 gr
+C Czekolada na gorąco       2 zł 50 gr
 
 
 

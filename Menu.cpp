@@ -6,22 +6,14 @@ using std::vector;
 
 #include <memory>
 using std::unique_ptr ;
+using std::make_unique;
 
 #include <algorithm>
 
-using std::find; using std::remove;
-
+using std::move;
 #include "Menu.hpp"
 #include "../BłędyWejścia.h"
-
-
-// Menu::Menu(vector<unique_ptr<Danie>> inicjalizujace_dania)
-// {
-//   this -> utworzone_dania = std::move(inicjalizujace_dania);
-
-//   policzone_ceny.clear();
-//   policzone_priorytety.clear();
-// }
+using KP = KategoriaPotrawy;
 
 Menu::Menu()
 {
@@ -70,3 +62,36 @@ void Menu::wyswietl_menu()
     { wskaznik -> wyswietl() ;}
   }
 }
+
+bool Menu::czy_poprawne()
+{
+  bool jest_przystawka  = false;
+  bool jest_glowne      = false;
+  bool jest_deser       = false;
+  bool jest_napoj       = false;
+
+  for (const unique_ptr<Danie>& danie: utworzone_dania)
+  {
+    if (danie -> daj_kategorie() == KP::DESER)
+    { jest_deser = true   ;}
+    else if (danie -> daj_kategorie() == KP::DANIE_GLOWNE)
+    { jest_glowne = true  ;}
+    else if (danie -> daj_kategorie() == KP::NAPOJ)
+    { jest_napoj = true  ;}
+    else if (danie -> daj_kategorie() == KP::PRZYSTAWKA)
+    { jest_przystawka = true  ;}
+  }
+  return jest_przystawka | jest_glowne | jest_deser | jest_napoj;
+}
+
+void Menu::przekaz_dania(unique_ptr<Menu> inne_menu)
+{
+  for (const unique_ptr<Danie>& wskaznik: utworzone_dania)
+  {
+    unique_ptr<Danie> inny_wskaznik = make_unique<Danie>(wskaznik);
+    inne_menu -> dodaj_danie(move(inny_wskaznik));
+  }
+
+
+}
+

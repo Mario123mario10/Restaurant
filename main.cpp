@@ -22,7 +22,6 @@ int main(int argc, char const *argv[])
     try
     {
       ObslugaWejsciowa We(argv[1]);
-      // ObslugaWyjsciowa Wy();
       Symulator S(
         We.daj_czas_symulacji(),
         We.daj_nazwe_pliku_wyjscia(),

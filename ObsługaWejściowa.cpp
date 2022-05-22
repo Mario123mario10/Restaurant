@@ -120,19 +120,56 @@ void ObslugaWejsciowa::pobierz_linie_menu()
     menu.dodaj_danie(move(przystawka));
   }
   else if (regex_match(linia, przechwycone, L_M_DANIE_WEGE))
-  { nazwa_pliku_wyjscia = przechwycone[1] ;}
+  {
+    string nazwa = przechwycone[1];
+    unsigned int zlote = stoul(przechwycone[2]);
+    unsigned int grosze = stoul(przechwycone[3]);
+    if (nazwa.empty())
+    { throw NiepoprawnaNazwa(nazwa) ;}
+    else if (zlote == 0 and grosze == 0)
+    { throw NiepoprawnyKoszt(Kwota(zlote, grosze)) ;}
+    unique_ptr<DanieWegetarianskie> przystawka = make_unique<DanieWegetarianskie>(nazwa, Kwota(zlote, grosze));
+    menu.dodaj_danie(move(przystawka));
+  }
 
   else if (regex_match(linia, przechwycone, L_M_DESER))
-  { nazwa_pliku_wyjscia = przechwycone[1] ;}
+  {
+    string nazwa = przechwycone[1];
+    unsigned int zlote = stoul(przechwycone[2]);
+    unsigned int grosze = stoul(przechwycone[3]);
+    if (nazwa.empty())
+    { throw NiepoprawnaNazwa(nazwa) ;}
+    else if (zlote == 0 and grosze == 0)
+    { throw NiepoprawnyKoszt(Kwota(zlote, grosze)) ;}
+    unique_ptr<Deser> przystawka = make_unique<Deser>(nazwa, Kwota(zlote, grosze));
+    menu.dodaj_danie(move(przystawka));
+  }
 
   else if (regex_match(linia, przechwycone, L_M_NAPOJ_CIEPLY))
-  { liczba_kucharzy = stoul(przechwycone[1]) ;}
+  {
+    string nazwa = przechwycone[1];
+    unsigned int zlote = stoul(przechwycone[2]);
+    unsigned int grosze = stoul(przechwycone[3]);
+    if (nazwa.empty())
+    { throw NiepoprawnaNazwa(nazwa) ;}
+    else if (zlote == 0 and grosze == 0)
+    { throw NiepoprawnyKoszt(Kwota(zlote, grosze)) ;}
+    unique_ptr<CieplyNapoj> przystawka = make_unique<CieplyNapoj>(nazwa, Kwota(zlote, grosze));
+    menu.dodaj_danie(move(przystawka));
+  }
 
   else if (regex_match(linia, przechwycone, L_M_NAPOJ_ZIMNY))
-  { liczba_kucharzy = stoul(przechwycone[1]) ;}
-
-  else if (regex_match(linia, przechwycone, L_M_NAPOJ_CIEPLY))
-  { liczba_kucharzy = stoul(przechwycone[1]) ;}
+  {
+    string nazwa = przechwycone[1];
+    unsigned int zlote = stoul(przechwycone[2]);
+    unsigned int grosze = stoul(przechwycone[3]);
+    if (nazwa.empty())
+    { throw NiepoprawnaNazwa(nazwa) ;}
+    else if (zlote == 0 and grosze == 0)
+    { throw NiepoprawnyKoszt(Kwota(zlote, grosze)) ;}
+    unique_ptr<ZimnyNapoj> przystawka = make_unique<ZimnyNapoj>(nazwa, Kwota(zlote, grosze));
+    menu.dodaj_danie(move(przystawka));
+  }
 
   linia.clear();
 }
@@ -248,6 +285,13 @@ void ObslugaWejsciowa::zdefiniuj_blad_konfiguracji()
   { komunikat += "liczby kucharzy | ";}
 
   throw NiepelnaKonfiguracja(komunikat);
+}
+void ObslugaWejsciowa::sprawdz_menu()
+{
+  if (menu.czy_poprawne())
+  { return; }
+  else
+  { throw NieprawidloweMenu("Menu musi posiadać przynajmniej po jednej potrawie z każdej kategorii");}
 }
 
 void ObslugaWejsciowa::sprawdz_rozmiary()

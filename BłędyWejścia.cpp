@@ -19,6 +19,9 @@ invalid_argument("Nie znaleziono pliku o podanej scieżce: " + zla_sciezka){}
 NiepelnaKonfiguracja::NiepelnaKonfiguracja(string komunikat):
 invalid_argument(komunikat) {}
 
+// NiepelneMenu::NiepelneMenu(string komunikat):
+// invalid_argument(komunikat) {}
+
 NieprawidloweMenu::NieprawidloweMenu(string komunikat):
 invalid_argument(komunikat) {}
 
@@ -54,7 +57,7 @@ invalid_argument(
     "Danie o nazwie: "
     + wskaznik_na_danie -> daj_nazwe()
     + " i koszcie przygotowania: "
-    + string (wskaznik_na_danie -> daj_koszt_przygotowania())
+    + (string) (wskaznik_na_danie -> daj_koszt_przygotowania())
     + " już istnieje\n"
     ) {}
 
