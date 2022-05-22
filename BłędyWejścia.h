@@ -43,38 +43,36 @@ class NieprawidloweRozmiary: public invalid_argument
 
 
 
-// class NiepoprawnaNazwa: public invalid_argument
-// {
-//   public:
-//     NiepoprawnaNazwa(string zla_nazwa);
-// };
+class NiepoprawnaNazwa: public invalid_argument
+{
+  public:
+    NiepoprawnaNazwa(string zla_nazwa);
+};
 
-// class NiepoprawnyKoszt: public invalid_argument
-// {
-//   public:
-//     NiepoprawnyKoszt(unsigned int zly_koszt);
-// };
+class DanieJuzIstnieje: public invalid_argument
+{
+  public:
+    DanieJuzIstnieje(unique_ptr<Danie> wskaznik_na_danie);
+};
 
-// class NiepoprawnyCzasPrzygotowania: public invalid_argument
-// {
-//   public:
-//     NiepoprawnyCzasPrzygotowania(unsigned int zly_czas);
-// };
+class NiepoprawnyKoszt: public invalid_argument
+{
+  public:
+    NiepoprawnyKoszt(Kwota zly_koszt);
+};
 
-// class NiepoprawnyPostepPrzygotowania: public invalid_argument
-// {
-//   public:
-//     NiepoprawnyPostepPrzygotowania(unsigned int zly_czas);
-// };
+class NiepoprawnyCzasPrzygotowania: public invalid_argument
+{
+  public:
+    NiepoprawnyCzasPrzygotowania(unsigned int zly_czas);
+};
 
-// class DanieJuzIstnieje: public invalid_argument
-// {
-//   public:
-//     DanieJuzIstnieje(unique_ptr<Danie> wskaznik_na_danie);
-// };
+class NiepoprawnyPostepPrzygotowania: public invalid_argument
+{
+  public:
+    NiepoprawnyPostepPrzygotowania(unsigned int zly_czas);
+};
 
-// class DanieNieIstnieje: public invalid_argument
-// {
-//   public:
-//     DanieNieIstnieje(unique_ptr<Danie> wskaznik_na_danie);
-// };
+
+
+

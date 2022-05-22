@@ -8,7 +8,7 @@ class DanieMiesne: public DanieGlowne
     DanieMiesne
     (
       string nazwa,
-      unsigned int koszt_przygotowania
+      Kwota koszt_przygotowania
     );
 
     void wyswietl() override;

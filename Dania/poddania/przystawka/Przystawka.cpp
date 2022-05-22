@@ -2,8 +2,9 @@
 using std::cout;	using std::cerr;	using std::endl;
 
 #include "Przystawka.hpp"
+#include "../Kwota.h"
 
-Przystawka::Przystawka(string nazwa, unsigned int koszt_przygotowania):
+Przystawka::Przystawka(string nazwa, Kwota koszt_przygotowania):
   Danie(nazwa, koszt_przygotowania, 2, KategoriaPotrawy::PRZYSTAWKA) {}
 
 void Przystawka::wyswietl()
@@ -12,7 +13,7 @@ void Przystawka::wyswietl()
   << "Przystawka o nazwie: "
   << daj_nazwe()
   << " kosztuje: "
-  << policz_cene()
+  << (string) policz_cene()
   << " i ma priorytet: "
   << policz_priorytet()
   << endl;

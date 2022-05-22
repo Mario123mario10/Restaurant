@@ -22,11 +22,11 @@ const regex L_L_DUZYCH_STOLIKOW   ("[ \\t]*stoliki[ \\t]*duże[ \\t]*(\\d+)[ \\t
 const regex L_L_KELNEROW          ("[ \\t]*liczba[ \\t]*kelnerów:[ \\t]*(\\d+)[ \\t]*");
 const regex L_L_KUCHARZY          ("[ \\t]*liczba[ \\t]*kucharzy:[ \\t]*(\\d+)[ \\t]*");
 // Linie menu
-const regex L_M_PRZYSTAWKA        ("[ \\t]*P[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*");
-const regex L_M_ZUPA              ("[ \\t]*Z[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*");
-const regex L_M_DANIE_MIESNE      ("[ \\t]*M[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*");
-const regex L_M_DANIE_WEGE        ("[ \\t]*W[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*");
-const regex L_M_DESER             ("[ \\t]*D[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*");
-const regex L_M_NAPOJ_CIEPLY      ("[ \\t]*Z[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*");
-const regex L_M_NAPOJ_ZIMNY       ("[ \\t]*C[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*");
+const regex L_M_PRZYSTAWKA        ("[ \\t]*P[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*zł[ \\t]*(\\d+)[ \\t]*gr[ \\t]*");
+const regex L_M_ZUPA              ("[ \\t]*Z[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*zł[ \\t]*(\\d+)[ \\t]*gr[ \\t]*");
+const regex L_M_DANIE_MIESNE      ("[ \\t]*M[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*zł[ \\t]*(\\d+)[ \\t]*gr[ \\t]*");
+const regex L_M_DANIE_WEGE        ("[ \\t]*W[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*zł[ \\t]*(\\d+)[ \\t]*gr[ \\t]*");
+const regex L_M_DESER             ("[ \\t]*D[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*zł[ \\t]*(\\d+)[ \\t]*gr[ \\t]*");
+const regex L_M_NAPOJ_CIEPLY      ("[ \\t]*Z[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*zł[ \\t]*(\\d+)[ \\t]*gr[ \\t]*");
+const regex L_M_NAPOJ_ZIMNY       ("[ \\t]*C[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*zł[ \\t]*(\\d+)[ \\t]*gr[ \\t]*");
 

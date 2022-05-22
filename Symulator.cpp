@@ -54,7 +54,7 @@ void Symulator::rozpocznij_symulacje()
   inicjuj_restauracje();
   for (int licznik = 0; licznik < czas_trwania_symulacji; licznik++)
   {
-    if (generuj_liczbe() % 2)
+    if (generuj_liczbe() % 2 == 0)
     { losuj_klientow()  ;}
     restauracja -> tiktok();
   }

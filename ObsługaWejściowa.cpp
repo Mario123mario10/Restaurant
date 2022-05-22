@@ -8,15 +8,26 @@ using std::ios; using std::fstream; using std::getline;
 using std::cout;	using std::cerr;  using std::endl;
 #include <regex>
 using std::regex;  using std::smatch; using std::regex_search;  using std::regex_match;
+#include <memory>
+using std::unique_ptr; using std::make_unique;
+
+using std::move;
+using std::stoul;
 
 #include "BłędyWejścia.h"
 #include "ObsługaWejściowa.h"
 #include "Stałe.h"
+#include "ZimneNapoje.hpp"
+#include "CiepłeNapoje.hpp"
+#include "DanieMięsne.hpp"
+#include "DanieWegetariańskie.hpp"
+#include "Deser.hpp"
+#include "Przystawka.hpp"
+#include "Zupa.hpp"
 
 
 ObslugaWejsciowa::ObslugaWejsciowa(string sciezka)
 {
-
   nazwa_pliku_wyjscia = "";
   sciezka_menu = "";
   nazwa_restauracji = "";
@@ -71,14 +82,43 @@ void ObslugaWejsciowa::pobierz_linie_menu()
   smatch przechwycone;
   getline(plik_menu, linia);
   if (regex_match(linia, przechwycone, L_M_PRZYSTAWKA))
-  { nazwa_restauracji = przechwycone[1] ;}
+  {
+    string nazwa = przechwycone[1];
+    unsigned int zlote = stoul(przechwycone[2]);
+    unsigned int grosze = stoul(przechwycone[3]);
+    if (nazwa.empty())
+    { throw NiepoprawnaNazwa(nazwa) ;}
+    else if (zlote == 0 and grosze == 0)
+    { throw NiepoprawnyKoszt(Kwota(zlote, grosze)) ;}
+    unique_ptr<Przystawka> przystawka = make_unique<Przystawka>(nazwa, Kwota(zlote, grosze));
+    menu.dodaj_danie(move(przystawka));
+  }
 
   else if (regex_match(linia, przechwycone, L_M_ZUPA))
-  { nazwa_pliku_wyjscia = przechwycone[1] ;}
+  {
+    string nazwa = przechwycone[1];
+    unsigned int zlote = stoul(przechwycone[2]);
+    unsigned int grosze = stoul(przechwycone[3]);
+    if (nazwa.empty())
+    { throw NiepoprawnaNazwa(nazwa) ;}
+    else if (zlote == 0 and grosze == 0)
+    { throw NiepoprawnyKoszt(Kwota(zlote, grosze)) ;}
+    unique_ptr<Zupa> przystawka = make_unique<Zupa>(nazwa, Kwota(zlote, grosze));
+    menu.dodaj_danie(move(przystawka));
+  }
 
   else if (regex_match(linia, przechwycone, L_M_DANIE_MIESNE))
-  { nazwa_pliku_wyjscia = przechwycone[1] ;}
-
+  {
+    string nazwa = przechwycone[1];
+    unsigned int zlote = stoul(przechwycone[2]);
+    unsigned int grosze = stoul(przechwycone[3]);
+    if (nazwa.empty())
+    { throw NiepoprawnaNazwa(nazwa) ;}
+    else if (zlote == 0 and grosze == 0)
+    { throw NiepoprawnyKoszt(Kwota(zlote, grosze)) ;}
+    unique_ptr<DanieMiesne> przystawka = make_unique<DanieMiesne>(nazwa, Kwota(zlote, grosze));
+    menu.dodaj_danie(move(przystawka));
+  }
   else if (regex_match(linia, przechwycone, L_M_DANIE_WEGE))
   { nazwa_pliku_wyjscia = przechwycone[1] ;}
 

@@ -12,11 +12,11 @@ using KP = KategoriaPotrawy;
 
 TEST_CASE("Dawacze i ustawiacze", "[Danie]")
 {
-  Danie danie("Budyń", 20, 3, BKP::DESER);
+  Danie danie("Budyń", 20, 3, KP::DESER);
   CHECK(danie.daj_nazwe() == "Budyń");
   CHECK(danie.daj_koszt_przygotowania() == 20);
   CHECK(danie.daj_czas_przygotowania() == 3);
-  CHECK(danie.daj_kategorie() == BKP::DESER);
+  CHECK(danie.daj_kategorie() == KP::DESER);
   CHECK(danie.daj_czas_oczekiwania() == 0);
   CHECK(danie.daj_postep_przygotowania() == 0);
   CHECK(danie.czy_przygotowane() == false);
@@ -64,7 +64,7 @@ TEST_CASE("Dawacze i ustawiacze", "[Danie]")
 
 TEST_CASE("Funkcje główne", "[SMS_message]")
 {
-  Danie danie("Budyń", 20, 3, BKP::DESER);
+  Danie danie("Budyń", 20, 3, KP::DESER);
   SECTION("policz_cene")
   {
     CHECK(danie.policz_cene() == 26);
@@ -94,7 +94,7 @@ TEST_CASE("Funkcje główne", "[SMS_message]")
 
 TEST_CASE("Klasy", "[SMS_message]")
 {
-  Danie danie("Budyń", 20, 3, BKP::DESER);
+  Danie danie("Budyń", 20, 3, KP::DESER);
   SECTION("policz_cene")
   {
     CHECK(danie.policz_cene() == 26);

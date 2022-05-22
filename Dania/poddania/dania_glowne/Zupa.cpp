@@ -3,7 +3,7 @@ using std::cout;	using std::cerr;	using std::endl;
 
 #include "Zupa.hpp"
 
-Zupa::Zupa(string nazwa, unsigned int koszt_przygotowania):
+Zupa::Zupa(string nazwa, Kwota koszt_przygotowania):
   DanieGlowne(nazwa, koszt_przygotowania, 4) {}
 
 void Zupa::wyswietl()
@@ -12,7 +12,7 @@ void Zupa::wyswietl()
   << "Zupa o nazwie: "
   << daj_nazwe()
   << " kosztuje: "
-  << policz_cene()
+  << (string) policz_cene()
   << " i ma priorytet "
   << policz_priorytet()
   << endl;

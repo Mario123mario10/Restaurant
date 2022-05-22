@@ -3,7 +3,7 @@ using std::cout;	using std::cerr;	using std::endl;
 
 #include "Deser.hpp"
 
-Deser::Deser(string nazwa, unsigned int koszt_przygotowania):
+Deser::Deser(string nazwa, Kwota koszt_przygotowania):
 Danie(nazwa, koszt_przygotowania, 3, KategoriaPotrawy::DESER) {};
 
 
@@ -13,7 +13,7 @@ void Deser::wyswietl()
   << "Deser o nazwie: "
   << daj_nazwe()
   << " kosztuje: "
-  << policz_cene()
+  << (string) policz_cene()
   << " i ma priorytet: "
   << policz_priorytet()
   << endl;

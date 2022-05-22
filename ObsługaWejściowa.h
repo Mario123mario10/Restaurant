@@ -9,6 +9,7 @@ using std::cout;	using std::cerr;	using std::endl;
 using std::string;
 
 #include "Restauracja.h"
+#include "Menu.hpp"
 
 class ObslugaWejsciowa
 {
@@ -30,6 +31,8 @@ class ObslugaWejsciowa
     unsigned int liczba_kucharzy;
 
   public:
+    Menu menu;
+
     ObslugaWejsciowa(string sciezka);
 
     string daj_nazwe_pliku_wyjscia();
@@ -48,11 +51,13 @@ class ObslugaWejsciowa
     void pobierz_menu();
     void pobierz_linie_konfiguracji();
     void pobierz_linie_menu();
+
     void sprawdz_konfiguracje();
     void sprawdz_menu();
 
     void sprawdz_rozmiary();
     void zdefiniuj_blad_konfiguracji();
+    void zdefiniuj_blad_menu();
 };
 
 

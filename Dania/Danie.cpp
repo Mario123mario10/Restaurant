@@ -2,7 +2,7 @@
 using std::string;
 
 #include "Danie.hpp"
-
+#include "BłędyWejścia.h"
 
 using KP = KategoriaPotrawy;
 
@@ -10,20 +10,17 @@ using KP = KategoriaPotrawy;
 Danie::Danie
 (
 	string nazwa,
-	unsigned int koszt_przygotowania,
+	Kwota koszt_przygotowania,
 	unsigned int czas_przygotowania,
 	KategoriaPotrawy kategoria
 )
 {
 	if (nazwa.empty())
-	// {	throw	NiepoprawnaNazwa(nazwa)	;}
-	{}
+	{	throw	NiepoprawnaNazwa(nazwa)	;}
 	else if (koszt_przygotowania == 0)
-	// { throw NiepoprawnyKoszt(koszt_przygotowania)	;}
-	{}
+	{ throw NiepoprawnyKoszt(koszt_przygotowania)	;}
 	else if (czas_przygotowania == 0)
-	{}
-	// { throw NiepoprawnyCzasPrzygotowania(czas_przygotowania)	;}
+	{ throw NiepoprawnyCzasPrzygotowania(czas_przygotowania)	;}
 	else
 	{
     this -> kategoria = kategoria ;
@@ -42,7 +39,7 @@ Danie::~Danie()
 KP Danie::daj_kategorie()
 { return kategoria;}
 
-unsigned int Danie::daj_koszt_przygotowania()
+Kwota Danie::daj_koszt_przygotowania()
 { return koszt_przygotowania;}
 
 unsigned int Danie::daj_czas_przygotowania()
@@ -63,11 +60,10 @@ bool Danie::czy_przygotowane()
 void Danie::ustaw_kategorie(KP nowa_kategoria)
 { kategoria = nowa_kategoria ;}
 
-void Danie::ustaw_koszt_przygotowania(unsigned int nowy_koszt_przygotowania)
+void Danie::ustaw_koszt_przygotowania(Kwota nowy_koszt_przygotowania)
 {
 	if (nowy_koszt_przygotowania == 0)
-	// { throw	NiepoprawnyKoszt(nowy_koszt_przygotowania)	;}
-	{}
+	{ throw	NiepoprawnyKoszt(nowy_koszt_przygotowania)	;}
 
 	else
 	{ koszt_przygotowania = nowy_koszt_przygotowania ;}
@@ -76,9 +72,7 @@ void Danie::ustaw_koszt_przygotowania(unsigned int nowy_koszt_przygotowania)
 void Danie::ustaw_czas_przygotowania(unsigned int nowy_czas_przygotowania)
 {
 	if (nowy_czas_przygotowania == 0)
-	// {	throw NiepoprawnyCzasPrzygotowania(nowy_czas_przygotowania)	;}
-	{}
-
+	{	throw NiepoprawnyCzasPrzygotowania(nowy_czas_przygotowania)	;}
 	else
 	{ czas_przygotowania = nowy_czas_przygotowania ;}
 }
@@ -109,7 +103,7 @@ void Danie::ustaw_nazwe(string nowa_nazwa)
 
 }
 
-unsigned int Danie::policz_cene(float modyfikator)
+Kwota Danie::policz_cene(float modyfikator)
 {
 	return (koszt_przygotowania + (static_cast<unsigned int>(kategoria) * czas_przygotowania)) * modyfikator;
 }

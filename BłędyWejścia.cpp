@@ -8,7 +8,7 @@ using std::string;
 using std::cout;        using std::cerr;        using std::endl;
 
 #include "BłędyWejścia.h"
-// #include "Danie.hpp"
+#include "Danie.hpp"
 
 using std::to_string;
 
@@ -36,36 +36,27 @@ NieprawidloweRozmiary::NieprawidloweRozmiary
 
 
 
-// NiepoprawnaNazwa::NiepoprawnaNazwa(string zla_nazwa):
-// invalid_argument("Zła nazwa: " + zla_nazwa){}
+NiepoprawnaNazwa::NiepoprawnaNazwa(string zla_nazwa):
+invalid_argument("Zła nazwa: " + zla_nazwa){}
 
-// NiepoprawnyKoszt::NiepoprawnyKoszt(unsigned int zly_koszt):
-// invalid_argument("Zły koszt przygotowania: " + to_string(zly_koszt)) {}
+NiepoprawnyKoszt::NiepoprawnyKoszt(Kwota zly_koszt):
+invalid_argument("Zły koszt przygotowania: " + (string) zly_koszt) {}
 
-// NiepoprawnyCzasPrzygotowania::NiepoprawnyCzasPrzygotowania(unsigned int zly_czas):
-// invalid_argument("Zły czas przygotowania: " + to_string(zly_czas)) {}
+NiepoprawnyCzasPrzygotowania::NiepoprawnyCzasPrzygotowania(unsigned int zly_czas):
+invalid_argument("Zły czas przygotowania: " + to_string(zly_czas)) {}
 
-// NiepoprawnyPostepPrzygotowania::NiepoprawnyPostepPrzygotowania(unsigned int zly_postep):
-// invalid_argument("Zły postęp przygotowania: " + to_string(zly_postep)) {}
+NiepoprawnyPostepPrzygotowania::NiepoprawnyPostepPrzygotowania(unsigned int zly_postep):
+invalid_argument("Zły postęp przygotowania: " + to_string(zly_postep)) {}
 
 
-// DanieJuzIstnieje::DanieJuzIstnieje(unique_ptr<Danie> wskaznik_na_danie):
-// invalid_argument(
-//     "Danie o nazwie: "
-//     + wskaznik_na_danie -> daj_nazwe()
-//     + " i koszcie przygotowania: "
-//     + to_string(wskaznik_na_danie -> daj_koszt_przygotowania())
-//     + " już istnieje\n"
-//     ) {}
-
-// DanieNieIstnieje::DanieNieIstnieje(unique_ptr<Danie> wskaznik_na_danie):
-// invalid_argument(
-//     "Danie o nazwie: "
-//     + wskaznik_na_danie -> daj_nazwe()
-//     + " i koszcie przygotowania: "
-//     + to_string(wskaznik_na_danie -> daj_koszt_przygotowania())
-//     + " nie istnieje\n"
-//     ) {}
+DanieJuzIstnieje::DanieJuzIstnieje(unique_ptr<Danie> wskaznik_na_danie):
+invalid_argument(
+    "Danie o nazwie: "
+    + wskaznik_na_danie -> daj_nazwe()
+    + " i koszcie przygotowania: "
+    + string (wskaznik_na_danie -> daj_koszt_przygotowania())
+    + " już istnieje\n"
+    ) {}
 
 
 
