@@ -6,7 +6,7 @@ class Restauracja
   // private:
   //   string nazwa;
   public:
-    Restauracja();
+    Restauracja() {};
     Restauracja(
       string nazwa,
       unsigned int rozmiar_maly,
@@ -15,8 +15,10 @@ class Restauracja
       unsigned int male,
       unsigned int sredni,
       unsigned int duze
-    );
-    void tiktok();
-    void dodaj_klienta();
+    ) {};
+    void tiktok() {};
+    void dodaj_klienta() {};
+
+
 
 };

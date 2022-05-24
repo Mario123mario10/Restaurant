@@ -10,6 +10,27 @@
 // #include <random>
 // #include <thread>
 // #include "Kwota.h"
+// #include <stdexcept>
+// using std::invalid_argument;
+// using std::to_string;
+
+
+// class NiepoprawnaKwota: public invalid_argument
+// {
+//   public:
+//     NiepoprawnaKwota(Kwota zla_kwota);
+//     NiepoprawnaKwota(int zla_wartosc);
+
+// };
+
+
+
+// NiepoprawnaKwota::NiepoprawnaKwota(Kwota zla_kwota):
+// invalid_argument("Zła kwota: " + (string) zla_kwota) {}
+
+// NiepoprawnaKwota::NiepoprawnaKwota(int zla_wartosc):
+// invalid_argument("Nie da się ustawić tej wartości: " + to_string(zla_wartosc)) {}
+
 
 // int main()
 // {
@@ -27,9 +48,9 @@
 //   // cout << "Kys" << endl;
 //   // std::cout << std::endl;
 // //   unique_ptr<ZimnyNapoj> przystawka = make_unique<ZimnyNapoj>(nazwa, Kwota(zlote, grosze));
-
-//   // cout << (string) Kwota(120) << endl;
-//   cout << (-112 % 100) << endl;
+//   Kwota k(120, 12);
+//   cout << k << endl;
+//   // cout << (-112 % 100) << endl;
 
 //   return 0;
 // }

@@ -14,7 +14,7 @@ class Kwota
     Kwota();
     Kwota(int zlote, int grosze);
 
-    operator string();
+    operator string() const;
 
     Kwota& operator+= (const Kwota&  inna_kwota)      ;
     Kwota  operator+  (const Kwota&  inna_kwota) const;
@@ -45,12 +45,6 @@ class Kwota
     void ustaw_zlote(int nowe_zlote);
     void ustaw_grosze(int nowe_grosze);
     int jako_grosze() const;
-    friend std::ostream& operator<<(std::ostream& os, Kwota& Kwota);
+    friend std::ostream& operator<<(std::ostream& os, const Kwota& Kwota);
 };
 
-// Point& Point::operator++()
-// {
-//    _x++;
-//    _y++;
-//    return *this;
-// }

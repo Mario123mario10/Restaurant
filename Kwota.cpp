@@ -1,3 +1,4 @@
+#include <string>
 
 #include "Kwota.h"
 #include "Błędy.h"
@@ -27,7 +28,7 @@ Kwota::Kwota(int zlote, int grosze)
   { throw NiepoprawnaKwota(*this) ;}
 }
 
-Kwota::operator string()
+Kwota::operator string() const
 { return to_string(zlote) + " zł " + to_string(grosze) + " gr" ;}
 
 Kwota& Kwota::operator+= (const Kwota&  inna_kwota)
@@ -145,9 +146,10 @@ bool Kwota::operator<= (const Kwota&  inna_kwota) const
 bool Kwota::operator>= (const Kwota&  inna_kwota) const
 { return not (*this < inna_kwota) ;}
 
-std::ostream& operator<<(std::ostream& os, Kwota& Kwota)
+std::ostream& operator<<(std::ostream& os, const Kwota& Kwota)
 {
-  os << (string) Kwota;
+  string napis = (string) Kwota;
+  os << napis;
   return os;
 }
 
