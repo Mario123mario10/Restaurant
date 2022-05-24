@@ -2,13 +2,14 @@
 using std::unique_ptr;
 
 #include "Restauracja.h"
-
+#include "Menu.hpp"
 
 
 class Symulator
 {
   private:
     unique_ptr<Restauracja> restauracja;
+    unique_ptr<Menu> menu;
     unsigned int czas_trwania_symulacji;
     unsigned int licznik_klientow;
     unsigned int licznik_potraw; // wyszczególnić
@@ -29,7 +30,8 @@ class Symulator
       unsigned int srednie,
       unsigned int duze,
       unsigned int liczba_kucharzy,
-      unsigned int liczba_kelnerow
+      unsigned int liczba_kelnerow,
+      unique_ptr<Menu> menu
     );
     void rozpocznij_symulacje();
     void inicjuj_restauracje();
@@ -38,5 +40,5 @@ class Symulator
     void losuj_klientow();
     void losuj_klienta();
     void losuj_danie();
-    unsigned int generuj_liczbe();
+    // unsigned int generuj_liczbe();
 };

@@ -1,5 +1,5 @@
 #include "DanieGłówne.hpp"
-#include "../Kwota.h"
+#include "../../Kwota.h"
 
 class Zupa: public DanieGlowne
 {

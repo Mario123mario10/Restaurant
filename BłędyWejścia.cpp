@@ -8,7 +8,7 @@ using std::string;
 using std::cout;        using std::cerr;        using std::endl;
 
 #include "BłędyWejścia.h"
-#include "Danie.hpp"
+#include "Dania/Danie.hpp"
 
 using std::to_string;
 

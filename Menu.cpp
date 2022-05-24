@@ -12,7 +12,7 @@ using std::make_unique;
 
 using std::move;
 #include "Menu.hpp"
-#include "../BłędyWejścia.h"
+#include "BłędyWejścia.h"
 using KP = KategoriaPotrawy;
 
 Menu::Menu()
@@ -88,10 +88,8 @@ void Menu::przekaz_dania(unique_ptr<Menu> inne_menu)
 {
   for (const unique_ptr<Danie>& wskaznik: utworzone_dania)
   {
-    unique_ptr<Danie> inny_wskaznik = make_unique<Danie>(wskaznik);
+    unique_ptr<Danie> inny_wskaznik = make_unique<Danie>(*wskaznik);
     inne_menu -> dodaj_danie(move(inny_wskaznik));
   }
-
-
 }
 

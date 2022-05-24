@@ -22,6 +22,8 @@ int main(int argc, char const *argv[])
     try
     {
       ObslugaWejsciowa We(argv[1]);
+      unique_ptr<Menu> zebrane_menu = make_unique<Menu>();
+      We.menu.przekaz_dania(move(zebrane_menu));
       Symulator S(
         We.daj_czas_symulacji(),
         We.daj_nazwe_pliku_wyjscia(),
@@ -33,7 +35,8 @@ int main(int argc, char const *argv[])
         We.daj_srednie_stoliki(),
         We.daj_duze_stoliki(),
         We.daj_liczbe_kucharzy(),
-        We.daj_liczbe_kelnerow()
+        We.daj_liczbe_kelnerow(),
+        move(zebrane_menu)
       );
 
     }
@@ -43,6 +46,11 @@ int main(int argc, char const *argv[])
       return 1;
     }
     catch(const NiepelnaKonfiguracja& blad)
+    {
+      drukuj_bl(blad.what());
+      return 1;
+    }
+    catch(const NieprawidloweMenu& blad)
     {
       drukuj_bl(blad.what());
       return 1;

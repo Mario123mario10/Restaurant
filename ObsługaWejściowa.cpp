@@ -17,13 +17,13 @@ using std::stoul;
 #include "BłędyWejścia.h"
 #include "ObsługaWejściowa.h"
 #include "Stałe.h"
-#include "ZimneNapoje.hpp"
-#include "CiepłeNapoje.hpp"
-#include "DanieMięsne.hpp"
-#include "DanieWegetariańskie.hpp"
-#include "Deser.hpp"
-#include "Przystawka.hpp"
-#include "Zupa.hpp"
+#include "Dania/poddania/ZimneNapoje.hpp"
+#include "Dania/poddania/CiepłeNapoje.hpp"
+#include "Dania/poddania/DanieMięsne.hpp"
+#include "Dania/poddania/DanieWegetariańskie.hpp"
+#include "Dania/poddania/Deser.hpp"
+#include "Dania/poddania/Przystawka.hpp"
+#include "Dania/poddania/Zupa.hpp"
 
 
 ObslugaWejsciowa::ObslugaWejsciowa(string sciezka)

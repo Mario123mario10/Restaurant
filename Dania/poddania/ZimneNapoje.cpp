@@ -3,7 +3,7 @@ using std::cout;	using std::cerr;	using std::endl;
 
 #include "ZimneNapoje.hpp"
 
-ZimnyNapoj::ZimnyNapoj(string nazwa, unsigned int koszt_przygotowania):
+ZimnyNapoj::ZimnyNapoj(string nazwa, Kwota koszt_przygotowania):
   Napoj(nazwa, koszt_przygotowania, 1) {};
 
 void ZimnyNapoj::wyswietl()
@@ -12,7 +12,7 @@ void ZimnyNapoj::wyswietl()
   << "Zimny napój o nazwie: "
   << daj_nazwe()
   << " kosztuje: "
-  << policz_cene()
+  << (string) policz_cene()
   << " i ma priorytet: "
   << policz_priorytet()
   << endl;

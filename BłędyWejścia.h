@@ -10,6 +10,7 @@ using std::unique_ptr ;
 #include <stdexcept>
 using std::invalid_argument;
 
+#include "Dania/Danie.hpp"
 
 class NieZnalezionoPliku: public invalid_argument
 {

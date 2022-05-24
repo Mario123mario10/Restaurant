@@ -2,7 +2,7 @@
 using std::cout;	using std::cerr;	using std::endl;
 
 #include "Przystawka.hpp"
-#include "../Kwota.h"
+#include "../../Kwota.h"
 
 Przystawka::Przystawka(string nazwa, Kwota koszt_przygotowania):
   Danie(nazwa, koszt_przygotowania, 2, KategoriaPotrawy::PRZYSTAWKA) {}

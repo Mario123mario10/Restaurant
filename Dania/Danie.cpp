@@ -2,7 +2,7 @@
 using std::string;
 
 #include "Danie.hpp"
-#include "BłędyWejścia.h"
+#include "../BłędyWejścia.h"
 
 using KP = KategoriaPotrawy;
 

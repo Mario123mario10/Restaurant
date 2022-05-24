@@ -1,5 +1,5 @@
 #pragma once
-#include "Danie.hpp"
+#include "../Danie.hpp"
 
 class Napoj: public Danie
 {
@@ -7,7 +7,7 @@ class Napoj: public Danie
     Napoj
     (
       string nazwa,
-      unsigned int koszt_przygotowania,
+      Kwota koszt_przygotowania,
       unsigned int czas_przygotowania
     );
 };

@@ -10,7 +10,7 @@ using std::unique_ptr;  using std::make_unique;
 #include "Symulator.h"
 #include "Restauracja.h"
 #include "Funkcje_pomocnicze.h"
-
+#include "Menu.hpp"
 
 // unique_ptr<Restauracja> restauracja;
 // unsigned int licznik_czasu;
@@ -30,7 +30,8 @@ Symulator::Symulator
   unsigned int srednie,
   unsigned int duze,
   unsigned int liczba_kucharzy,
-  unsigned int liczba_kelnerow
+  unsigned int liczba_kelnerow,
+  unique_ptr<Menu> menu
 )
 {
   restauracja = make_unique<Restauracja>(

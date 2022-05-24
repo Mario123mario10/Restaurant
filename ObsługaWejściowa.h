@@ -58,6 +58,8 @@ class ObslugaWejsciowa
     void sprawdz_rozmiary();
     void zdefiniuj_blad_konfiguracji();
     void zdefiniuj_blad_menu();
+
+    void przekaz_dania();
 };
 
 

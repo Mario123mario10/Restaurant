@@ -1,5 +1,6 @@
-#include "Danie.hpp"
-
+#include "../Danie.hpp"
+// Dania/poddania/deser/Deser.hpp
+// Dania/Danie.hpp
 class Deser: public Danie
 {
   public:

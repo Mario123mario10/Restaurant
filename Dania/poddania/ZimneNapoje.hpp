@@ -1,12 +1,12 @@
 #include "Napój.hpp"
-
+#include "../../Kwota.h"
 class ZimnyNapoj: public Napoj
 {
   public:
     ZimnyNapoj
     (
       string nazwa,
-      unsigned int koszt_przygotowania
+      Kwota koszt_przygotowania
     );
 
     void wyswietl() override;

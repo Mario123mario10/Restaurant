@@ -1,5 +1,5 @@
 #pragma once
-#include "Danie.hpp"
+#include "../Danie.hpp"
 
 
 class DanieGlowne: public Danie
