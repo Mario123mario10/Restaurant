@@ -6,10 +6,10 @@
 
 class Akcje_dla_zamowienia  //ta klasa ma ustalac kolejne mozliwe statusy zamowienia
 {
-   Obsluga_zamowienia aktualne_zamowienie;
+   ObslugaZamowienia aktualne_zamowienie;
 
 public:
-    Akcje_dla_zamowienia(Obsluga_zamowienia aktualne_zamowienie)
+    Akcje_dla_zamowienia(ObslugaZamowienia aktualne_zamowienie)
     {
         this -> aktualne_zamowienie = aktualne_zamowienie;
     }

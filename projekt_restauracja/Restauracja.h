@@ -1,10 +1,10 @@
-#include "Inne_klasy.h"
+#include "InneKlasy.h"
 #include <vector>
 
 class Restauracja
 {
-    vector <Obsluga_zamowienia> zamowienia_aktualne;
-    vector <Obsluga_zamowienia> zamowienia_zamkniete;
+    vector <ObslugaZamowienia> zamowienia_aktualne;
+    vector <ObslugaZamowienia> zamowienia_zamkniete;
     vector <Kelner> kelnerzy;
     vector <Stolik> stoliki;
     int dochod;
@@ -21,18 +21,18 @@ public:
 
     }
 
-    void dodaj_zamowienie(Obsluga_zamowienia zamowienie)
+    void dodaj_zamowienie(ObslugaZamowienia zamowienie)
     {
         zamowienia_aktualne.push_back(zamowienie);
     }
 
-    void zamknij_zamowienie(Obsluga_zamowienia zamowienie)
+    void zamknij_zamowienie(ObslugaZamowienia zamowienie)
     {
         zamowienia_aktualne.erase(zamowienia_aktualne.index(zamowienie));
         zamowienia_zamkniete.push_back(zamowienie);
     }
 
-    Obsluga_zamowienia daj_zamowienie(int index)
+    ObslugaZamowienia daj_zamowienie(int index)
     {
         return zamowienia_aktualne[index];
 

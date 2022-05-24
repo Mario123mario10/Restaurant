@@ -12,9 +12,9 @@ template<typename Typ>
 void drukuj_bl(Typ cos)
 { cerr << cos << endl ;}
 
-unsigned int losuj_liczbe()
-{
-  unsigned int nasiono = std::chrono::system_clock::now().time_since_epoch().count();
-  std::mt19937 generator(nasiono);
-  return generator();
-}
+// unsigned int losuj_liczbe()
+// {
+//   unsigned int nasiono = std::chrono::system_clock::now().time_since_epoch().count();
+//   std::mt19937 generator(nasiono);
+//   return generator();
+// }

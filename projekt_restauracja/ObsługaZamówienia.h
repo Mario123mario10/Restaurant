@@ -1,7 +1,7 @@
 #include "Inne_klasy.h"
 
 
-class Obsluga_zamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stoliku
+class ObslugaZamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stoliku
 {
     unsigned int numer_zamowienia;
     static unsigned int wolny_numer;
@@ -14,10 +14,10 @@ class Obsluga_zamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stol
 
 
 public:
-    Obsluga_zamowienia()
+    ObslugaZamowienia()
     {}
 
-    Obsluga_zamowienia(Stolik stolik, unsigned int ilosc_osob_przy_stoliku=1)
+    ObslugaZamowienia(Stolik stolik, unsigned int ilosc_osob_przy_stoliku=1)
     {
         status = oczekiwanie_na_menu;
         this -> stolik = stolik;
@@ -114,4 +114,4 @@ public:
 };
 
 
-unsigned int Obsluga_zamowienia::wolny_numer=1;
+unsigned int ObslugaZamowienia::wolny_numer=1;

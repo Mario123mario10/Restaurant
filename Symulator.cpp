@@ -12,11 +12,12 @@ using std::unique_ptr;  using std::make_unique;
 #include "FunkcjePomocnicze.h"
 #include "Menu.hpp"
 
-// unique_ptr<Restauracja> restauracja;
-// unsigned int licznik_czasu;
-// unsigned int licznik_klientow;
-// unsigned int licznik_potraw; // wyszczególnić
-
+unsigned int losuj_liczbe()
+{
+  unsigned int nasiono = std::chrono::system_clock::now().time_since_epoch().count();
+  std::mt19937 generator(nasiono);
+  return generator();
+};
 
 Symulator::Symulator
 (

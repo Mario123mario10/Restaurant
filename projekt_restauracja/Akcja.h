@@ -6,12 +6,12 @@ public:
     virtual void wykonaj_akcje() = 0;
 };
 
-class Akcja_inicjacyjna : public Akcja //podejscie kolejnych osob do stolika
+class AkcjaInicjacyjna : public Akcja //podejscie kolejnych osob do stolika
 {
     unsigned int ilosc_osob;
     Stolik stolik;
 public:
-    Akcja_inicjacyjna(Stolik stolik, unsigned int ilosc_osob)
+    AkcjaInicjacyjna(Stolik stolik, unsigned int ilosc_osob)
     {
         this -> ilosc_osob = ilosc_osob;
         this -> stolik = stolik;
@@ -19,18 +19,18 @@ public:
 
     void wykonaj_akcje()
     {
-        Obsluga_zamowienia zamowienie(stolik, ilosc_osob);
+        ObslugaZamowienia zamowienie(stolik, ilosc_osob);
     }
 
 
 };
 
-class Akcja_kontynuacyjna : public Akcja  //dosiadanie się kolejnych osob do zajetego stolika
+class AkcjaKontynuacyjna : public Akcja  //dosiadanie się kolejnych osob do zajetego stolika
 {
 protected:
-    Obsluga_zamowienia obsluga_zamowienia;
+    ObslugaZamowienia obsluga_zamowienia;
 public:
-    Akcja_kontynuacyjna(Obsluga_zamowienia obsluga_zamowienie)
+    AkcjaKontynuacyjna(ObslugaZamowienia obsluga_zamowienie)
     {
         this -> obsluga_zamowienia = obsluga_zamowienia;
     }
@@ -39,11 +39,11 @@ public:
 
         // Obsluga_zamowienia stolik z ludxmi
 
-class Akcja_zanies_menu: public Akcja_kontynuacyjna
+class Akcja_zanies_menu: public AkcjaKontynuacyjna
 {
     Kelner kelner;
 public:
-    Akcja_zanies_menu(Obsluga_zamowienia obsluga_zamowienia, Kelner kelner): Akcja_kontynuacyjna(obsluga_zamowienia)
+    Akcja_zanies_menu(ObslugaZamowienia obsluga_zamowienia, Kelner kelner): AkcjaKontynuacyjna(obsluga_zamowienia)
     {
         this -> kelner = kelner;
     }
@@ -54,10 +54,10 @@ public:
 };
 
 // kiedy kelner patrzy czy juz mozna pobrac od nich dania i podchodzi kiedy juz stwierdzi ze juz dokonali wyboru
-class Zastanawianie_sie_nad_wyborem_dan: public Akcja_kontynuacyjna
+class RozwazanieWyboruDan: public AkcjaKontynuacyjna
 {
 public:
-    Zastanawianie_sie_nad_wyborem_dan(Obsluga_zamowienia obsluga_zamowienia): Akcja_kontynuacyjna(obsluga_zamowienia)
+    RozwazanieWyboruDan(ObslugaZamowienia obsluga_zamowienia): AkcjaKontynuacyjna(obsluga_zamowienia)
     {}
 
     void wykonaj_akcje()
@@ -66,11 +66,11 @@ public:
     }
 };
 
-class Przyjscie_kolejnych_osob_do_tego_samego_stolika: public Akcja_kontynuacyjna
+class PrzyjscieKolejnychOsobDoTegoSamegoStolika: public AkcjaKontynuacyjna
 {
     unsigned int ilosc_kolejnych_osob;
 public:
-    Przyjscie_kolejnych_osob_do_tego_samego_stolika(Obsluga_zamowienia obsluga_zamowienia, unsigned int ilosc_kolejnych_osob) :Akcja_kontynuacyjna(obsluga_zamowienia)
+    PrzyjscieKolejnychOsobDoTegoSamegoStolika(ObslugaZamowienia obsluga_zamowienia, unsigned int ilosc_kolejnych_osob) :AkcjaKontynuacyjna(obsluga_zamowienia)
     {
         this -> ilosc_kolejnych_osob = ilosc_kolejnych_osob;
     }
@@ -84,12 +84,12 @@ public:
 
 
 
-class Odebranie_zamowienia_od_stolika: public Akcja_kontynuacyjna // to sie bedzie wykonywalo wiele razy
+class OdebranieZamowieniaOdStolika: public AkcjaKontynuacyjna // to sie bedzie wykonywalo wiele razy
 {
     Potrawa* potrawa; // tu jest wskaznik bo potrawa ma rozne rodzaje
     unsigned int ilosc_sztuk;
 public:
-    Odebranie_zamowienia_od_stolika(Obsluga_zamowienia obsluga_zamowienia, Potrawa* potrawa, unsigned int ilosc_sztuk): Akcja_kontynuacyjna(obsluga_zamowienia)
+    OdebranieZamowieniaOdStolika(ObslugaZamowienia obsluga_zamowienia, Potrawa* potrawa, unsigned int ilosc_sztuk): AkcjaKontynuacyjna(obsluga_zamowienia)
     {
         this -> potrawa = potrawa;
         this -> ilosc_sztuk = ilosc_sztuk;
@@ -102,10 +102,10 @@ public:
     }
 };
 
-class Czekanie_na_przyniesienie_dan: public Akcja_kontynuacyjna
+class CzekanieNaPrzyniesienieDan: public AkcjaKontynuacyjna
 {
 public:
-    Czekanie_na_przyniesienie_dan(Obsluga_zamowienia obsluga_zamowienia): Akcja_kontynuacyjna(obsluga_zamowienia)
+    CzekanieNaPrzyniesienieDan(ObslugaZamowienia obsluga_zamowienia): AkcjaKontynuacyjna(obsluga_zamowienia)
     {}
 
     void wykonaj_akcje()
@@ -114,11 +114,11 @@ public:
     }
 };
 
-class Podanie_dan_do_stolika: public Akcja_kontynuacyjna
+class PodanieDanDoStolika: public AkcjaKontynuacyjna
 {
 
 public:
-    Podanie_dan_do_stolika(Obsluga_zamowienia obsluga_zamowienia) : Akcja_kontynuacyjna(obsluga_zamowienia)
+    PodanieDanDoStolika(ObslugaZamowienia obsluga_zamowienia) : AkcjaKontynuacyjna(obsluga_zamowienia)
     {}
 
     void wykonaj_akcje()
@@ -126,31 +126,28 @@ public:
         cout<< "Dania do stolika nr. " << obsluga_zamowienia.daj_stolik().daj_numer() << " zostało przyniesionych przez kelnera " << obsluga_zamowienia.daj_kelnera().daj_imie() << "."<<endl;
         obsluga_zamowienia.podaj_dania_do_stolika();
     }
-
-
 };
 
 
-class Trwa_jedzenie_posilku: public Akcja_kontynuacyjna
+class TrwaJedzeniePosilku: public AkcjaKontynuacyjna
 {
 
 public:
-    Trwa_jedzenie_posilku(Obsluga_zamowienia obsluga_zamowienia): Akcja_kontynuacyjna(obsluga_zamowienia)
+    TrwaJedzeniePosilku(ObslugaZamowienia obsluga_zamowienia): AkcjaKontynuacyjna(obsluga_zamowienia)
     {}
 
     void wykonaj_akcje()
     {
         cout<< "Przy stoliku nr. " << obsluga_zamowienia.daj_stolik().daj_numer() << " jedzenie posiłku trwa ... czasu";
     }
-
 };
 
 
 
-class Zakonczenie_wszystkich_posilkow : public Akcja_kontynuacyjna
+class ZakonczenieWszystkichPosilkow : public AkcjaKontynuacyjna
 {
 public:
-    Zakonczenie_wszystkich_posilkow(Obsluga_zamowienia obsluga_zamowienia): Akcja_kontynuacyjna(obsluga_zamowienia)
+    ZakonczenieWszystkichPosilkow(ObslugaZamowienia obsluga_zamowienia): AkcjaKontynuacyjna(obsluga_zamowienia)
     {}
 
     void wykonaj_akcje()
@@ -160,10 +157,10 @@ public:
     }
 
 };
-class Czekanie_na_rachunek: public Akcja_kontynuacyjna
+class CzekanieNaRachunek: public AkcjaKontynuacyjna
 {
 public:
-    Czekanie_na_rachunek(Obsluga_zamowienia obsluga_zamowienia): Akcja_kontynuacyjna(obsluga_zamowienia)
+    CzekanieNaRachunek(ObslugaZamowienia obsluga_zamowienia): AkcjaKontynuacyjna(obsluga_zamowienia)
     {}
 
     void wykonaj_akcje()
@@ -173,10 +170,10 @@ public:
 
 };
 
-class Podanie_rachunku_klientom_przez_kelnera: public Akcja_kontynuacyjna
+class PodanieRachunkuKlientomPrzezKelnera: public AkcjaKontynuacyjna
 {
 public:
-    Podanie_rachunku_klientom_przez_kelnera(Obsluga_zamowienia obsluga_zamowienia): Akcja_kontynuacyjna(obsluga_zamowienia)
+    PodanieRachunkuKlientomPrzezKelnera(ObslugaZamowienia obsluga_zamowienia): AkcjaKontynuacyjna(obsluga_zamowienia)
     {}
 
     void wykonaj_akcje()
@@ -189,26 +186,25 @@ public:
 
 };
 
-class Zaplata_rachunku: public Akcja_kontynuacyjna
+class ZaplataRachunku: public AkcjaKontynuacyjna
 {
 
 public:
-    Zaplata_rachunku(Obsluga_zamowienia obsluga_zamowienia): Akcja_kontynuacyjna(obsluga_zamowienia)
+    ZaplataRachunku(ObslugaZamowienia obsluga_zamowienia): AkcjaKontynuacyjna(obsluga_zamowienia)
     {}
 
     void wykonaj_akcje()
     {
         obsluga_zamowienia.zaplac();
         cout<< "Zamowienie zostalo uregulowane przy stoliku nr. "<<  obsluga_zamowienia.daj_stolik().daj_numer()<<endl;
-
     }
 
 };
 
-class Wyjscie_z_restauracji: public Akcja_kontynuacyjna
+class WyjscieZRestauracji: public AkcjaKontynuacyjna
 {
 public:
-    Wyjscie_z_restauracji(Obsluga_zamowienia obsluga_zamowienia): Akcja_kontynuacyjna(obsluga_zamowienia)
+    WyjscieZRestauracji(ObslugaZamowienia obsluga_zamowienia): AkcjaKontynuacyjna(obsluga_zamowienia)
     {}
 
     void wykonaj_akcje()
@@ -219,10 +215,10 @@ public:
 
 };
 
-class Przygotowanie_stolu_dla_nowych_klientow: public Akcja_kontynuacyjna
+class PrzygotowanieStoluDlaNowychKlientow: public AkcjaKontynuacyjna
 {
 public:
-    Przygotowanie_stolu_dla_nowych_klientow(Obsluga_zamowienia Obsluga_zamowienia): Akcja_kontynuacyjna(obsluga_zamowienia)
+    PrzygotowanieStoluDlaNowychKlientow(ObslugaZamowienia Obsluga_zamowienia): AkcjaKontynuacyjna(obsluga_zamowienia)
     {}
 
     void wykonaj_akcje()
@@ -231,9 +227,3 @@ public:
         obsluga_zamowienia.sprzatnij_ze_stolika();
     }
 };
-
-
-
-
-
-

@@ -40,5 +40,4 @@ class Symulator
     void losuj_klientow();
     void losuj_klienta();
     void losuj_danie();
-    // unsigned int generuj_liczbe();
 };
