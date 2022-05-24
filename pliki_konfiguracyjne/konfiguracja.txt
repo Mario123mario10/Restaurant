@@ -1,0 +1,18 @@
+czas trwania: 1000
+czas raportowania: 10
+nazwa restauracji: Epicka restauracja
+ścieżka menu: menu.txt
+zapisz do: testowa_restauracja
+
+rozmiary stolików:
+    mały: 2
+    średni: 4
+    duży: 8
+
+stoliki małe: 4
+stoliki średnie: 2
+stoliki duże: 1
+
+liczba kelnerów: 4
+liczba kucharzy: 3
+
