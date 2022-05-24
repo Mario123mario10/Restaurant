@@ -14,7 +14,7 @@ using std::unique_ptr; using std::make_unique;
 using std::move;
 using std::stoul;
 
-#include "BłędyWejścia.h"
+#include "Błędy.h"
 #include "ObsługaWejściowa.h"
 #include "Stałe.h"
 #include "Dania/poddania/ZimneNapoje.hpp"

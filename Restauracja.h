@@ -6,6 +6,7 @@ class Restauracja
   // private:
   //   string nazwa;
   public:
+    Restauracja();
     Restauracja(
       string nazwa,
       unsigned int rozmiar_maly,

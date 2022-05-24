@@ -7,7 +7,7 @@ using std::string;
 #include <iostream>
 using std::cout;        using std::cerr;        using std::endl;
 
-#include "BłędyWejścia.h"
+#include "Błędy.h"
 #include "Dania/Danie.hpp"
 
 using std::to_string;
@@ -18,9 +18,6 @@ invalid_argument("Nie znaleziono pliku o podanej scieżce: " + zla_sciezka){}
 
 NiepelnaKonfiguracja::NiepelnaKonfiguracja(string komunikat):
 invalid_argument(komunikat) {}
-
-// NiepelneMenu::NiepelneMenu(string komunikat):
-// invalid_argument(komunikat) {}
 
 NieprawidloweMenu::NieprawidloweMenu(string komunikat):
 invalid_argument(komunikat) {}
@@ -44,6 +41,13 @@ invalid_argument("Zła nazwa: " + zla_nazwa){}
 
 NiepoprawnyKoszt::NiepoprawnyKoszt(Kwota zly_koszt):
 invalid_argument("Zły koszt przygotowania: " + (string) zly_koszt) {}
+
+NiepoprawnaKwota::NiepoprawnaKwota(Kwota zla_kwota):
+invalid_argument("Zła kwota: " + (string) zla_kwota) {}
+
+NiepoprawnaKwota::NiepoprawnaKwota(int zla_wartosc):
+invalid_argument("Nie da się ustawić tej wartości: " + to_string(zla_wartosc)) {}
+
 
 NiepoprawnyCzasPrzygotowania::NiepoprawnyCzasPrzygotowania(unsigned int zly_czas):
 invalid_argument("Zły czas przygotowania: " + to_string(zly_czas)) {}

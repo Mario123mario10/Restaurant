@@ -12,7 +12,7 @@ using std::make_unique;
 
 using std::move;
 #include "Menu.hpp"
-#include "BłędyWejścia.h"
+#include "Błędy.h"
 using KP = KategoriaPotrawy;
 
 Menu::Menu()
@@ -81,7 +81,7 @@ bool Menu::czy_poprawne()
     else if (danie -> daj_kategorie() == KP::PRZYSTAWKA)
     { jest_przystawka = true  ;}
   }
-  return jest_przystawka | jest_glowne | jest_deser | jest_napoj;
+  return jest_przystawka || jest_glowne || jest_deser || jest_napoj;
 }
 
 void Menu::przekaz_dania(unique_ptr<Menu> inne_menu)

@@ -34,7 +34,7 @@ Symulator::Symulator
   unique_ptr<Menu> menu
 )
 {
-  restauracja = make_unique<Restauracja>(
+  restauracja = Restauracja(
     nazwa_restauracji,
     rozmiar_maly,
     rozmiar_sredni,
@@ -57,7 +57,7 @@ void Symulator::rozpocznij_symulacje()
   {
     if (generuj_liczbe() % 2 == 0)
     { losuj_klientow()  ;}
-    restauracja -> tiktok();
+    restauracja.tiktok();
   }
 }
 
@@ -95,7 +95,7 @@ void Symulator::losuj_klienta()
 {
 
 
-  restauracja -> dodaj_klienta();
+  restauracja.dodaj_klienta();
 }
 
 

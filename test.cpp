@@ -1,34 +1,35 @@
-#include <fstream>
-using std::ios; using std::fstream; using std::getline;
-#include <iostream>
-using std::cout;	using std::cerr;	using std::endl;
-#include <string>
-using std::string;
-#include <memory>
-using std::unique_ptr ; using std::make_unique;
-#include <chrono>
-#include <random>
-#include <thread>
-#include "Kwota.h"
+// #include <fstream>
+// using std::ios; using std::fstream; using std::getline;
+// #include <iostream>
+// using std::cout;	using std::cerr;	using std::endl;
+// #include <string>
+// using std::string;
+// #include <memory>
+// using std::unique_ptr ; using std::make_unique;
+// #include <chrono>
+// #include <random>
+// #include <thread>
+// #include "Kwota.h"
 
-int main()
-{
+// int main()
+// {
 
-  // unsigned int nasiono = std::chrono::system_clock::now().time_since_epoch().count();
-  // std::mt19937 generator(nasiono);
+//   // unsigned int nasiono = std::chrono::system_clock::now().time_since_epoch().count();
+//   // std::mt19937 generator(nasiono);
 
-  // for (int i=0; i<10; ++i)
-  // {
-  //   std::cout << generator() << " ";
-  // }
-  // std::this_thread::sleep_for(std::chrono::seconds(0));
-  // cout << "Kys" << endl;
-  // std::this_thread::sleep_for(std::chrono::seconds(1));
-  // cout << "Kys" << endl;
-  // std::cout << std::endl;
-//   unique_ptr<ZimnyNapoj> przystawka = make_unique<ZimnyNapoj>(nazwa, Kwota(zlote, grosze));
+//   // for (int i=0; i<10; ++i)
+//   // {
+//   //   std::cout << generator() << " ";
+//   // }
+//   // std::this_thread::sleep_for(std::chrono::seconds(0));
+//   // cout << "Kys" << endl;
+//   // std::this_thread::sleep_for(std::chrono::seconds(1));
+//   // cout << "Kys" << endl;
+//   // std::cout << std::endl;
+// //   unique_ptr<ZimnyNapoj> przystawka = make_unique<ZimnyNapoj>(nazwa, Kwota(zlote, grosze));
 
-  cout << (string) Kwota(120) << endl;
+//   // cout << (string) Kwota(120) << endl;
+//   cout << (-112 % 100) << endl;
 
-  return 0;
-}
+//   return 0;
+// }

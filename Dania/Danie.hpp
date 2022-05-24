@@ -53,8 +53,8 @@ class Danie
     void ustaw_czy_przygotowane(bool nowy_status);
     void ustaw_nazwe(string nowa_nazwa);
 
-    virtual Kwota  policz_cene(float modyfikator = 1);
-    virtual int           policz_priorytet(int modyfikator = 0);
+    virtual Kwota         policz_cene();
+    virtual int           policz_priorytet();
     virtual void          przygotowuj();
     virtual void          wyswietl();
     friend std::ostream&  operator<<(std::ostream& os, Danie& Danie);

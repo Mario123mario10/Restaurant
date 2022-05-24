@@ -4,7 +4,7 @@
 using std::unique_ptr;
 using std::make_unique;
 
-#include "BłędyWejścia.h"
+#include "Błędy.h"
 #include "ObsługaWejściowa.h"
 #include "ObsługaWyjściowa.h"
 #include "Funkcje_pomocnicze.cpp"

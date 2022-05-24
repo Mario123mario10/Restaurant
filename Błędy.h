@@ -71,6 +71,12 @@ class NiepoprawnyPostepPrzygotowania: public invalid_argument
     NiepoprawnyPostepPrzygotowania(unsigned int zly_czas);
 };
 
+class NiepoprawnaKwota: public invalid_argument
+{
+  public:
+    NiepoprawnaKwota(Kwota zla_kwota);
+    NiepoprawnaKwota(int zla_wartosc);
 
+};
 
 

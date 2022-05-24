@@ -8,7 +8,7 @@ using std::unique_ptr;
 class Symulator
 {
   private:
-    unique_ptr<Restauracja> restauracja;
+    Restauracja restauracja;
     unique_ptr<Menu> menu;
     unsigned int czas_trwania_symulacji;
     unsigned int licznik_klientow;

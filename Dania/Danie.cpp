@@ -2,7 +2,7 @@
 using std::string;
 
 #include "Danie.hpp"
-#include "../BłędyWejścia.h"
+#include "../Błędy.h"
 
 using KP = KategoriaPotrawy;
 
@@ -103,12 +103,12 @@ void Danie::ustaw_nazwe(string nowa_nazwa)
 
 }
 
-Kwota Danie::policz_cene(float modyfikator)
+Kwota Danie::policz_cene()
 {
-	return (koszt_przygotowania + (static_cast<unsigned int>(kategoria) * czas_przygotowania)) * modyfikator;
+	return (koszt_przygotowania + (static_cast<unsigned int>(kategoria) * czas_przygotowania));
 }
 
-int Danie::policz_priorytet(int modyfikator)
+int Danie::policz_priorytet()
 {
 	unsigned int priorytet_podstawowy = static_cast<unsigned int>(KP::SUMA) - static_cast<unsigned int>(kategoria);
 	return priorytet_podstawowy + czas_oczekiwania - czas_przygotowania;
