@@ -8,8 +8,8 @@ using std::unique_ptr;  using std::make_unique;
 #include <chrono>
 
 #include "Symulator.h"
-#include "Restauracja.h"
-#include "Funkcje_pomocnicze.h"
+#include "RestauracjaSzkic.h"
+#include "FunkcjePomocnicze.h"
 #include "Menu.hpp"
 
 // unique_ptr<Restauracja> restauracja;
@@ -79,7 +79,6 @@ void Symulator::losuj_klientow()
     nowi_klienci--;
   }
 }
-
 
 void Symulator::losuj_kelnera(unsigned int identyfikator)
 {

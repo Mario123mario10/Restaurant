@@ -1,13 +1,12 @@
-#pragma only
 
 #include <memory>
 using std::unique_ptr;
 using std::make_unique;
 
 #include "Błędy.h"
-#include "ObsługaWejściowa.h"
-#include "ObsługaWyjściowa.h"
-#include "Funkcje_pomocnicze.cpp"
+#include "ObsługiPlików/ObsługaWejściowa.h"
+#include "ObsługiPlików/ObsługaWyjściowa.h"
+#include "FunkcjePomocnicze.cpp"
 #include "Symulator.h"
 
 int main(int argc, char const *argv[])

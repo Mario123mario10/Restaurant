@@ -2,7 +2,7 @@
 using std::cout;	using std::cerr;	using std::endl;
 #include <chrono>
 #include <random>
-#include "Funkcje_pomocnicze.h"
+#include "FunkcjePomocnicze.h"
 
 template<typename Typ>
 void drukuj(Typ cos)

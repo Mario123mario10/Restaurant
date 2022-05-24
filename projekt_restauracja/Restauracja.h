@@ -7,6 +7,7 @@ class Restauracja
     vector <Obsluga_zamowienia> zamowienia_zamkniete;
     vector <Kelner> kelnerzy;
     vector <Stolik> stoliki;
+    int dochod;
     Menu menu;
 
 public:

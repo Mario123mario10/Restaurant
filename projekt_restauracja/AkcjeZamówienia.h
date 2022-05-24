@@ -1,7 +1,7 @@
-#include "Obsluga_zamowienia.h"
+#include "ObsługaZamówienia.h"
 #include "Akcje.h"
+#include "InneKlasy.h"
 #include <vector>
-#include "Inne_klasy.h"
 
 
 class Akcje_dla_zamowienia  //ta klasa ma ustalac kolejne mozliwe statusy zamowienia
