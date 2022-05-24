@@ -1,13 +1,14 @@
 #pragma once
+#include <string>
+using std::string;
 
-
-class Restauracja
+class RestauracjaSzkic
 {
   // private:
   //   string nazwa;
   public:
-    Restauracja() {};
-    Restauracja(
+    RestauracjaSzkic() {};
+    RestauracjaSzkic(
       string nazwa,
       unsigned int rozmiar_maly,
       unsigned int rozmiar_sredni,

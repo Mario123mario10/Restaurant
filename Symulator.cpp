@@ -34,7 +34,7 @@ Symulator::Symulator
   unique_ptr<Menu> menu
 )
 {
-  restauracja = Restauracja(
+  restauracja = RestauracjaSzkic(
     nazwa_restauracji,
     rozmiar_maly,
     rozmiar_sredni,
