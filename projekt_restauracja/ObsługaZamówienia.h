@@ -1,5 +1,5 @@
-#include "Inne_klasy.h"
-
+#pragma once
+#include "InneKlasy.h"
 
 class ObslugaZamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stoliku
 {

@@ -7,7 +7,7 @@ using std::make_unique;
 #include "ObsługiPlików/ObsługaWejściowa.h"
 #include "ObsługiPlików/ObsługaWyjściowa.h"
 #include "FunkcjePomocnicze.cpp"
-#include "Symulator.h"
+#include "Restauracja/Symulator.h"
 
 int main(int argc, char const *argv[])
 {

@@ -2,7 +2,7 @@
 using std::unique_ptr;
 
 #include "RestauracjaSzkic.h"
-#include "Menu.hpp"
+#include "../Menu.hpp"
 
 
 class Symulator
