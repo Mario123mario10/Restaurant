@@ -12,10 +12,10 @@
 				"${fileDirname}/ObsługiPlików/**.cpp",
 				"${fileDirname}/Dania/**.cpp",
 				"${fileDirname}/Dania/poddania/**.cpp",
-				"${fileDirname}/projekt_restauracja/**.cpp",
+				// "${fileDirname}/projekt_restauracja/**.cpp",
 				"${fileDirname}/Restauracja/**.cpp",
-				"${fileDirname}/Akcje/**.cpp",
 				"${fileDirname}/Kelner/**.cpp",
+				"${fileDirname}/Akcje/**.cpp",
 
 				// "${fileDirname}/Testowanie/**.cpp",
 				// "${fileDirname}/test.cpp",

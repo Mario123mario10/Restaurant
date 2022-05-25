@@ -1,4 +1,5 @@
 #include "ObsługaZamówienia.h"
+#include "../Kelner/Kelner.h"
 
 class Akcja
 {
