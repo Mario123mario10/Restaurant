@@ -1,7 +1,7 @@
 #include <string>
 
 #include "Kwota.h"
-#include "Błędy.h"
+#include "../Błędy.h"
 
 using std::to_string;
 

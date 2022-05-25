@@ -1,5 +1,6 @@
 #include "Napój.hpp"
-#include "../../Kwota.h"
+#include "../../Kwota/Kwota.h"
+
 class ZimnyNapoj: public Napoj
 {
   public:

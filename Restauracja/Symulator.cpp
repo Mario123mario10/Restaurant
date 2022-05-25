@@ -10,7 +10,7 @@ using std::unique_ptr;  using std::make_unique;
 #include "Symulator.h"
 #include "RestauracjaSzkic.h"
 #include "../FunkcjePomocnicze.h"
-#include "../Menu.hpp"
+#include "../Menu/Menu.hpp"
 
 unsigned int losuj_liczbe()
 {

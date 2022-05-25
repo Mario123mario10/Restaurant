@@ -2,7 +2,7 @@
 using std::cout;	using std::cerr;	using std::endl;
 
 #include "CiepłeNapoje.hpp"
-#include "../../Kwota.h"
+#include "../../Kwota/Kwota.h"
 
 CieplyNapoj::CieplyNapoj(string nazwa, Kwota koszt_przygotowania):
   Napoj(nazwa, koszt_przygotowania, 2) {}
