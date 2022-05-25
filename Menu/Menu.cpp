@@ -12,7 +12,7 @@ using std::make_unique;
 
 using std::move;
 #include "Menu.hpp"
-#include "Błędy.h"
+#include "../Błędy.h"
 using KP = KategoriaPotrawy;
 
 Menu::Menu()

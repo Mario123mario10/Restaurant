@@ -8,15 +8,16 @@ using std::unique_ptr;  using std::make_unique;
 #include <chrono>
 
 #include "Symulator.h"
-#include "Restauracja.h"
-#include "Funkcje_pomocnicze.h"
-#include "Menu.hpp"
+#include "RestauracjaSzkic.h"
+#include "../FunkcjePomocnicze.h"
+#include "../Menu/Menu.hpp"
 
-// unique_ptr<Restauracja> restauracja;
-// unsigned int licznik_czasu;
-// unsigned int licznik_klientow;
-// unsigned int licznik_potraw; // wyszczególnić
-
+unsigned int losuj_liczbe()
+{
+  unsigned int nasiono = std::chrono::system_clock::now().time_since_epoch().count();
+  std::mt19937 generator(nasiono);
+  return generator();
+};
 
 Symulator::Symulator
 (
@@ -79,7 +80,6 @@ void Symulator::losuj_klientow()
     nowi_klienci--;
   }
 }
-
 
 void Symulator::losuj_kelnera(unsigned int identyfikator)
 {

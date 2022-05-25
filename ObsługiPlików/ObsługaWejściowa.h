@@ -8,8 +8,8 @@ using std::cout;	using std::cerr;	using std::endl;
 #include <string>
 using std::string;
 
-#include "Restauracja.h"
-#include "Menu.hpp"
+#include "../Restauracja/RestauracjaSzkic.h"
+#include "../Menu/Menu.hpp"
 
 class ObslugaWejsciowa
 {

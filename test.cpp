@@ -24,7 +24,6 @@
 // };
 
 
-
 // NiepoprawnaKwota::NiepoprawnaKwota(Kwota zla_kwota):
 // invalid_argument("Zła kwota: " + (string) zla_kwota) {}
 
@@ -48,9 +47,8 @@
 //   // cout << "Kys" << endl;
 //   // std::cout << std::endl;
 // //   unique_ptr<ZimnyNapoj> przystawka = make_unique<ZimnyNapoj>(nazwa, Kwota(zlote, grosze));
-//   Kwota k(120, 12);
-//   cout << k << endl;
+// //   Kwota k(120, 12);
+// //   cout << k << endl;
 //   // cout << (-112 % 100) << endl;
-
 //   return 0;
 // }

@@ -2,7 +2,7 @@
 #include <string>
 using std::string;
 
-#include "../Kwota.h"
+#include "../Kwota/Kwota.h"
 
 enum class KategoriaPotrawy
 {

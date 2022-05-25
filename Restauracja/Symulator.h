@@ -1,8 +1,8 @@
 #include <memory>
 using std::unique_ptr;
 
-#include "Restauracja.h"
-#include "Menu.hpp"
+#include "RestauracjaSzkic.h"
+#include "../Menu/Menu.hpp"
 
 
 class Symulator
@@ -40,5 +40,4 @@ class Symulator
     void losuj_klientow();
     void losuj_klienta();
     void losuj_danie();
-    // unsigned int generuj_liczbe();
 };

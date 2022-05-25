@@ -14,16 +14,16 @@ using std::unique_ptr; using std::make_unique;
 using std::move;
 using std::stoul;
 
-#include "Błędy.h"
 #include "ObsługaWejściowa.h"
-#include "Stałe.h"
-#include "Dania/poddania/ZimneNapoje.hpp"
-#include "Dania/poddania/CiepłeNapoje.hpp"
-#include "Dania/poddania/DanieMięsne.hpp"
-#include "Dania/poddania/DanieWegetariańskie.hpp"
-#include "Dania/poddania/Deser.hpp"
-#include "Dania/poddania/Przystawka.hpp"
-#include "Dania/poddania/Zupa.hpp"
+#include "../Błędy.h"
+#include "../Stałe.h"
+#include "../Dania/poddania/ZimneNapoje.hpp"
+#include "../Dania/poddania/CiepłeNapoje.hpp"
+#include "../Dania/poddania/DanieMięsne.hpp"
+#include "../Dania/poddania/DanieWegetariańskie.hpp"
+#include "../Dania/poddania/Deser.hpp"
+#include "../Dania/poddania/Przystawka.hpp"
+#include "../Dania/poddania/Zupa.hpp"
 
 
 ObslugaWejsciowa::ObslugaWejsciowa(string sciezka)

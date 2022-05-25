@@ -6,6 +6,5 @@
 
 ObslugaWyjsciowa::ObslugaWyjsciowa(string nazwa_pliku_wyjscia)
 {
-  
 
 }

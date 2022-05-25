@@ -1,14 +1,13 @@
-#pragma only
 
 #include <memory>
 using std::unique_ptr;
 using std::make_unique;
 
 #include "Błędy.h"
-#include "ObsługaWejściowa.h"
-#include "ObsługaWyjściowa.h"
-#include "Funkcje_pomocnicze.cpp"
-#include "Symulator.h"
+#include "ObsługiPlików/ObsługaWejściowa.h"
+#include "ObsługiPlików/ObsługaWyjściowa.h"
+#include "FunkcjePomocnicze.cpp"
+#include "Restauracja/Symulator.h"
 
 int main(int argc, char const *argv[])
 {
@@ -55,8 +54,6 @@ int main(int argc, char const *argv[])
       drukuj_bl(blad.what());
       return 1;
     }
-
-
 
     catch(const std::exception& e)
     { cerr << "Błąd niestandardowy: " << endl << e.what() << endl ;}

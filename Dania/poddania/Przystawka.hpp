@@ -1,5 +1,5 @@
 #include "../Danie.hpp"
-#include "../../Kwota.h"
+#include "../../Kwota/Kwota.h"
 
 class Przystawka: public Danie
 {
