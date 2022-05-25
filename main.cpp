@@ -55,8 +55,6 @@ int main(int argc, char const *argv[])
       return 1;
     }
 
-
-
     catch(const std::exception& e)
     { cerr << "Błąd niestandardowy: " << endl << e.what() << endl ;}
 

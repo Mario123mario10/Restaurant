@@ -14,6 +14,9 @@
 				"${fileDirname}/Dania/poddania/**.cpp",
 				"${fileDirname}/projekt_restauracja/**.cpp",
 				"${fileDirname}/Restauracja/**.cpp",
+				"${fileDirname}/Akcje/**.cpp",
+				"${fileDirname}/Kelner/**.cpp",
+
 				// "${fileDirname}/Testowanie/**.cpp",
 				// "${fileDirname}/test.cpp",
 				// "${fileDirname}/Kwota.cpp",

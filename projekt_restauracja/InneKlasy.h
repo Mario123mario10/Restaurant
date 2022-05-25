@@ -6,60 +6,60 @@
 using namespace std;
 #include "ObsługaZamówienia.h"
 
-// class Potrawa
-// {
-//     unsigned int cena_potrawy;
-//     string nazwa_potrawy;
+class Potrawa
+{
+    unsigned int cena_potrawy;
+    string nazwa_potrawy;
 
-// public:
-//     Potrawa()
-//     {}
+public:
+    Potrawa()
+    {}
 
-//     Potrawa(unsigned int cena_potrawy, string nazwa_potrawy)
-//     {
-//         this -> cena_potrawy = cena_potrawy;
-//         this -> nazwa_potrawy = nazwa_potrawy
-//     }
+    Potrawa(unsigned int cena_potrawy, string nazwa_potrawy)
+    {
+        this -> cena_potrawy = cena_potrawy;
+        this -> nazwa_potrawy = nazwa_potrawy
+    }
 
-//     unsigned int podaj_cene()
-//     {
-//         return cena_potrawy;
-//     }
+    unsigned int podaj_cene()
+    {
+        return cena_potrawy;
+    }
 
-//     string podaj_nazwe()
-//     {
-//         return nazwa_potrawy;
-//     }
-// };
+    string podaj_nazwe()
+    {
+        return nazwa_potrawy;
+    }
+};
 
-// class Zupa: public Potrawa
-// {
-//     string nazwa;
-// public:
-//     Zupa(string nazwa)
-//     {
-//         this -> nazwa = nazwa;
-//     }
-// };
-// class Deser: public Potrawa
-// {
+class Zupa: public Potrawa
+{
+    string nazwa;
+public:
+    Zupa(string nazwa)
+    {
+        this -> nazwa = nazwa;
+    }
+};
+class Deser: public Potrawa
+{
 
-// };
-// class Napoj: public Potrawa
-// {
+};
+class Napoj: public Potrawa
+{
 
-// };
-// class Drugie_danie: public Potrawa
-// {
+};
+class Drugie_danie: public Potrawa
+{
 
-// };
-// class Przystawka: public Potrawa
-// {
+};
+class Przystawka: public Potrawa
+{
 
-// };
+};
 
 
-enum class Status_zamowienia
+enum class StatusZamowienia
 {
     oczekiwanie_na_menu,
     czytanie_menu,
@@ -78,65 +78,9 @@ class Losowanie
 };
 
 
-class Kelner
-{
-
-    unsigned int numer_id;
-    string imie;
-    vector <ObslugaZamowienia> trwajace_zamowienia;
-public:
-    Kelner()
-    {}
-    Kelner(string imie)
-    {
-        this -> imie = imie;
-    }
-    string daj_imie()
-    {
-        return imie;
-    }
 
 
-};
 
-enum class WielkoscStolika
-{
-    maly,
-    duzy,
-    sredni
-};
-
-
-class Stolik
-{
-    unsigned int numer;
-    unsigned int ilosc_miejsc;
-    bool wolny;
-    WielkoscStolika wielkosc_stolika;
-
-public:
-    Stolik()
-    {}
-
-    Stolik(unsigned int numer, unsigned int ilosc_miejsc, bool wolny=true)
-    {
-        this -> numer = numer;
-        this -> ilosc_miejsc = ilosc_miejsc;
-        this -> wolny = wolny;
-    }
-    unsigned int daj_numer()
-    {
-        return numer;
-    }
-    unsigned int daj_ilosc_miejsc()
-    {
-        return ilosc_miejsc;
-    }
-    bool czy_wolny()
-    {
-        return wolny;
-    }
-};
 
 
 // class Menu //vector potraw

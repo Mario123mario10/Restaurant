@@ -1,5 +1,8 @@
 #pragma once
 #include "InneKlasy.h"
+#include "../Dania/Danie.hpp"
+#include "../Stolik/Stolik.h"
+
 
 class ObslugaZamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stoliku
 {
@@ -8,7 +11,7 @@ class ObslugaZamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stoli
     map <Potrawa*, unsigned int> zamowione_potrawy; // zamowione potrawy i ich ilosc
     unsigned int ilosc_osob_przy_stoliku;
     Stolik stolik;
-    Status_zamowienia status;
+    StatusZamowienia status;
     Kelner kelner;
     Rachunek rachunek;
 
@@ -35,7 +38,7 @@ public:
         return ilosc_osob_przy_stoliku;
     }
 
-    Status_zamowienia daj_status()
+    StatusZamowienia daj_status()
     {
         return status;
     }
