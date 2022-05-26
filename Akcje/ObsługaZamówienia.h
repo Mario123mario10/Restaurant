@@ -46,7 +46,7 @@ class ObslugaZamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stoli
 
 public:
     ObslugaZamowienia();
-
+// Stolik& stolik
     ObslugaZamowienia(Stolik stolik, unsigned int ilosc_osob_przy_stoliku=1);
     unsigned int daj_numer_zamowienia();
     unsigned int daj_ilosc_osob_przy_stoliku();
