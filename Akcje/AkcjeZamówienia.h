@@ -118,39 +118,39 @@ public:
     {
         switch(aktualne_zamowienie.daj_status())
         {
-            case oczekiwanie_na_menu:
+            case SZ::oczekiwanie_na_menu:
             {
                 return akcje_dla_oczekiwania_na_menu();
             }
-            case czytanie_menu:
+            case SZ::czytanie_menu:
             {
                 return akcje_dla_czytania_menu();
             }
-            case oczekiwanie_na_dania:
+            case SZ::oczekiwanie_na_dania:
             {
                 return akcje_dla_oczekiwania_na_dania();
             }
-            case jedzenie:
+            case SZ::jedzenie:
             {
                 return akcje_dla_jedzenia();
             }
-            case czekanie_na_rachunek:
+            case SZ::czekanie_na_rachunek:
             {
                 return akcje_dla_czekania_na_rachunek();
             }
-            case czekanie_kelnera_na_zaplate:
+            case SZ::czekanie_kelnera_na_zaplate:
             {
                 return akcje_dla_czekania_kelnera_na_zaplate();
             }
-            case zaplacone:
+            case SZ::zaplacone:
             {
                 return akcje_dla_zaplacenia();
             }
-            case wyjscie_z_restauracji:
+            case SZ::wyjscie_z_restauracji:
             {
                 return akcje_dla_wyjscia_z_restauracji();
             }
-            case stol_posprzatany:
+            case SZ::stol_posprzatany:
             {
                 return akcje_dla_posprzatanego_stolu();
             }
