@@ -21,4 +21,5 @@ public:
     unsigned int daj_numer();
     unsigned int daj_ilosc_miejsc();
     bool czy_wolny();
+    friend std::ostream& operator<<(std::ostream& os, Stolik& stolik);
 };

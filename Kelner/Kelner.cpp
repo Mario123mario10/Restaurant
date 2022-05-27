@@ -13,3 +13,8 @@ string Kelner::daj_imie()
 {
     return imie;
 }
+
+bool Kelner::czy_zajety()
+{
+    return zajety;
+}

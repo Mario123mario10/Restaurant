@@ -12,4 +12,5 @@ class Klient
     bool czy_dosiada_sie();
     string daj_imie();
     unsigned int daj_identyfikator();
+    friend std::ostream& operator<<(std::ostream& os, Klient& klient);
 };

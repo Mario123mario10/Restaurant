@@ -10,9 +10,11 @@ class Kelner
 
     unsigned int numer_id;
     string imie;
-    // vector <ObslugaZamowienia> trwajace_zamowienia;
+    bool zajety;
 public:
     Kelner();
     Kelner(string imie);
     string daj_imie();
+    bool czy_zajety();
+    friend std::ostream& operator<<(std::ostream& os, Kelner& kelner);
 };

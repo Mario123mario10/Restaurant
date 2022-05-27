@@ -9,6 +9,7 @@ using std::unique_ptr;  using std::make_unique;
 
 #include "Symulator.h"
 #include "RestauracjaSzkic.h"
+#include "Restauracja.h"
 #include "../FunkcjePomocnicze.h"
 #include "../Menu/Menu.hpp"
 
@@ -35,15 +36,7 @@ Symulator::Symulator
   unique_ptr<Menu> menu
 )
 {
-  restauracja = RestauracjaSzkic(
-    nazwa_restauracji,
-    rozmiar_maly,
-    rozmiar_sredni,
-    rozmiar_duzy,
-    male,
-    srednie,
-    duze
-  );
+  restauracja = Restauracja(nazwa_restauracji, nazwa_pliku_wyjscia);
   this -> czas_trwania_symulacji = czas_trwania_symulacji;
   this -> liczba_kelnerow = liczba_kelnerow;
   this -> liczba_kucharzy = liczba_kucharzy;
@@ -58,17 +51,17 @@ void Symulator::rozpocznij_symulacje()
   {
     if (losuj_liczbe() % 2 == 0)
     { losuj_klientow()  ;}
-    restauracja.tiktok();
+    restauracja.uplyw_czasu();
   }
 }
 
 void Symulator::inicjuj_restauracje()
 {
-  for (int licznik = 1; licznik <= liczba_kucharzy; licznik++)
-  { losuj_kucharza(licznik) ;}
 
-  for (int licznik = 0; licznik <= liczba_kelnerow; licznik++)
+  for (int licznik = 1; licznik <= liczba_kelnerow; licznik++)
   { losuj_kelnera(licznik) ;}
+
+
 }
 
 void Symulator::losuj_klientow()
@@ -84,11 +77,7 @@ void Symulator::losuj_klientow()
 void Symulator::losuj_kelnera(unsigned int identyfikator)
 {
 
-}
-
-void Symulator::losuj_kucharza(unsigned int identyfikator)
-{
-
+  restauracja.dodaj_kelnera();
 }
 
 void Symulator::losuj_klienta()
@@ -103,12 +92,7 @@ void Symulator::losuj_danie()
 {
 
 
-}
 
-// unsigned int Symulator::generuj_liczbe()
-// {
-//   unsigned int nasiono = std::chrono::system_clock::now().time_since_epoch().count();
-//   std::mt19937 generator(nasiono);
-//   return generator();
-// }
+
+}
 

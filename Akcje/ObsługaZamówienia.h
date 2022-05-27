@@ -26,7 +26,7 @@ enum class StatusZamowienia
 };
 
 using SZ = StatusZamowienia;
-
+obslugi_wysjciowej << obsluga_zamowienia; 
 
 class ObslugaZamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stoliku
 {
