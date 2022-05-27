@@ -4,11 +4,13 @@
 #include "Restauracja.h"
 
 
-Restauracja::Restauracja()
+Restauracja::Restauracja(
+    string nazwa,
+    string nazwa_pliku_wyjscia
+)
 {
-    menu = czytanie.czytaj_plik_menu();
-    kelnerzy = czytanie.czytaj_plik_kelnerow();
-    stoliki = czytanie.czytaj_plik_stoliki();
+
+
 
 }
 
@@ -31,7 +33,7 @@ ObslugaZamowienia Restauracja::daj_zamowienie(int index)
 vector <Stolik> Restauracja::daj_wolne_stoliki()
 {
     vector <Stolik> wolne_stoliki;
-    for (const Stolik& stolik:stoliki)
+    for (const Stolik& stolik: wolne_stoliki)
     {
         if (stolik.czy_wolny() == true)
         {

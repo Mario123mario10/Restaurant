@@ -25,23 +25,19 @@ enum class StatusZamowienia
     stol_posprzatany
 };
 
-
-
 using SZ = StatusZamowienia;
-
-
 
 
 class ObslugaZamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stoliku
 {
     unsigned int numer_zamowienia;
     static unsigned int wolny_numer;
-    map <Potrawa*, unsigned int> zamowione_potrawy; // zamowione potrawy i ich ilosc
-    unsigned int ilosc_osob_przy_stoliku;
+    map <unique_ptr<Potrawa>, unsigned int> zamowione_potrawy; // zamowione potrawy i ich ilosc
+    unsigned int ilosc_osob_przy_stoliku;   //?????
     Stolik stolik;
     StatusZamowienia status;
     Kelner kelner;
-    Rachunek rachunek;
+    Rachunek rachunek;    //?????
 
 
 public:
@@ -66,5 +62,3 @@ public:
 
 };
 
-
-// unsigned int ObslugaZamowienia::wolny_numer=1;
