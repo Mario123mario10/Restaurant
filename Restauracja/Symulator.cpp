@@ -40,9 +40,7 @@ Symulator::Symulator
   restauracja = Restauracja(nazwa_restauracji, nazwa_pliku_wyjscia);
   this -> czas_trwania_symulacji = czas_trwania_symulacji;
   this -> liczba_kelnerow = liczba_kelnerow;
-  this -> liczba_kucharzy = liczba_kucharzy;
-  this -> licznik_potraw = 0; // wyszczególnić
-
+  this -> licznik_klientow = 0;
 }
 
 void Symulator::rozpocznij_symulacje()
@@ -50,7 +48,7 @@ void Symulator::rozpocznij_symulacje()
   inicjuj_restauracje();
   for (int licznik = 0; licznik < czas_trwania_symulacji; licznik++)
   {
-    if (losuj_liczbe() % 2 == 0)
+    if (losuj_liczbe() % 5 == 0)
     { losuj_klientow()  ;}
     restauracja.uplyw_czasu();
   }
@@ -99,7 +97,11 @@ string Symulator::losuj_nazwisko()
     string nazwisko;
     unsigned int numer_linii = losuj_liczbe() % 96;
     for (int index = 0; index < numer_linii; index++)
-    { getline(plik, nazwisko) ;}
+    {
+      nazwisko.clear();
+      getline(plik, nazwisko);
+    }
+    plik.close();
     return nazwisko;
   }
   else

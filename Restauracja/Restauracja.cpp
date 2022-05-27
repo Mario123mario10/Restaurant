@@ -118,8 +118,9 @@ void Restauracja::przydziel_klienta()
 
 }
 
-void Restauracja::dodaj_zamowienie(unique_ptr<Klient> klient, Stolik& stol)
+void Restauracja::dodaj_zamowienie(unique_ptr<Klient> klient, Stolik& stolik)
 {
+
 
 }
 

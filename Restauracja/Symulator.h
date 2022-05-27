@@ -12,11 +12,7 @@ class Symulator
     unique_ptr<Menu> menu;
     unsigned int czas_trwania_symulacji;
     unsigned int licznik_klientow;
-    unsigned int licznik_potraw; // wyszczególnić
-    unsigned int liczba_kucharzy;
     unsigned int liczba_kelnerow;
-
-    // unsigned int identyfikator_dania;
   public:
     Symulator
     (

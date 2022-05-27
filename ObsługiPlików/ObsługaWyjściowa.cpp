@@ -2,7 +2,7 @@
 #include <string>
 using std::string;
 #include <fstream>
-using std::ios; using std::fstream; using std::getline;
+using std::ios; using std::fstream;
 
 
 #include "ObsługaWyjściowa.h"
@@ -68,12 +68,14 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Stolik& stolik)
 
 ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, ObslugaZamowienia& zamowienie)
 {
-  // cout << zamowienie << endl;
+  cout << zamowienie << endl;
 
   fstream plik;
   plik.open(wyjscie.daj_nazwe_pliku_wyjscia(), ios::out | ios::app);
   if (plik.is_open())
   {
+
+    plik.close();
 
   }
   else
@@ -92,11 +94,12 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Kwota kwota)
   if (plik.is_open())
   {
 
+
+    plik.close();
   }
   else
   { } // rzuć wyjątek
 
-  plik.close();
 
   return wyjscie;
 
@@ -108,6 +111,9 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, string napis)
   plik.open(wyjscie.daj_nazwe_pliku_wyjscia(), ios::out | ios::app);
   if (plik.is_open())
   {
+
+
+    plik.close();
 
   }
   else

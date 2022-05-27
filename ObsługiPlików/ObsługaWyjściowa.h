@@ -19,14 +19,12 @@ class ObslugaWyjsciowa
     string daj_nazwe_pliku_wyjscia();
     void ustaw_nazwe_pliku_wyjscia(string nowa_nazwa);
 
-    friend ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Kelner& kelner);
-		friend ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Stolik& stolik);
     friend ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, ObslugaZamowienia& zamowienie);
+    friend ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Kelner& kelner);
+    friend ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Klient& kelner);
+		friend ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Stolik& stolik);
 		friend ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Kwota kwota);
 		friend ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, string napis);
-
-    // friend std::ostream& operator<<(std::ostream& os, ObslugaWyjsciowa& nazwa);
-
 };
 
 

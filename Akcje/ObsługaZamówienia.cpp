@@ -2,6 +2,7 @@
 #include <vector>
 #include <map>
 #include <iostream>
+
 #include "ObsługaZamówienia.h"
 #include "InneKlasy.h"
 #include "../Dania/Danie.hpp"
@@ -109,3 +110,37 @@ void ObslugaZamowienia::przypisz_kelnera_i_zanies_menu(Kelner przypisany_kelner)
     status = SZ::czytanie_menu;
 }
 
+std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
+{
+  switch(zamowienie.daj_status())
+  {
+    case SZ::oczekiwanie_na_menu:
+    return os;
+
+    case SZ::czytanie_menu:
+    return os;
+
+    case SZ::oczekiwanie_na_dania:
+    return os;
+
+    case SZ::jedzenie:
+    return os;
+
+    case SZ::czekanie_na_rachunek:
+    return os;
+
+    case SZ::czekanie_kelnera_na_zaplate:
+    return os;
+
+    case SZ::zaplacone:
+    return os;
+
+    case SZ::wyjscie_z_restauracji:
+    return os;
+
+    case SZ::stol_posprzatany:
+    return os;
+
+  }
+
+}
