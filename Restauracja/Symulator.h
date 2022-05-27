@@ -1,7 +1,7 @@
 #include <memory>
 using std::unique_ptr;
 
-#include "RestauracjaSzkic.h"
+#include "Restauracja.h"
 #include "../Menu/Menu.hpp"
 
 
@@ -29,7 +29,6 @@ class Symulator
       unsigned int male,
       unsigned int srednie,
       unsigned int duze,
-      unsigned int liczba_kucharzy,
       unsigned int liczba_kelnerow,
       unique_ptr<Menu> menu
     );
@@ -39,5 +38,5 @@ class Symulator
     void losuj_kucharza(unsigned int identyfikator);
     void losuj_klientow();
     void losuj_klienta();
-    void losuj_danie();
+    string losuj_nazwisko();
 };

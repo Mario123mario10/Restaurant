@@ -39,7 +39,7 @@ void Restauracja::pokaz_status_klientow()
 {
   for (unique_ptr<Klient>& klient: nieobslugiwani_klienci)
   {
-    wyjscie << klient;  //pomyśleć
+    wyjscie << *klient;  //pomyśleć
     wyjscie <<  "\n";
   }
 }

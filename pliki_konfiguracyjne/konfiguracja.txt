@@ -9,10 +9,8 @@ rozmiary stolików:
     średni: 4
     duży: 8
 
-stoliki małe: 4
-stoliki średnie: 2
-stoliki duże: 1
+stoliki małe: 6
+stoliki średnie: 3
+stoliki duże: 2
 
-liczba kelnerów: 4
-liczba kucharzy: 3
-
+liczba kelnerów: 5

@@ -39,7 +39,6 @@ ObslugaWejsciowa::ObslugaWejsciowa(string sciezka)
   duze = 0;
   czas_trwania_symulacji = 0;
   liczba_kelnerow = 0;
-  liczba_kucharzy = 0;
   sciezka_konfiguracyjna = sciezka;
   pobierz_konfiguracje();
   pobierz_menu();
@@ -209,9 +208,6 @@ void ObslugaWejsciowa::pobierz_linie_konfiguracji()
   else if (regex_match(linia, przechwycone, L_L_KELNEROW))
   { liczba_kelnerow = stoul(przechwycone[1]) ;}
 
-  else if (regex_match(linia, przechwycone, L_L_KUCHARZY))
-  { liczba_kucharzy = stoul(przechwycone[1]) ;}
-
   else if (regex_match(linia, przechwycone, L_NAZWA_PLIKU_MENU))
   { sciezka_menu = przechwycone[1] ;}
 
@@ -236,7 +232,6 @@ void ObslugaWejsciowa::sprawdz_konfiguracje()
     and duze
     and czas_trwania_symulacji
     and liczba_kelnerow
-    and liczba_kucharzy
   )
   { sprawdz_rozmiary()  ;}
   else
@@ -281,9 +276,6 @@ void ObslugaWejsciowa::zdefiniuj_blad_konfiguracji()
   if (liczba_kelnerow)
   { komunikat += "liczby kelnerów | ";}
 
-  if (liczba_kucharzy)
-  { komunikat += "liczby kucharzy | ";}
-
   throw NiepelnaKonfiguracja(komunikat);
 }
 void ObslugaWejsciowa::sprawdz_menu()
@@ -327,10 +319,8 @@ unsigned int ObslugaWejsciowa::daj_duze_stoliki()
 unsigned int ObslugaWejsciowa::daj_czas_symulacji()
 { return czas_trwania_symulacji ;}
 
-unsigned int ObslugaWejsciowa::daj_liczbe_kucharzy()
-{ return liczba_kucharzy ;}
 
 unsigned int ObslugaWejsciowa::daj_liczbe_kelnerow()
-{ return liczba_kucharzy ;}
+{ return liczba_kelnerow ;}
 
 

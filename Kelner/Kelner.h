@@ -13,8 +13,9 @@ class Kelner
     bool zajety;
 public:
     Kelner();
-    Kelner(string imie);
+    Kelner(string imie, unsigned int numer_id);
     string daj_imie();
+    unsigned int daj_id();
     bool czy_zajety();
     friend std::ostream& operator<<(std::ostream& os, Kelner& kelner);
 };

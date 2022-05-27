@@ -4,11 +4,13 @@ using std::string;
 #include <memory>
 using std::unique_ptr;  using std::make_unique;
 
+#include <fstream>
+using std::ios; using std::fstream; using std::getline;
+
 #include <random>
 #include <chrono>
 
 #include "Symulator.h"
-#include "RestauracjaSzkic.h"
 #include "Restauracja.h"
 #include "../FunkcjePomocnicze.h"
 #include "../Menu/Menu.hpp"
@@ -31,7 +33,6 @@ Symulator::Symulator
   unsigned int male,
   unsigned int srednie,
   unsigned int duze,
-  unsigned int liczba_kucharzy,
   unsigned int liczba_kelnerow,
   unique_ptr<Menu> menu
 )
@@ -40,7 +41,7 @@ Symulator::Symulator
   this -> czas_trwania_symulacji = czas_trwania_symulacji;
   this -> liczba_kelnerow = liczba_kelnerow;
   this -> liczba_kucharzy = liczba_kucharzy;
-  this -> licznik_potraw; // wyszczególnić
+  this -> licznik_potraw = 0; // wyszczególnić
 
 }
 
@@ -66,7 +67,7 @@ void Symulator::inicjuj_restauracje()
 
 void Symulator::losuj_klientow()
 {
-  unsigned int nowi_klienci = losuj_liczbe() % 3;
+  unsigned int nowi_klienci = losuj_liczbe() % 5;
   while (nowi_klienci != 0)
   {
     losuj_klienta();
@@ -76,23 +77,33 @@ void Symulator::losuj_klientow()
 
 void Symulator::losuj_kelnera(unsigned int identyfikator)
 {
-
-  restauracja.dodaj_kelnera();
+  Kelner nowy_kelner(losuj_nazwisko(), identyfikator);
+  restauracja.dodaj_kelnera(nowy_kelner);
 }
 
 void Symulator::losuj_klienta()
 {
-
-
-  restauracja.dodaj_klienta();
+  bool dosiada_sie = (losuj_liczbe() % 2)? false: true;
+  unique_ptr<Klient> wskaznik_klienta = make_unique<Klient>(losuj_nazwisko(), dosiada_sie, licznik_klientow);
+  licznik_klientow += 1;
+  restauracja.dodaj_klienta(move(wskaznik_klienta));
 }
 
 
-void Symulator::losuj_danie()
+string Symulator::losuj_nazwisko()
 {
-
-
+  std::fstream plik;
+  plik.open("pliki_konfiguracyjne/spis_nazwisk", ios::in);
+  if (plik.is_open())
+  {
+    string nazwisko;
+    unsigned int numer_linii = losuj_liczbe() % 96;
+    for (int index = 0; index < numer_linii; index++)
+    { getline(plik, nazwisko) ;}
+    return nazwisko;
+  }
+  else
+  { throw  ;} // Dodać wyjatek
 
 
 }
-
