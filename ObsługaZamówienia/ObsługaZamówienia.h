@@ -11,7 +11,6 @@ using std::unique_ptr ;
 #include "../Stolik/Stolik.h"
 #include "../Kelner/Kelner.h"
 #include "../Klient/Klient.h"
-#include "SzkicePotraw.h"
 
 enum class StatusZamowienia
 {

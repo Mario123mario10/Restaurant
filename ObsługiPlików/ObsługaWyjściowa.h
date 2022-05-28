@@ -5,7 +5,7 @@ using std::string;
 
 #include "../Stolik/Stolik.h"
 #include "../Kelner/Kelner.h"
-#include "../Akcje/ObsługaZamówienia.h"
+#include "../ObsługaZamówienia/ObsługaZamówienia.h"
 
 
 

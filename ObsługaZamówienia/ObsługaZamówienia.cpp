@@ -7,7 +7,6 @@
 #include "../Dania/Danie.hpp"
 #include "../Stolik/Stolik.h"
 #include "../Kelner/Kelner.h"
-#include "SzkicePotraw.h"
 
 using namespace std;
 using SZ = StatusZamowienia;

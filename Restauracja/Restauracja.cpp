@@ -2,7 +2,7 @@
 #include <iostream>
 using std::cout;	using std::endl;
 
-#include "../Akcje/ObsługaZamówienia.h"
+#include "../ObsługaZamówienia/ObsługaZamówienia.h"
 #include "Restauracja.h"
 
 
