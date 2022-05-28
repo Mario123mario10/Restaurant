@@ -31,7 +31,7 @@ unsigned int ObslugaZamowienia::daj_numer_zamowienia()
 
 unsigned int ObslugaZamowienia::daj_ilosc_osob_przy_stoliku()
 {
-  return ilosc_osob_przy_stoliku;
+  return (klienci.size());
 }
 
 StatusZamowienia ObslugaZamowienia::daj_status()
@@ -62,11 +62,6 @@ void ObslugaZamowienia::czekanie_na_zaplate()
   status = SZ::czekanie_kelnera_na_zaplate;
 }
 
-void ObslugaZamowienia::dodaj_nowe_osoby(unsigned int nowe_osoby)
-{
-  ilosc_osob_przy_stoliku += nowe_osoby;
-}
-
 void ObslugaZamowienia::zakoncz_wszystkie_posilki()
 {
   status = SZ::czekanie_na_rachunek;
@@ -95,11 +90,6 @@ unsigned int ObslugaZamowienia::oblicz_kwote_do_zaplaty()
   return cala_kwota;
 }
 
-void ObslugaZamowienia::przypisz_kelnera_i_zanies_menu(Kelner przypisany_kelner)
-{
-  kelner = przypisany_kelner;
-  status = SZ::czytanie_menu;
-}
 
 std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
 {

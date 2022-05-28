@@ -16,7 +16,6 @@ const regex L_L_MALYCH_STOLIKOW   ;
 const regex L_L_SREDNICH_STOLIKOW ;
 const regex L_L_DUZYCH_STOLIKOW   ;
 const regex L_L_KELNEROW          ;
-const regex L_L_KUCHARZY          ;
 // Linie menu
 const regex L_M_PRZYSTAWKA        ;
 const regex L_M_ZUPA              ;
