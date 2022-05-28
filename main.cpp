@@ -33,11 +33,9 @@ int main(int argc, char const *argv[])
         We.daj_male_stoliki(),
         We.daj_srednie_stoliki(),
         We.daj_duze_stoliki(),
-        We.daj_liczbe_kucharzy(),
         We.daj_liczbe_kelnerow(),
         move(zebrane_menu)
       );
-
     }
     catch(const NieZnalezionoPliku& blad)
     {

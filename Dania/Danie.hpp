@@ -59,8 +59,3 @@ class Danie
     virtual void          wyswietl();
     friend std::ostream&  operator<<(std::ostream& os, Danie& Danie);
 };
-
-
-
-
-

@@ -2,7 +2,6 @@
 #include "AkcjeZamówienia.h"
 #include "ObsługaZamówienia.h"
 #include "Akcja.h"
-#include "InneKlasy.h"
 
 
 
@@ -112,46 +111,46 @@ vector<Akcja> AkcjeDlaZamowienia::akcje_dla_posprzatanego_stolu()
 
 
 
-vector<Akcja> AkcjeDlaZamowienia::pokaz_dostepne_akcje() // switch dziala jak if
-{
-    switch(aktualne_zamowienie.daj_status())
-    {
-        case SZ::oczekiwanie_na_menu:
-        {
-            return akcje_dla_oczekiwania_na_menu();
-        }
-        case SZ::czytanie_menu:
-        {
-            return akcje_dla_czytania_menu();
-        }
-        case SZ::oczekiwanie_na_dania:
-        {
-            return akcje_dla_oczekiwania_na_dania();
-        }
-        case SZ::jedzenie:
-        {
-            return akcje_dla_jedzenia();
-        }
-        case SZ::czekanie_na_rachunek:
-        {
-            return akcje_dla_czekania_na_rachunek();
-        }
-        case SZ::czekanie_kelnera_na_zaplate:
-        {
-            return akcje_dla_czekania_kelnera_na_zaplate();
-        }
-        case SZ::zaplacone:
-        {
-            return akcje_dla_zaplacenia();
-        }
-        case SZ::wyjscie_z_restauracji:
-        {
-            return akcje_dla_wyjscia_z_restauracji();
-        }
-        case SZ::stol_posprzatany:
-        {
-            return akcje_dla_posprzatanego_stolu();
-        }
+// vector<Akcja> AkcjeDlaZamowienia::pokaz_dostepne_akcje() // switch dziala jak if
+// {
+//     switch(aktualne_zamowienie.daj_status())
+//     {
+//         case SZ::oczekiwanie_na_menu:
+//         {
+//             return akcje_dla_oczekiwania_na_menu();
+//         }
+//         case SZ::czytanie_menu:
+//         {
+//             return akcje_dla_czytania_menu();
+//         }
+//         case SZ::oczekiwanie_na_dania:
+//         {
+//             return akcje_dla_oczekiwania_na_dania();
+//         }
+//         case SZ::jedzenie:
+//         {
+//             return akcje_dla_jedzenia();
+//         }
+//         case SZ::czekanie_na_rachunek:
+//         {
+//             return akcje_dla_czekania_na_rachunek();
+//         }
+//         case SZ::czekanie_kelnera_na_zaplate:
+//         {
+//             return akcje_dla_czekania_kelnera_na_zaplate();
+//         }
+//         case SZ::zaplacone:
+//         {
+//             return akcje_dla_zaplacenia();
+//         }
+//         case SZ::wyjscie_z_restauracji:
+//         {
+//             return akcje_dla_wyjscia_z_restauracji();
+//         }
+//         case SZ::stol_posprzatany:
+//         {
+//             return akcje_dla_posprzatanego_stolu();
+//         }
 
-    }
-}
+//     }
+// }
