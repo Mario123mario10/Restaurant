@@ -25,11 +25,11 @@ Restauracja::Restauracja(string nazwa, string nazwa_pliku_wyjscia)
 
 void Restauracja::pokaz_status_kelnerow()
 {
-  for (Kelner kelner: kelnerzy)
+  for (unique_ptr<Kelner>& kelner: kelnerzy)
   {
-    if (not kelner.czy_zajety())
+    if (not kelner -> czy_zajety())
     {
-      wyjscie << kelner;
+      wyjscie << *kelner;
       wyjscie << "\n";
     }
   }
@@ -46,7 +46,7 @@ void Restauracja::pokaz_status_klientow()
 
 void Restauracja::pokaz_status_zamowien()
 {
-  for (ObslugaZamowienia zamowienie: zamowienia_aktualne)
+  for (ObslugaZamowienia& zamowienie: zamowienia_aktualne)
   {
     wyjscie << zamowienie;
     wyjscie << "\n";
@@ -55,26 +55,26 @@ void Restauracja::pokaz_status_zamowien()
 
 void Restauracja::pokaz_status_stolikow()
 {
-  for (Stolik stolik: stoliki)
+  for (unique_ptr<Stolik>& stolik: stoliki)
   {
-    wyjscie << stolik;
+    wyjscie << *stolik;
     wyjscie << "\n";
   }
 }
 
 void Restauracja::dodaj_klienta(unique_ptr<Klient> wchodzacy_klient)
 {
-  nieobslugiwani_klienci.push_back(wchodzacy_klient);
+  nieobslugiwani_klienci.push_back(move(wchodzacy_klient));
 }
 
-void Restauracja::dodaj_kelnera(Kelner kelner)
+void Restauracja::dodaj_kelnera(unique_ptr<Kelner> kelner)
 {
-  this -> kelnerzy.push_back(kelner);
+  this -> kelnerzy.push_back(move(kelner));
 }
 
-void Restauracja::dodaj_stolik(Stolik stolik)
+void Restauracja::dodaj_stolik(unique_ptr<Stolik> stolik)
 {
-  this -> stoliki.push_back(stolik);
+  this -> stoliki.push_back(move(stolik));
 }
 
 void Restauracja::sprawdz_klientow()

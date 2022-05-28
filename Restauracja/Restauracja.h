@@ -13,8 +13,8 @@ class Restauracja
 {
     vector <ObslugaZamowienia> zamowienia_aktualne;
     vector <ObslugaZamowienia> zamowienia_zamkniete;
-    vector <Kelner> kelnerzy;
-    vector <Stolik> stoliki;
+    vector <unique_ptr<Kelner>> kelnerzy;
+    vector <unique_ptr<Stolik>> stoliki;
     vector <unique_ptr<Klient>> nieobslugiwani_klienci;
     string nazwa;
     Menu menu;
@@ -32,8 +32,8 @@ public:
     void pokaz_status_stolikow();
 
     void dodaj_klienta(unique_ptr<Klient> wchodzacy_klient);
-    void dodaj_kelnera(Kelner kelner);
-    void dodaj_stolik(Stolik stolik);
+    void dodaj_kelnera(unique_ptr<Kelner> kelner);
+    void dodaj_stolik(unique_ptr<Stolik> stolik);
 
     void sprawdz_klientow();
     void sprawdz_stoliki();

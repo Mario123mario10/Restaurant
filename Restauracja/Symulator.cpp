@@ -68,8 +68,8 @@ void Symulator::losuj_klientow()
 
 void Symulator::losuj_kelnera(unsigned int identyfikator)
 {
-  Kelner nowy_kelner(losuj_nazwisko(), identyfikator);
-  restauracja.dodaj_kelnera(nowy_kelner);
+  unique_ptr<Kelner> nowy_kelner = make_unique<Kelner>(losuj_nazwisko(), identyfikator);
+  restauracja.dodaj_kelnera(move(nowy_kelner));
 }
 
 void Symulator::losuj_klienta()

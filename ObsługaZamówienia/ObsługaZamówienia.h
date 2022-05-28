@@ -87,9 +87,8 @@ using namespace std;
 
 
 
-class ObslugaZamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stoliku
+class ObslugaZamowienia
 {
-    vector<unique_ptr<Danie>> zamowione_dania; // zamowione potrawy i ich ilosc
     vector<unique_ptr<Klient>> klienci;
     unique_ptr<Stolik> przypisany_stolik;
     unique_ptr<Kelner> przypisany_kelner;
@@ -97,10 +96,8 @@ class ObslugaZamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stoli
     unsigned int numer_zamowienia;
     unsigned int licznik_zamowien;
 
-
-    // static unsigned int wolny_numer;
-
 public:
+    vector<unique_ptr<Danie>> zamowione_dania;
     ObslugaZamowienia();
     ObslugaZamowienia(unique_ptr<Stolik> stolik, unique_ptr<Klient> klient);
     unsigned int daj_numer_zamowienia();
@@ -109,6 +106,8 @@ public:
 
     unique_ptr<Stolik> zwolnij_stolik();
     unique_ptr<Kelner> zwolnij_kelnera();
+
+    unsigned int daj_numer_stolika();
 
     bool jest_kelner();
 
@@ -120,7 +119,6 @@ public:
     unsigned int oblicz_kwote_do_zaplaty();
 
     void uplyw_czasu();
-
 
     friend std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie);
 
