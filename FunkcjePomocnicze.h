@@ -7,3 +7,4 @@ template<typename Typ>
 void drukuj_bl(Typ cos);
 
 
+unsigned int losuj_liczbe();

@@ -15,12 +15,6 @@ using std::ios; using std::fstream; using std::getline;
 #include "../FunkcjePomocnicze.h"
 #include "../Menu/Menu.hpp"
 
-unsigned int losuj_liczbe()
-{
-  unsigned int nasiono = std::chrono::system_clock::now().time_since_epoch().count();
-  std::mt19937 generator(nasiono);
-  return generator();
-};
 
 Symulator::Symulator
 (
@@ -40,7 +34,6 @@ Symulator::Symulator
   restauracja = Restauracja(nazwa_restauracji, nazwa_pliku_wyjscia);
   this -> czas_trwania_symulacji = czas_trwania_symulacji;
   this -> liczba_kelnerow = liczba_kelnerow;
-  this -> licznik_klientow = 0;
 }
 
 void Symulator::rozpocznij_symulacje()
@@ -82,8 +75,7 @@ void Symulator::losuj_kelnera(unsigned int identyfikator)
 void Symulator::losuj_klienta()
 {
   bool dosiada_sie = (losuj_liczbe() % 2)? false: true;
-  unique_ptr<Klient> wskaznik_klienta = make_unique<Klient>(losuj_nazwisko(), dosiada_sie, licznik_klientow);
-  licznik_klientow += 1;
+  unique_ptr<Klient> wskaznik_klienta = make_unique<Klient>(losuj_nazwisko(), dosiada_sie);
   restauracja.dodaj_klienta(move(wskaznik_klienta));
 }
 

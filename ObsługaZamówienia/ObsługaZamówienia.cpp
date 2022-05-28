@@ -15,11 +15,11 @@ using SZ = StatusZamowienia;
 ObslugaZamowienia::ObslugaZamowienia()
 {}
 
-ObslugaZamowienia::ObslugaZamowienia(Stolik& stolik, unique_ptr<Klient> klient)
+ObslugaZamowienia::ObslugaZamowienia(unique_ptr<Stolik> stolik, unique_ptr<Klient> klient)
 {
 
-  status = SZ::oczekiwanie_na_menu;
-  this -> stolik = stolik;
+  this -> status = SZ::oczekiwanie_na_menu;
+  this -> przypisany_stolik.swap(stolik);
   this -> klienci.push_back(move(klient));
   numer_zamowienia = licznik_zamowien + 1;
   licznik_zamowien++;
@@ -40,14 +40,18 @@ StatusZamowienia ObslugaZamowienia::daj_status()
   return status;
 }
 
-Stolik ObslugaZamowienia::daj_stolik()
+unique_ptr<Stolik> ObslugaZamowienia::zwolnij_stolik()
 {
-  return stolik;
+  unique_ptr<Stolik> wskaznik;
+  przypisany_stolik.swap(wskaznik);
+  return wskaznik;
 }
 
-Kelner ObslugaZamowienia::daj_kelnera()
+unique_ptr<Kelner> ObslugaZamowienia::zwolnij_kelnera()
 {
-  return kelner;
+  unique_ptr<Kelner> wskaznik;
+  przypisany_kelner.swap(wskaznik);
+  return wskaznik;
 }
 
 
@@ -64,10 +68,6 @@ void ObslugaZamowienia::zamow_potrawe(unique_ptr<Danie> nowa_potrawa, unsigned i
   status = SZ::oczekiwanie_na_dania;
 }
 
-void ObslugaZamowienia::podaj_dania_do_stolika()
-{
-  status = SZ::jedzenie;
-}
 
 unsigned int ObslugaZamowienia::oblicz_kwote_do_zaplaty()
 {
@@ -86,7 +86,7 @@ std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
 {
   os
   << "Status zamówienia nr " << zamowienie.daj_numer_zamowienia()
-  << " i stole nr " << zamowienie.stolik.daj_numer()
+  << " i stole nr " << zamowienie.przypisany_stolik -> daj_numer()
   << ":" << endl;
 
   switch(zamowienie.daj_status())
@@ -112,11 +112,8 @@ std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
       os
       << "Oczekują na dania" << endl
       << "Postęp w przygotowaniu dań:" << endl;
-      // for (const unique_ptr<Danie>& danie: zamowienie.zamowione_dania)
-      // {
-
-      // }
-      ;
+      for ( const unique_ptr<Danie>& danie: zamowienie.zamowione_dania  )
+      { cout << *danie << endl  ;}
       return os;
 
     case SZ::jedzenie:
