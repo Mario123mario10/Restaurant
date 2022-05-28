@@ -16,23 +16,21 @@ using std::unique_ptr ;
 enum class StatusZamowienia
 {
     oczekiwanie_na_menu,
-    czytanie_menu,
+    zamawianie_dan,
     oczekiwanie_na_dania,
     jedzenie,
     czekanie_na_rachunek,
-    czekanie_kelnera_na_zaplate,
-    zaplacone,
+    placenie,
     wyjscie_z_restauracji,
-    stol_posprzatany
+    sprzatanie_stolika
 };
 
 using SZ = StatusZamowienia;
-// obslugi_wysjciowej << obsluga_zamowienia;
 
 class ObslugaZamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stoliku
 {
     unsigned int numer_zamowienia;
-    map <unique_ptr<Potrawa>, unsigned int> zamowione_potrawy; // zamowione potrawy i ich ilosc
+    // map <unique_ptr<Danie>, unsigned int> zamowione_dania; // zamowione potrawy i ich ilosc
     vector<unique_ptr<Klient>> klienci;
     Stolik stolik;
     Kelner kelner;

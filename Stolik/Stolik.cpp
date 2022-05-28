@@ -7,11 +7,13 @@
 Stolik::Stolik()
 {}
 
-Stolik::Stolik(unsigned int numer, unsigned int ilosc_miejsc, bool wolny=true)
+Stolik::Stolik(unsigned int ilosc_miejsc, bool wolny=true)
 {
-    this -> numer = numer;
+
+    this -> numer = licznik_stolikow + 1;
     this -> ilosc_miejsc = ilosc_miejsc;
     this -> wolny = wolny;
+    licznik_stolikow++;
 }
 unsigned int Stolik::daj_numer()
 {

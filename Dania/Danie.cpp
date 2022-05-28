@@ -23,6 +23,7 @@ Danie::Danie
 	{ throw NiepoprawnyCzasPrzygotowania(czas_przygotowania)	;}
 	else
 	{
+
     this -> kategoria = kategoria ;
     this -> koszt_przygotowania = koszt_przygotowania ;
     this -> czas_przygotowania = czas_przygotowania;
@@ -30,6 +31,8 @@ Danie::Danie
     this -> nazwa = nazwa;
     this -> przygotowane = false;
     this -> postep_przygotowania = 0;
+	identyfikator = licznik_dan;
+	licznik_dan++;
 	}
 }
 
@@ -60,6 +63,9 @@ bool Danie::czy_przygotowane()
 void Danie::ustaw_kategorie(KP nowa_kategoria)
 { kategoria = nowa_kategoria ;}
 
+unsigned int Danie::daj_identyfikator()
+{ return identyfikator; }
+
 void Danie::ustaw_koszt_przygotowania(Kwota nowy_koszt_przygotowania)
 {
 	if (nowy_koszt_przygotowania == 0)
@@ -85,8 +91,7 @@ void Danie::ustaw_postep_przygotowania(unsigned int nowy_postep_przygotowania)
   if (nowy_postep_przygotowania < czas_przygotowania)
   { postep_przygotowania = nowy_postep_przygotowania  ;}
   else
-  // { throw NiepoprawnyPostepPrzygotowania(nowy_postep_przygotowania) ;}
-	{}
+  { throw NiepoprawnyPostepPrzygotowania(nowy_postep_przygotowania) ;}
 
 }
 
@@ -98,8 +103,7 @@ void Danie::ustaw_nazwe(string nowa_nazwa)
 	if (not nowa_nazwa.empty())
 	{	nazwa = nowa_nazwa	;}
 	else
-	// { throw NiepoprawnaNazwa(nowa_nazwa)  ;}
-	{}
+	{ throw NiepoprawnaNazwa(nowa_nazwa)  ;}
 
 }
 
@@ -141,4 +145,17 @@ bool Danie::operator== (Danie& inne_danie)
 
 bool Danie::operator!= (Danie& inne_danie)
 { return not (*this == inne_danie)  ;}
+
+
+bool Danie::operator< (Danie& inne_Danie)
+{ return identyfikator < inne_Danie.daj_identyfikator(); }
+
+bool Danie::operator> (Danie& inne_Danie)
+{ return not (*this <= inne_Danie); }
+
+bool Danie::operator>= (Danie& inne_Danie)
+{ return not (*this < inne_Danie); }
+
+bool Danie::operator<= (Danie& inne_Danie)
+{ return (*this < inne_Danie) or (*this == inne_Danie); }
 
