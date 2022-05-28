@@ -15,12 +15,14 @@ using SZ = StatusZamowienia;
 ObslugaZamowienia::ObslugaZamowienia()
 {}
 
-ObslugaZamowienia::ObslugaZamowienia(Stolik& stolik, unique_ptr<Klient> klient, unsigned int numer_zamowienia)
+ObslugaZamowienia::ObslugaZamowienia(Stolik& stolik, unique_ptr<Klient> klient)
 {
+
   status = SZ::oczekiwanie_na_menu;
   this -> stolik = stolik;
   this -> klienci.push_back(move(klient));
-  numer_zamowienia = numer_zamowienia;
+  numer_zamowienia = licznik_zamowien + 1;
+  licznik_zamowien++;
 }
 
 unsigned int ObslugaZamowienia::daj_numer_zamowienia()

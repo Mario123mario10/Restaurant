@@ -28,18 +28,20 @@ using SZ = StatusZamowienia;
 
 class ObslugaZamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stoliku
 {
-    unsigned int numer_zamowienia;
-    // map <unique_ptr<Danie>, unsigned int> zamowione_dania; // zamowione potrawy i ich ilosc
+    map <unique_ptr<Danie>, unsigned int> zamowione_dania; // zamowione potrawy i ich ilosc
     vector<unique_ptr<Klient>> klienci;
     Stolik stolik;
     Kelner kelner;
     StatusZamowienia status;
+    unsigned int numer_zamowienia;
+    unsigned int licznik_zamowien;
+
 
     // static unsigned int wolny_numer;
 
 public:
     ObslugaZamowienia();
-    ObslugaZamowienia(Stolik& stolik, unique_ptr<Klient> klient, unsigned int numer_zamowienia);
+    ObslugaZamowienia(Stolik& stolik, unique_ptr<Klient> klient);
     unsigned int daj_numer_zamowienia();
     unsigned int daj_ilosc_osob_przy_stoliku();
     StatusZamowienia daj_status();

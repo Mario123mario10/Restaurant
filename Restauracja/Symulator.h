@@ -11,7 +11,6 @@ class Symulator
     Restauracja restauracja;
     unique_ptr<Menu> menu;
     unsigned int czas_trwania_symulacji;
-    unsigned int licznik_klientow;
     unsigned int liczba_kelnerow;
   public:
     Symulator

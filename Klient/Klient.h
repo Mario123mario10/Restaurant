@@ -8,8 +8,9 @@ class Klient
     string imie;
     bool dosiada_sie;
     unsigned int identyfikator;
+    static unsigned int licznik_klientow;
   public:
-    Klient(string imie, bool dosiada_sie, unsigned int identyfikator);
+    Klient(string imie, bool dosiada_sie);
     bool czy_dosiada_sie();
     string daj_imie();
     unsigned int daj_identyfikator();
