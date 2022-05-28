@@ -34,8 +34,8 @@ class ObslugaZamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stoli
     unsigned int numer_zamowienia;
     map <unique_ptr<Potrawa>, unsigned int> zamowione_potrawy; // zamowione potrawy i ich ilosc
     vector<unique_ptr<Klient>> klienci;
-    Stolik& stolik;
-    Kelner& kelner;
+    Stolik stolik;
+    Kelner kelner;
     StatusZamowienia status;
 
     // static unsigned int wolny_numer;
