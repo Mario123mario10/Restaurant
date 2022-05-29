@@ -114,10 +114,6 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, ObslugaZamowienia& zamow
       plik << "Czekają na rachunek";
       break;
 
-    // case SZ::czekanie_kelnera_na_zaplate:
-
-    //   break;
-
     case SZ::placenie:
       plik << "Klienci:" << endl;
       zamowienie.wyswietl_klientow(plik);

@@ -5,11 +5,12 @@
 Kelner::Kelner()
 {}
 
-Kelner::Kelner(string imie, unsigned int numer_id)
+Kelner::Kelner(string imie)
 {
     this -> imie = imie;
-    this -> numer_id = numer_id;
+    this -> numer_id = licznik_kelnerow;
     zajety = false;
+    licznik_kelnerow++;
 }
 string Kelner::daj_imie()
 {

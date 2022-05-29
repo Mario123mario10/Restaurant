@@ -10,9 +10,10 @@ class Kelner
     unsigned int numer_id;
     string imie;
     bool zajety;
+    static unsigned int licznik_kelnerow;
 public:
     Kelner();
-    Kelner(string imie, unsigned int numer_id);
+    Kelner(string imie);
     bool czy_zajety();
     string daj_imie();
     unsigned int daj_id();

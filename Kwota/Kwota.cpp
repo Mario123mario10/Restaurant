@@ -29,7 +29,7 @@ Kwota::Kwota(int zlote, int grosze)
 }
 
 Kwota::operator string() const
-{ return to_string(zlote) + " zł " + to_string(grosze) + " gr" ;}
+{ return (to_string(zlote) + " zł " + to_string(grosze) + " gr") ;}
 
 Kwota& Kwota::operator+= (const Kwota&  inna_kwota)
 {

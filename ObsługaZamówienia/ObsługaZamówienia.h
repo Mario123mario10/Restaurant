@@ -105,6 +105,7 @@ public:
     unsigned int daj_ilosc_osob_przy_stoliku();
     unsigned int daj_numer_stolika();
     string daj_nazwisko_kelnera();
+    unsigned int daj_numer_kelnera();
 
     unique_ptr<Stolik> zwolnij_stolik();
     unique_ptr<Kelner> zwolnij_kelnera();
