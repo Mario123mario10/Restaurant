@@ -9,30 +9,39 @@ using std::cout;	using std::endl;
 Restauracja::Restauracja()
 {}
 
-
 Restauracja::Restauracja(string nazwa, string nazwa_pliku_wyjscia, unique_ptr<Menu> menu)
 {
   this -> nazwa = nazwa;
   this -> wyjscie = ObslugaWyjsciowa(nazwa_pliku_wyjscia);
+  this -> menu.swap(menu);
+  przychod = 0;
 }
-
-
 
 void Restauracja::uplyw_czasu()
 {
+  pokaz_wchodzacych_klientow();
+  sprawdz_zamowienia();
 
 
+  pokaz_status_kelnerow();
+  pokaz_status_klientow();
+  pokaz_status_stolikow();
+  pokaz_status_zamowien();
+}
+
+void Restauracja::pokaz_wchodzacych_klientow()
+{
+  for (unique_ptr<Klient>& klient: nieobslugiwani_klienci)
+  {
+    wyjscie << *klient << " wszedł do restauracji" <<  "\n";
+  }
 }
 
 void Restauracja::pokaz_status_kelnerow()
 {
-  for (unique_ptr<Kelner>& kelner: kelnerzy)
+  for (unique_ptr<Kelner>& kelner: wolni_kelnerzy)
   {
-    if (kelner -> czy_zajety())
-    {
-      wyjscie << *kelner;
-      wyjscie << "\n";
-    }
+    wyjscie << *kelner << " jest nie obsługuje zamówienia" << "\n";
   }
 }
 
@@ -40,8 +49,7 @@ void Restauracja::pokaz_status_klientow()
 {
   for (unique_ptr<Klient>& klient: nieobslugiwani_klienci)
   {
-    wyjscie << *klient;  //pomyśleć
-    wyjscie <<  "\n";
+    wyjscie << *klient << " nie jest obsługiwany" <<  "\n";
   }
 }
 
@@ -56,10 +64,9 @@ void Restauracja::pokaz_status_zamowien()
 
 void Restauracja::pokaz_status_stolikow()
 {
-  for (unique_ptr<Stolik>& stolik: stoliki)
+  for (unique_ptr<Stolik>& stolik: wolne_stoliki)
   {
-    wyjscie << *stolik;
-    wyjscie << "\n";
+    wyjscie << *stolik << " jest wolny" << "\n";
   }
 }
 
@@ -70,69 +77,101 @@ void Restauracja::dodaj_klienta(unique_ptr<Klient> wchodzacy_klient)
 
 void Restauracja::dodaj_kelnera(unique_ptr<Kelner> kelner)
 {
-  this -> kelnerzy.push_back(move(kelner));
+  this -> wolni_kelnerzy.push_back(move(kelner));
 }
 
 void Restauracja::dodaj_stolik(unique_ptr<Stolik> stolik)
 {
-  this -> stoliki.push_back(move(stolik));
+  this -> wolne_stoliki.push_back(move(stolik));
 }
 
-void Restauracja::sprawdz_klientow()
+void Restauracja::dodaj_zamowienie(unique_ptr<Klient> klient, unique_ptr<Stolik> stolik)
 {
-
+  zamowienia_aktualne.push_back(ObslugaZamowienia(move(stolik), move(klient)));
 }
 
-void Restauracja::sprawdz_stoliki()
+
+
+void Restauracja::sprawdz_zamowienia()
 {
+  for (ObslugaZamowienia& zamowienie: zamowienia_aktualne)
+  {
+    unique_ptr<Kelner> kelner;
+    unique_ptr<Stolik> stolik;
+    unique_ptr<Danie> przystawka;
+    unique_ptr<Danie> danie_glowne;
+    unique_ptr<Danie> deser;
+    unique_ptr<Danie> napoj;
+
+    switch (zamowienie.daj_status())
+    {
+    case (SZ::oczekiwanie_na_menu):
+    case (SZ::czekanie_na_rachunek):
+    case (SZ::przyniesienie_dan):
+      if (( not zamowienie.przydzielony_kelner()) and (not wolni_kelnerzy.empty()))
+      {
+        zamowienie.przydziel_kelnera(move(przekaz_kelnera()));
+      }
+      break;
+
+    case (SZ::zamawianie_dan):
+      przystawka = menu -> wybierz_przystawke();
+      danie_glowne = menu -> wybierz_danie_glowne();
+      deser = menu -> wybierz_deser();
+      napoj = menu -> wybierz_napoj();
+      zamowienie.zamow_potrawe(move(przystawka));
+      zamowienie.zamow_potrawe(move(danie_glowne));
+      zamowienie.zamow_potrawe(move(deser));
+      zamowienie.zamow_potrawe(move(napoj));
+      break;
+
+
+    case (SZ::oczekiwanie_na_dania):
+    case (SZ::jedzenie):
+      if (zamowienie.przydzielony_kelner())
+      {
+        kelner = zamowienie.zwolnij_kelnera();
+        wolni_kelnerzy.push_back(move(kelner));
+      }
+      break;
+
+    case (SZ::koniec):
+      kelner = zamowienie.zwolnij_kelnera();
+      stolik = zamowienie.zwolnij_stolik();
+      wolni_kelnerzy.push_back(move(kelner));
+      wolne_stoliki.push_back(move(stolik));
+      przychod += zamowienie.oblicz_kwote_do_zaplaty();
+      break;
+
+    default:
+      break;
+    }
+  }
 
 }
+    // oczekiwanie_na_menu,   przydzielić kelnera   +++++++
+    // zamawianie_dan,        utworzyć dania        +++++++
+    // oczekiwanie_na_dania,  zwolnić kelnera       +++++++
+    // przyniesienie_dan,     przypisać kelnera     +++++++
+    // jedzenie,              zwolnić_kelnera       +++++++
+    // czekanie_na_rachunek,  przypisać kelnera     +++++++
+    // placenie,
+    // wyjscie_z_restauracji,
+    // sprzatanie_stolika,
+    // koniec                 zwolnić kelnera,      +++++++
+    //                        zwolnić stolik        +++++++
 
-void Restauracja::sprawdz_kelnerow()
+
+unique_ptr<Kelner> Restauracja::przekaz_kelnera()
 {
-
-}
-
-void Restauracja::zwolnij_stoliki()
-{
-
-}
-
-void Restauracja::zwolnij_kelnerow()
-{
-
-}
-
-void Restauracja::zwolnij_zamowienia()
-{
-
+  // ZAWSZE SPRAWDZAĆ CZY NIE JEST PUSTY
+  unique_ptr<Kelner> kelner;
+  wolni_kelnerzy[wolni_kelnerzy.size() - 1].swap(kelner);
+  wolni_kelnerzy.pop_back();
+  return kelner;
 }
 
 
-void Restauracja::stworz_zamowienie(unique_ptr<Klient> klient, unique_ptr<Stolik> stolik)
-{
-
-}
-
-void Restauracja::przydziel_klienta()
-{
-
-}
-
-void Restauracja::dodaj_zamowienie(unique_ptr<Klient> klient, Stolik& stolik)
-{
-
-
-}
-
-
-
-
-
-// void Restauracja::dodaj_zamowienie(ObslugaZamowienia zamowienie)
-// {
-//   zamowienia_aktualne.push_back(zamowienie);
-// }
 
 // void Restauracja::zamknij_zamowienie(ObslugaZamowienia zamowienie)
 // {
@@ -140,9 +179,6 @@ void Restauracja::dodaj_zamowienie(unique_ptr<Klient> klient, Stolik& stolik)
 //   zamowienia_zamkniete.push_back(zamowienie);
 // }
 
-// ObslugaZamowienia Restauracja::daj_zamowienie(int index)
-// {
-//   return zamowienia_aktualne[index];
 
 // }
 // vector <Stolik> Restauracja::daj_wolne_stoliki()
@@ -158,21 +194,8 @@ void Restauracja::dodaj_zamowienie(unique_ptr<Klient> klient, Stolik& stolik)
 //   return wolne_stoliki;
 // }
 
-// Kelner Restauracja::daj_kelnera(unsigned int index)
-// {
-//   return kelnerzy[index];
-// }
 
-// Danie* Restauracja::daj_potrawe(unsigned int numer)  // wszystko co ma rodzaje i ma podklasy ma wskaźniki
-// {
-//   return menu.daj_potrawe();
-// }
-
-// Menu Restauracja::daj_menu()
-// {
-//   return menu;
-// }
-// unsigned int Restauracja::daj_ilosc_aktualnych_zamowien()
-// {
-//   return zamowienia_aktualne.size();
-// }
+unsigned int Restauracja::daj_ilosc_aktualnych_zamowien()
+{
+  return zamowienia_aktualne.size();
+}

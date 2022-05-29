@@ -62,7 +62,7 @@ void ObslugaZamowienia::sprzatnij_ze_stolika()
 }
 
 
-void ObslugaZamowienia::zamow_potrawe(unique_ptr<Danie> nowa_potrawa, unsigned int ilosc_sztuk)
+void ObslugaZamowienia::zamow_potrawe(unique_ptr<Danie> nowa_potrawa)
 {
   // zamowione_potrawy[nowa_potrawa] = ilosc_sztuk;
   status = SZ::oczekiwanie_na_dania;
@@ -81,7 +81,7 @@ unsigned int ObslugaZamowienia::oblicz_kwote_do_zaplaty()
   return cala_kwota;
 }
 
-
+//  Poprawić . .. . .. . . . . . . . .. . . .. . . . .. . . . . . . . . . .. . . . .. .  .. . . ..
 std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
 {
   os
@@ -116,6 +116,19 @@ std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
       { cout << *danie << endl  ;}
       return os;
 
+
+    case SZ::przyniesienie_dan:
+      os << "Klienci:" << endl;
+      for (unique_ptr<Klient>& klient: zamowienie.klienci)
+      { os << *klient << endl; }
+      os << "Czekają na gotowe dania" << endl;
+      if (zamowienie.przydzielony_kelner())
+      {
+        os
+        << zamowienie.daj_nazwisko_kelnera() << " o numerze " << zamowienie.daj_numer_kelnera() << " niesie dania";
+      }
+      return os;
+
     case SZ::jedzenie:
       os << "Klienci:" << endl;
       for (unique_ptr<Klient>& klient: zamowienie.klienci)
@@ -145,21 +158,43 @@ std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
       return os;
 
     case SZ::sprzatanie_stolika:
-      os << "Klienci " << endl;
+      os << "Stolik jest sprzątany" << endl;
 
       return os;
   }
   return os;
 }
+// oczekiwanie_na_menu,   przydzielić kelnera   +++++++
+// zamawianie_dan,        utworzyć dania        +++++++
+// oczekiwanie_na_dania,  zwolnić kelnera       +++++++
+// przyniesienie_dan,     przypisać kelnera     +++++++
+// jedzenie,              zwolnić_kelnera       +++++++
+// czekanie_na_rachunek,  przypisać kelnera     +++++++
+// placenie,                                    +++++++
+// wyjscie_z_restauracji,                       +++++++
+// sprzatanie_stolika,                          +++++++
+// koniec                 zwolnić kelnera,      ///////
+//                        zwolnić stolik
+
 
 
 void ObslugaZamowienia::wyswietl_klientow(fstream& plik)
 {
-  for (unique_ptr<Klient>& klient: klienci)
-  { plik << *klient << endl; }
+  // for (unique_ptr<Klient>& klient: klienci)
+  // { plik << *klient << endl; }
 }
 
 string ObslugaZamowienia::daj_nazwisko_kelnera()
 {
   return (przypisany_kelner -> daj_imie());
 }
+
+
+bool ObslugaZamowienia::przydzielony_kelner()
+{ return przypisany_kelner != nullptr; }
+
+void ObslugaZamowienia::przydziel_kelnera(unique_ptr<Kelner> kelner)
+{
+  przypisany_kelner.swap(kelner);
+}
+
