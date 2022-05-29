@@ -46,23 +46,25 @@ public:
     unsigned int daj_numer_zamowienia();
     unsigned int daj_ilosc_osob_przy_stoliku();
     unsigned int daj_numer_stolika();
-    string daj_nazwisko_kelnera();
     unsigned int daj_numer_kelnera();
-
+    string daj_nazwisko_kelnera();
+    bool przydzielony_kelner();
+    void przydziel_kelnera(unique_ptr<Kelner> kelner);
+    Kwota oblicz_kwote_do_zaplaty();
     unique_ptr<Stolik> zwolnij_stolik();
     unique_ptr<Kelner> zwolnij_kelnera();
-    void przydziel_kelnera(unique_ptr<Kelner> kelner);
+
+
 
     void wyswietl_klientow(fstream& plik);
 
-    bool przydzielony_kelner();
+
 
     void zaplac();
     void sprzatnij_ze_stolika();
     void czekanie_na_zaplate();
     void zakoncz_wszystkie_posilki();
     void zamow_potrawe(unique_ptr<Danie> nowa_potrawa);
-    unsigned int oblicz_kwote_do_zaplaty();
 
     void uplyw_czasu();
 

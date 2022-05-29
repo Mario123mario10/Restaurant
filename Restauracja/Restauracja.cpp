@@ -14,7 +14,6 @@ Restauracja::Restauracja(string nazwa, string nazwa_pliku_wyjscia, unique_ptr<Me
   this -> nazwa = nazwa;
   this -> wyjscie = ObslugaWyjsciowa(nazwa_pliku_wyjscia);
   this -> menu.swap(menu);
-  przychod = 0;
 }
 
 void Restauracja::uplyw_czasu()

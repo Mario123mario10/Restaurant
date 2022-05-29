@@ -54,34 +54,35 @@ unique_ptr<Kelner> ObslugaZamowienia::zwolnij_kelnera()
   return wskaznik;
 }
 
-
-
-void ObslugaZamowienia::sprzatnij_ze_stolika()
+Kwota ObslugaZamowienia::oblicz_kwote_do_zaplaty()
 {
-  status = SZ::sprzatanie_stolika;
-}
-
-
-void ObslugaZamowienia::zamow_potrawe(unique_ptr<Danie> nowa_potrawa)
-{
-  // zamowione_potrawy[nowa_potrawa] = ilosc_sztuk;
-  status = SZ::oczekiwanie_na_dania;
-}
-
-
-unsigned int ObslugaZamowienia::oblicz_kwote_do_zaplaty()
-{
-  unsigned int cala_kwota = 0;
-
-  // for (auto& potrawa_i_ich_ilosc:zamowione_potrawy)
-  // {
-  //     cala_kwota += potrawa_i_ich_ilosc.second * potrawa_i_ich_ilosc.first -> podaj_cene();
-  // }
-
+  Kwota cala_kwota(0, 0);
+  for (unique_ptr<Danie>& potrawa: zamowione_dania)
+  {
+    cala_kwota += potrawa -> policz_cene();
+  }
   return cala_kwota;
 }
 
-//  Poprawić . .. . .. . . . . . . . .. . . .. . . . .. . . . . . . . . . .. . . . .. .  .. . . ..
+void ObslugaZamowienia::przydziel_kelnera(unique_ptr<Kelner> kelner)
+{
+  przypisany_kelner.swap(kelner);
+}
+
+bool ObslugaZamowienia::przydzielony_kelner()
+{ return przypisany_kelner != nullptr; }
+
+unsigned int ObslugaZamowienia::daj_numer_kelnera()
+{ return przypisany_kelner -> daj_id()  ;}
+
+unsigned int ObslugaZamowienia::daj_numer_stolika()
+{ return przypisany_stolik -> daj_numer()  ;}
+
+string ObslugaZamowienia::daj_nazwisko_kelnera()
+{
+  return (przypisany_kelner -> daj_imie());
+}
+
 std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
 {
   os
@@ -115,7 +116,6 @@ std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
       for ( const unique_ptr<Danie>& danie: zamowienie.zamowione_dania  )
       { cout << *danie << endl  ;}
       return os;
-
 
     case SZ::przyniesienie_dan:
       os << "Klienci:" << endl;
@@ -159,7 +159,6 @@ std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
 
     case SZ::sprzatanie_stolika:
       os << "Stolik jest sprzątany" << endl;
-
       return os;
   }
   return os;
@@ -184,17 +183,4 @@ void ObslugaZamowienia::wyswietl_klientow(fstream& plik)
   // { plik << *klient << endl; }
 }
 
-string ObslugaZamowienia::daj_nazwisko_kelnera()
-{
-  return (przypisany_kelner -> daj_imie());
-}
-
-
-bool ObslugaZamowienia::przydzielony_kelner()
-{ return przypisany_kelner != nullptr; }
-
-void ObslugaZamowienia::przydziel_kelnera(unique_ptr<Kelner> kelner)
-{
-  przypisany_kelner.swap(kelner);
-}
 

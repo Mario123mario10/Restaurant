@@ -18,7 +18,7 @@ class Restauracja
     vector <unique_ptr<Klient>> nieobslugiwani_klienci;
     string nazwa;
     unique_ptr<Menu> menu;
-    int przychod;
+    Kwota przychod;
     ObslugaWyjsciowa wyjscie;
 
 public:

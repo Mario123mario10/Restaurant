@@ -116,3 +116,12 @@ string Symulator::losuj_nazwisko()
 
 
 }
+
+
+
+unsigned int Symulator::losuj_liczbe()
+{
+  unsigned int nasiono = std::chrono::system_clock::now().time_since_epoch().count();
+  std::mt19937 generator(nasiono);
+  return generator();
+}
