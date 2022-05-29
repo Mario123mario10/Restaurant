@@ -184,3 +184,5 @@ void ObslugaZamowienia::wyswietl_klientow(fstream& plik)
 }
 
 
+void ObslugaZamowienia::zamow_potrawe(unique_ptr<Danie> nowa_potrawa)
+{ zamowione_dania.push_back(move(nowa_potrawa)) ;}

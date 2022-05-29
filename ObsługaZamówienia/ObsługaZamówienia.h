@@ -53,6 +53,7 @@ public:
     Kwota oblicz_kwote_do_zaplaty();
     unique_ptr<Stolik> zwolnij_stolik();
     unique_ptr<Kelner> zwolnij_kelnera();
+    void zamow_potrawe(unique_ptr<Danie> nowa_potrawa);
 
 
 
@@ -64,7 +65,6 @@ public:
     void sprzatnij_ze_stolika();
     void czekanie_na_zaplate();
     void zakoncz_wszystkie_posilki();
-    void zamow_potrawe(unique_ptr<Danie> nowa_potrawa);
 
     void uplyw_czasu();
 

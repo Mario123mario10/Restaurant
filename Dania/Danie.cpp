@@ -159,3 +159,6 @@ bool Danie::operator>= (Danie& inne_Danie)
 bool Danie::operator<= (Danie& inne_Danie)
 { return (*this < inne_Danie) or (*this == inne_Danie); }
 
+std::ostream&  operator<<(std::ostream& os, Danie& Danie)
+{	return os;	}
+

@@ -14,4 +14,6 @@ class DanieWegetarianskie: public DanieGlowne
     );
 
     void wyswietl() override;
+    friend std::ostream&  operator<<(std::ostream& os, DanieWegetarianskie& Danie);
+
 };

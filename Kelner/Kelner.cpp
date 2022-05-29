@@ -1,6 +1,5 @@
+#include <iostream>
 #include "Kelner.h"
-
-
 
 Kelner::Kelner()
 {}
@@ -26,3 +25,10 @@ bool Kelner::czy_zajety()
 {
     return zajety;
 }
+
+std::ostream& operator<<(std::ostream& os, Kelner& kelner)
+{
+    os << "Kelner o nazwisku " << kelner.daj_imie() << " i identyfikatorze " << kelner.daj_id();
+    return os;
+}
+

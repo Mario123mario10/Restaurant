@@ -12,4 +12,6 @@ class ZimnyNapoj: public Napoj
     );
 
     void wyswietl() override;
+    friend std::ostream&  operator<<(std::ostream& os, ZimnyNapoj& Danie);
+
 };

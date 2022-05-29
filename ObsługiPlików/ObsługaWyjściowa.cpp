@@ -32,38 +32,34 @@ void ObslugaWyjsciowa::ustaw_nazwe_pliku_wyjscia(string nowa_nazwa)
 
 ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Kelner& kelner)
 {
-  cout << kelner;
   fstream plik;
+  cout << kelner;
   plik.open(wyjscie.daj_nazwe_pliku_wyjscia(), ios::out | ios::app);
   if (plik.is_open())
   {
-
+    plik << kelner;
+    plik.close();
   }
   else
   { } // rzuć wyjątek
-
   plik.close();
-
   return wyjscie;
 }
 
 ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Stolik& stolik)
 {
-  cout << stolik;
-
   fstream plik;
+  cout << stolik;
   plik.open(wyjscie.daj_nazwe_pliku_wyjscia(), ios::out | ios::app);
   if (plik.is_open())
   {
-
+    plik << stolik;
+    plik.close();
   }
   else
   { } // rzuć wyjątek
-
   plik.close();
-
   return wyjscie;
-
 }
 
 ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, ObslugaZamowienia& zamowienie)
@@ -148,8 +144,7 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Kwota kwota)
   plik.open(wyjscie.daj_nazwe_pliku_wyjscia(), ios::out | ios::app);
   if (plik.is_open())
   {
-
-
+    plik << kwota;
     plik.close();
   }
   else
@@ -167,7 +162,7 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, string napis)
   plik.open(wyjscie.daj_nazwe_pliku_wyjscia(), ios::out | ios::app);
   if (plik.is_open())
   {
-
+    plik << napis;
     plik.close();
   }
   else
@@ -177,3 +172,20 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, string napis)
 
   return wyjscie;
 }
+
+
+ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Klient& kelner)
+{
+  fstream plik;
+  cout << kelner;
+  plik.open(wyjscie.daj_nazwe_pliku_wyjscia(), ios::out | ios::app);
+  if (plik.is_open())
+  {
+    plik << kelner;
+    plik.close();
+  }
+  else
+  { } // rzuć wyjątek
+  return wyjscie;
+}
+

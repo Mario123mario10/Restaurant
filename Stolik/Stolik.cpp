@@ -2,7 +2,7 @@
 
 #include "Stolik.h"
 
-
+using namespace std;
 
 Stolik::Stolik()
 {}
@@ -33,3 +33,8 @@ void Stolik::ustaw_status(bool czy_wolny)
     wolny = czy_wolny;
 }
 
+std::ostream& operator<<(std::ostream& os, Stolik& stolik)
+{
+    os << "Stolik o numerze " << stolik.daj_numer();
+    return os;
+}

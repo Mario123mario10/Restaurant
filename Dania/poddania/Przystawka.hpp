@@ -11,6 +11,7 @@ class Przystawka: public Danie
       string nazwa,
       Kwota koszt_przygotowania
     );
-
     void wyswietl() override;
+    friend std::ostream&  operator<<(std::ostream& os, Przystawka& Danie);
+
 };

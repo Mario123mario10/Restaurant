@@ -19,3 +19,18 @@ void Przystawka::wyswietl()
   << policz_priorytet()
   << endl;
 }
+
+
+std::ostream&  operator<<(std::ostream& os, Przystawka& Danie)
+{
+  os
+  << "Przystawka o nazwie: "
+  << Danie.daj_nazwe()
+  << " kosztuje: "
+  << (string) Danie.policz_cene()
+  << " i ma priorytet: "
+  << Danie.policz_priorytet();
+  return os;
+}
+
+

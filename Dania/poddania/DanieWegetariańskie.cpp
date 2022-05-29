@@ -5,7 +5,7 @@ using std::cout;	using std::cerr;	using std::endl;
 #include "DanieWegetariańskie.hpp"
 
 DanieWegetarianskie::DanieWegetarianskie(string nazwa, Kwota koszt_przygotowania):
-  DanieGlowne(nazwa, koszt_przygotowania, 4) {}
+  DanieGlowne(nazwa, koszt_przygotowania, 3) {}
 
 void DanieWegetarianskie::wyswietl()
 {
@@ -18,3 +18,16 @@ void DanieWegetarianskie::wyswietl()
   << policz_priorytet()
   << endl;
 }
+std::ostream&  operator<<(std::ostream& os, DanieWegetarianskie& Danie)
+{
+  os
+  << "Danie wegetariańskie o nazwie: "
+  << Danie.daj_nazwe()
+  << " kosztuje: "
+  << (string) Danie.policz_cene()
+  << " i ma priorytet: "
+  << Danie.policz_priorytet()
+  << endl;
+
+}
+

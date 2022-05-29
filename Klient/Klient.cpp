@@ -1,3 +1,4 @@
+#include <istream>
 #include <string>
 using std::string;
 
@@ -20,3 +21,9 @@ string Klient::daj_imie()
 
 unsigned int Klient::daj_identyfikator()
 { return identyfikator ;}
+
+std::ostream& operator<<(std::ostream& os, Klient& klient)
+{
+  os << "Klient o nazwisku " << klient.daj_imie() << " i identyfikatorze " << klient.daj_identyfikator();
+  return os;
+}
