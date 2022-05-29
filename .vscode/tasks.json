@@ -9,16 +9,19 @@
 				"-fdiagnostics-color=always",
 				"-g",
 				"${fileDirname}/**.cpp",
-				"${fileDirname}/ObsługiPlików/**.cpp",
 				"${fileDirname}/Dania/**.cpp",
 				"${fileDirname}/Dania/poddania/**.cpp",
-				"${fileDirname}/Restauracja/**.cpp",
 				"${fileDirname}/Kelner/**.cpp",
 				"${fileDirname}/Klient/**.cpp",
+				"${fileDirname}/Kwota/**.cpp",
+				"${fileDirname}/Menu/**.cpp",
 				"${fileDirname}/ObsługaZamówienia/**.cpp",
+				"${fileDirname}/ObsługiPlików/**.cpp",
+				"${fileDirname}/Restauracja/**.cpp",
+				"${fileDirname}/Stolik/**.cpp",
+
 				// "${fileDirname}/Testowanie/**.cpp",
-				"${fileDirname}/test.cpp",
-				// "${fileDirname}/Kwota.cpp",
+				// "${fileDirname}/test.cpp",
 
 				"-o",
 				"${fileDirname}/${fileBasenameNoExtension}"

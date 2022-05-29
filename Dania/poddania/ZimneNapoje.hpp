@@ -3,6 +3,7 @@
 
 class ZimnyNapoj: public Napoj
 {
+  static unsigned int licznik_dan;
   public:
     ZimnyNapoj
     (

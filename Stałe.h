@@ -1,7 +1,7 @@
-
 #include <regex>
 using std::regex;
 
+#include "Stolik/Stolik.h"
 
 // Linie pliku konfiguracyjnego
 const regex L_NAZWA_PLIKU_WYJSCIA ;
@@ -24,3 +24,5 @@ const regex L_M_DANIE_WEGE        ;
 const regex L_M_DESER             ;
 const regex L_M_NAPOJ_CIEPLY      ;
 const regex L_M_NAPOJ_ZIMNY       ;
+
+

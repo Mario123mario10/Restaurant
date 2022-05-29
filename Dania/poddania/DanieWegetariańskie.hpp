@@ -4,6 +4,8 @@
 
 class DanieWegetarianskie: public DanieGlowne
 {
+  static unsigned int licznik_dan;
+
   public:
     DanieWegetarianskie
     (

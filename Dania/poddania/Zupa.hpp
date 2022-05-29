@@ -3,6 +3,7 @@
 
 class Zupa: public DanieGlowne
 {
+  static unsigned int licznik_dan;
   public:
     Zupa
     (
