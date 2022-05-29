@@ -24,6 +24,7 @@ class Danie
     unsigned int        postep_przygotowania ;
     unsigned int        identyfikator        ;
     bool                przygotowane         ;
+    static unsigned int licznik_dan          ;
 
   public:
     Danie
@@ -36,12 +37,18 @@ class Danie
     virtual ~Danie();
     virtual bool operator== (Danie& inne_Danie);
     virtual bool operator!= (Danie& inne_Danie);
+    virtual bool operator< (Danie& inne_Danie);
+    virtual bool operator> (Danie& inne_Danie);
+    virtual bool operator>= (Danie& inne_Danie);
+    virtual bool operator<= (Danie& inne_Danie);
+
 
     KategoriaPotrawy    daj_kategorie();
     Kwota               daj_koszt_przygotowania();
     unsigned int        daj_czas_przygotowania();
     unsigned int        daj_czas_oczekiwania();
     unsigned int        daj_postep_przygotowania();
+    unsigned int        daj_identyfikator();
     string              daj_nazwe();
     bool                czy_przygotowane();
 
@@ -59,8 +66,3 @@ class Danie
     virtual void          wyswietl();
     friend std::ostream&  operator<<(std::ostream& os, Danie& Danie);
 };
-
-
-
-
-

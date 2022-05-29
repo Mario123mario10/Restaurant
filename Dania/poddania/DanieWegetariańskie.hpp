@@ -4,6 +4,8 @@
 
 class DanieWegetarianskie: public DanieGlowne
 {
+  static unsigned int licznik_dan;
+
   public:
     DanieWegetarianskie
     (
@@ -12,4 +14,6 @@ class DanieWegetarianskie: public DanieGlowne
     );
 
     void wyswietl() override;
+    friend std::ostream&  operator<<(std::ostream& os, DanieWegetarianskie& Danie);
+
 };

@@ -3,6 +3,7 @@
 
 class ZimnyNapoj: public Napoj
 {
+  static unsigned int licznik_dan;
   public:
     ZimnyNapoj
     (
@@ -11,4 +12,6 @@ class ZimnyNapoj: public Napoj
     );
 
     void wyswietl() override;
+    friend std::ostream&  operator<<(std::ostream& os, ZimnyNapoj& Danie);
+
 };

@@ -11,8 +11,17 @@ using std::make_unique;
 #include <algorithm>
 
 using std::move;
-#include "Menu.hpp"
+#include "../Restauracja/Symulator.h"
 #include "../Błędy.h"
+#include "../Dania/poddania/DanieMięsne.hpp"
+#include "../Dania/poddania/DanieWegetariańskie.hpp"
+#include "../Dania/poddania/Zupa.hpp"
+#include "../Dania/poddania/CiepłeNapoje.hpp"
+#include "../Dania/poddania/ZimneNapoje.hpp"
+#include "../Dania/poddania/Deser.hpp"
+#include "../Dania/poddania/Przystawka.hpp"
+
+#include "Menu.hpp"
 using KP = KategoriaPotrawy;
 
 Menu::Menu()
@@ -34,7 +43,6 @@ void Menu::policz_ceny()
 
 vector<string> Menu::daj_ceny()
 { return policzone_ceny         ;}
-
 
 void Menu::dodaj_danie(unique_ptr<Danie> nowe_danie)
 {
@@ -93,3 +101,94 @@ void Menu::przekaz_dania(unique_ptr<Menu> inne_menu)
   }
 }
 
+unique_ptr<Danie> Menu::wybierz_przystawke()
+{
+  unique_ptr<Danie> danie;
+  while (danie == nullptr)
+  {
+    unsigned int index = Symulator::losuj_liczbe() % utworzone_dania.size();
+    if (utworzone_dania[index] -> daj_kategorie() == KP::PRZYSTAWKA)
+    {
+      string nazwa = utworzone_dania[index] -> daj_nazwe();
+      Kwota koszt = utworzone_dania[index] -> daj_koszt_przygotowania();
+      unsigned int czas_przygotowania = utworzone_dania[index] -> daj_czas_przygotowania();
+      danie = make_unique<Przystawka>(nazwa, koszt);
+    }
+  }
+  return danie;
+}
+
+unique_ptr<Danie> Menu::wybierz_danie_glowne()
+{
+  unique_ptr<Danie> danie;
+  while (danie == nullptr)
+  {
+    unsigned int index = Symulator::losuj_liczbe() % utworzone_dania.size();
+    if (utworzone_dania[index] -> daj_kategorie() == KP::DANIE_GLOWNE)
+    {
+      string nazwa = utworzone_dania[index] -> daj_nazwe();
+      Kwota koszt = utworzone_dania[index] -> daj_koszt_przygotowania();
+      unsigned int czas_przygotowania = utworzone_dania[index] -> daj_czas_przygotowania();
+
+      switch (czas_przygotowania)
+      {
+      case 3:
+        danie = make_unique<DanieWegetarianskie>(nazwa, koszt);
+        break;
+      case 4:
+        danie = make_unique<Zupa>(nazwa, koszt);
+        break;
+      case 8:
+        danie = make_unique<DanieMiesne>(nazwa, koszt);
+        break;
+      default:
+        break;
+      }
+    }
+  }
+  return danie;
+}
+
+unique_ptr<Danie> Menu::wybierz_deser()
+{
+  unique_ptr<Danie> danie;
+  while (danie == nullptr)
+  {
+    unsigned int index = Symulator::losuj_liczbe() % utworzone_dania.size();
+    if (utworzone_dania[index] -> daj_kategorie() == KP::DESER)
+    {
+      string nazwa = utworzone_dania[index] -> daj_nazwe();
+      Kwota koszt = utworzone_dania[index] -> daj_koszt_przygotowania();
+      danie = make_unique<Deser>(nazwa, koszt);
+    }
+  }
+  return danie;
+}
+
+unique_ptr<Danie> Menu::wybierz_napoj()
+{
+  unique_ptr<Danie> danie;
+  while (danie == nullptr)
+  {
+    unsigned int index = Symulator::losuj_liczbe() % utworzone_dania.size();
+    if (utworzone_dania[index] -> daj_kategorie() == KP::NAPOJ)
+    {
+      string nazwa = utworzone_dania[index] -> daj_nazwe();
+      Kwota koszt = utworzone_dania[index] -> daj_koszt_przygotowania();
+      unsigned int czas_przygotowania = utworzone_dania[index] -> daj_czas_przygotowania();
+
+      switch (czas_przygotowania)
+      {
+      case 1:
+        danie = make_unique<ZimnyNapoj>(nazwa, koszt);
+        break;
+      case 2:
+        danie = make_unique<CieplyNapoj>(nazwa, koszt);
+        break;
+      default:
+        break;
+      }
+    }
+  }
+  return danie;
+}

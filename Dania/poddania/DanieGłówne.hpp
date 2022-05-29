@@ -4,6 +4,7 @@
 
 class DanieGlowne: public Danie
 {
+  static unsigned int licznik_dan;
   public:
     DanieGlowne
     (

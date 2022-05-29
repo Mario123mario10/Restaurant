@@ -3,6 +3,7 @@
 
 class Zupa: public DanieGlowne
 {
+  static unsigned int licznik_dan;
   public:
     Zupa
     (
@@ -10,4 +11,6 @@ class Zupa: public DanieGlowne
       Kwota koszt_przygotowania
     );
     void wyswietl() override;
+    friend std::ostream&  operator<<(std::ostream& os, Zupa& Danie);
+
 };

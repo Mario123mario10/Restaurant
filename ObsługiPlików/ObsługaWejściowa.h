@@ -8,7 +8,6 @@ using std::cout;	using std::cerr;	using std::endl;
 #include <string>
 using std::string;
 
-#include "../Restauracja/RestauracjaSzkic.h"
 #include "../Menu/Menu.hpp"
 
 class ObslugaWejsciowa
@@ -28,7 +27,6 @@ class ObslugaWejsciowa
     unsigned int duze;
     unsigned int czas_trwania_symulacji;
     unsigned int liczba_kelnerow;
-    unsigned int liczba_kucharzy;
 
   public:
     Menu menu;
@@ -44,7 +42,6 @@ class ObslugaWejsciowa
     unsigned int daj_srednie_stoliki();
     unsigned int daj_duze_stoliki();
     unsigned int daj_czas_symulacji();
-    unsigned int daj_liczbe_kucharzy();
     unsigned int daj_liczbe_kelnerow();
 
     void pobierz_konfiguracje();

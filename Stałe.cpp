@@ -20,7 +20,6 @@ const regex L_L_MALYCH_STOLIKOW   ("[ \\t]*stoliki[ \\t]*małe[ \\t]*(\\d+)[ \\t
 const regex L_L_SREDNICH_STOLIKOW ("[ \\t]*stoliki[ \\t]*średnie[ \\t]*(\\d+)[ \\t]*");
 const regex L_L_DUZYCH_STOLIKOW   ("[ \\t]*stoliki[ \\t]*duże[ \\t]*(\\d+)[ \\t]*");
 const regex L_L_KELNEROW          ("[ \\t]*liczba[ \\t]*kelnerów:[ \\t]*(\\d+)[ \\t]*");
-const regex L_L_KUCHARZY          ("[ \\t]*liczba[ \\t]*kucharzy:[ \\t]*(\\d+)[ \\t]*");
 // Linie menu
 const regex L_M_PRZYSTAWKA        ("[ \\t]*P[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*zł[ \\t]*(\\d+)[ \\t]*gr[ \\t]*");
 const regex L_M_ZUPA              ("[ \\t]*Z[ \\t]*(.+)[ \\t]*(\\d+)[ \\t]*zł[ \\t]*(\\d+)[ \\t]*gr[ \\t]*");

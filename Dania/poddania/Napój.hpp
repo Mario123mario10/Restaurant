@@ -3,6 +3,7 @@
 
 class Napoj: public Danie
 {
+  static unsigned int licznik_dan;
   public:
     Napoj
     (
