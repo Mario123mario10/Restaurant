@@ -28,12 +28,11 @@ string Potrawa::podaj_nazwe()
 
 
 
-Zupa::Zupa(string nazwa)
-{
-    this -> nazwa = nazwa;
-}
+Zupa::Zupa()
+{}
 
-
+Zupa::Zupa(unsigned int cena_potrawy, string nazwa_potrawy): Potrawa(cena_potrawy, nazwa_potrawy)
+{}
 
 
 Kelner::Kelner()

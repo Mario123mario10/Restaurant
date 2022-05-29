@@ -5,6 +5,7 @@ class Symulacja_restauracji
 {
     Restauracja restauracja;
 
+public:
     Symulacja_restauracji(Restauracja restauracja);
 
     void startuj();

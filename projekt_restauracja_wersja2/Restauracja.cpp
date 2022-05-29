@@ -1,13 +1,13 @@
-#include "Obsluga_zamowienia.cpp"
-#include "Obsluga_wejsciowa.h"
+#include "Obsluga_zamowienia.h"
+//#include "Obsluga_wejsciowa.h"
 #include <vector>
 #include "Restauracja.h"
 
 Restauracja::Restauracja()
 {
     // Konfiguracja konf;
-    ObslugaWejsciowa obsluga("konfiguracja.txt");
-    menu = obsluga.pobierz_menu();
+    //ObslugaWejsciowa obsluga("konfiguracja.txt");
+    //menu = obsluga.pobierz_menu();
 
 
 }
@@ -19,9 +19,17 @@ void Restauracja::dodaj_zamowienie(Obsluga_zamowienia zamowienie)
 
 void Restauracja::zamknij_zamowienie(Obsluga_zamowienia zamowienie)
 {
+    vector<Obsluga_zamowienia>::iterator znaleziony_iterator;
 
+    for (vector<Obsluga_zamowienia>::iterator it = zamowienia_aktualne.begin(); it != zamowienia_aktualne.end(); ++it)
+    {
+        if ((*it).daj_numer_zamowienia() == zamowienie.daj_numer_zamowienia())
+        {
+            znaleziony_iterator = it;
+        }
 
-    zamowienia_aktualne.erase(zamowienia_aktualne.index(zamowienie));
+    }
+    zamowienia_aktualne.erase(znaleziony_iterator);
     zamowienia_zamkniete.push_back(zamowienie);
 }
 

@@ -5,7 +5,7 @@
 int main()
 {
     Restauracja r1;
-    Symulacja_restauracji s1;
+    Symulacja_restauracji s1(r1);
     s1.startuj();
 }
 

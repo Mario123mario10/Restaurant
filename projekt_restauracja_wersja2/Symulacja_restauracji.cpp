@@ -1,5 +1,5 @@
 #include "Restauracja.h"
-#include "Losowanie.h"
+#include "Symulacja_restauracji.h"
 #include "Inne_klasy.h"
 #include "Akcja.h"
 #include "Akcje_dla_zamowienia.h"
@@ -35,8 +35,8 @@ void Symulacja_restauracji::wywolaj_funkcje_inicjacyjna()
 {
     int losowa_ilosc_osob = rand() % 5;
     vector <Stolik> wektor_stolikow = restauracja.daj_wolne_stoliki();
-    Akcja_inicjacyjna akcja(wektor_stolikow[0], losowa_ilosc_osob, restauracja);
-    akcja.wykonaj_akcje();
+    Akcja_inicjacyjna* akcja = new Akcja_inicjacyjna(wektor_stolikow[0], losowa_ilosc_osob, restauracja);
+    akcja -> wykonaj_akcje();
 
 }
 
@@ -47,10 +47,10 @@ void Symulacja_restauracji::wywolaj_funkcje_kontynuacyjna()
 
     Obsluga_zamowienia wylosowane_zamowienie = restauracja.daj_zamowienie(losowa_indeks_zamowienia);
     Akcje_dla_zamowienia akcje(wylosowane_zamowienie);
-    vector <Akcja> dostepne_akcje = akcje.pokaz_dostepne_akcje();
+    vector <Akcja*> dostepne_akcje = akcje.pokaz_dostepne_akcje();
     unsigned int indeks_losowej_akcji = rand() % dostepne_akcje.size();
     auto wylosowana_akcja = dostepne_akcje[indeks_losowej_akcji];   // nie można utworzyć klasy Akcja, bo jest to klasa abstrakcyjna
-    wylosowana_akcja.wykonaj_akcje();
+    wylosowana_akcja -> wykonaj_akcje();
 
 
 

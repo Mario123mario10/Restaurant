@@ -23,30 +23,31 @@ public:
 
 class Zupa: public Potrawa
 {
-    string nazwa;
 public:
-    Zupa(string nazwa);
-};
-
-class Deser: public Potrawa
-{
+    Zupa();
+    Zupa(unsigned int cena_potrawy, string nazwa_potrawy);
 
 };
 
-class Napoj: public Potrawa
-{
+// class Deser: public Potrawa
+// {
 
-};
+// };
 
-class Drugie_danie: public Potrawa
-{
+// class Napoj: public Potrawa
+// {
 
-};
+// };
 
-class Przystawka: public Potrawa
-{
+// class Drugie_danie: public Potrawa
+// {
 
-};
+// };
+
+// class Przystawka: public Potrawa
+// {
+
+// };
 
 
 enum Status_zamowienia
@@ -58,6 +59,7 @@ enum Status_zamowienia
     czekanie_na_rachunek,
     czekanie_kelnera_na_zaplate,
     zaplacone,
+    //placenie,
     wyjscie_z_restauracji,
     stol_posprzatany
 };

@@ -80,8 +80,9 @@ void Obsluga_zamowienia::zakoncz_wszystkie_posilki()
 
 void Obsluga_zamowienia::zamow_potrawe(unique_ptr<Potrawa> nowa_potrawa, unsigned int ilosc_sztuk)
 {
-    zamowione_potrawy[nowa_potrawa] = ilosc_sztuk;
+    //zamowione_potrawy[nowa_potrawa] = ilosc_sztuk;
     status = oczekiwanie_na_dania;
+    zamowione_potrawy.push_back(nowa_potrawa);
 }
 
 void Obsluga_zamowienia::podaj_dania_do_stolika()
@@ -93,10 +94,17 @@ unsigned int Obsluga_zamowienia::oblicz_kwote_do_zaplaty()
 {
     unsigned int cala_kwota = 0;
 
-    for (map<unique_ptr<Potrawa>, unsigned int>::iterator i= zamowione_potrawy.begin(); i!= zamowione_potrawy.end(); i++)
+    // for (map<unique_ptr<Potrawa>, unsigned int>::iterator i= zamowione_potrawy.begin(); i!= zamowione_potrawy.end(); i++)
+    // {
+    //     cala_kwota += (*i).second * (*i).first -> podaj_cene();
+    // }
+
+    for (vector<unique_ptr<Potrawa>>::iterator it = zamowione_potrawy.begin(); it != zamowione_potrawy.end(); ++it)
     {
-        cala_kwota += (*i).second * (*i).first -> podaj_cene();
+        cala_kwota += (*it) -> podaj_cene();
     }
+
+
 
     // for( map<int, float>::iterator i= Students.begin(); i != Students.end(); i++)
 

@@ -7,15 +7,16 @@
 #include <iostream>
 using namespace std;
 #include <memory>
-using std::unique_ptr;
+// using std::unique_ptr;
 
 #include "Inne_klasy.h"
 
 class Obsluga_zamowienia //zamowienie rozpoczyna sie juz po usiedzeniu przy stoliku
 {
+    //vector<unique_ptr<Klient>> klienci;
     unsigned int numer_zamowienia;
-    static unsigned int wolny_numer;
-    map <unique_ptr<Potrawa>, unsigned int> zamowione_potrawy; // zamowione potrawy i ich ilosc
+    static unsigned int wolny_numer; // potrzebne zeby ustalic numer zamowienia
+    vector<unique_ptr<Potrawa>> zamowione_potrawy; // zamowione potrawy i ich ilosc
     unsigned int ilosc_osob_przy_stoliku;
     Stolik stolik;
     Status_zamowienia status;

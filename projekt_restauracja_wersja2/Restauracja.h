@@ -1,7 +1,8 @@
 #pragma once
 #include "Obsluga_zamowienia.h"
-#include "Obsluga_wejsciowa.h"
+//#include "Obsluga_wejsciowa.h"
 #include <vector>
+#include "Menu.h"
 
 class Restauracja
 {
