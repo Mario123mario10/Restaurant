@@ -31,14 +31,36 @@ Symulator::Symulator
   unique_ptr<Menu> menu
 )
 {
-  restauracja = Restauracja(nazwa_restauracji, nazwa_pliku_wyjscia);
+  restauracja = Restauracja(nazwa_restauracji, nazwa_pliku_wyjscia, move(menu));
   this -> czas_trwania_symulacji = czas_trwania_symulacji;
-  this -> liczba_kelnerow = liczba_kelnerow;
+
+  for (int licznik = 1; licznik <= liczba_kelnerow; licznik++)
+  { losuj_kelnera() ;}
+
+  for (int licznik = 1; licznik <= male; licznik++)
+  {
+    unique_ptr<Stolik> stoliczek= make_unique<Stolik>(rozmiar_maly);
+    restauracja.dodaj_stolik(move(stoliczek));
+  }
+
+  for (int licznik = 1; licznik <= srednie; licznik++)
+  {
+    unique_ptr<Stolik> stoliczek= make_unique<Stolik>(rozmiar_sredni);
+    restauracja.dodaj_stolik(move(stoliczek));
+  }
+
+  for (int licznik = 1; licznik <= duze; licznik++)
+  {
+    unique_ptr<Stolik> stoliczek= make_unique<Stolik>(rozmiar_duzy);
+    restauracja.dodaj_stolik(move(stoliczek));
+  }
+
+  rozpocznij_symulacje();
+
 }
 
 void Symulator::rozpocznij_symulacje()
 {
-  inicjuj_restauracje();
   for (int licznik = 0; licznik < czas_trwania_symulacji; licznik++)
   {
     if (losuj_liczbe() % 5 == 0)
@@ -47,18 +69,11 @@ void Symulator::rozpocznij_symulacje()
   }
 }
 
-void Symulator::inicjuj_restauracje()
-{
 
-  for (int licznik = 1; licznik <= liczba_kelnerow; licznik++)
-  { losuj_kelnera(licznik) ;}
-
-
-}
 
 void Symulator::losuj_klientow()
 {
-  unsigned int nowi_klienci = losuj_liczbe() % 5;
+  unsigned int nowi_klienci = losuj_liczbe() % 4;
   while (nowi_klienci != 0)
   {
     losuj_klienta();
@@ -66,9 +81,9 @@ void Symulator::losuj_klientow()
   }
 }
 
-void Symulator::losuj_kelnera(unsigned int identyfikator)
+void Symulator::losuj_kelnera()
 {
-  unique_ptr<Kelner> nowy_kelner = make_unique<Kelner>(losuj_nazwisko(), identyfikator);
+  unique_ptr<Kelner> nowy_kelner = make_unique<Kelner>(losuj_nazwisko());
   restauracja.dodaj_kelnera(move(nowy_kelner));
 }
 

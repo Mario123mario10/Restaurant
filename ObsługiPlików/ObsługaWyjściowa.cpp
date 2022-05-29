@@ -79,92 +79,69 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, ObslugaZamowienia& zamow
     << " i stole nr " << zamowienie.daj_numer_stolika()
     << ":" << endl;
 
-//   switch(zamowienie.daj_status())
-//   {
-//     case SZ::oczekiwanie_na_menu:
-//       os << "Klienci:" << endl;
-//       for (unique_ptr<Klient>& klient: zamowienie.klienci)
-//       { os << *klient << endl; }
-//       os << "czekają na menu";
-//       return os;
+  switch(zamowienie.daj_status())
+  {
+    case SZ::oczekiwanie_na_menu:
+      plik << "Klienci:" << endl;
+      zamowienie.wyswietl_klientow(plik);
+      plik << "czekają na menu";
+      break;
+    case SZ::zamawianie_dan:
+      plik << "Klienci:" << endl;
+      zamowienie.wyswietl_klientow(plik);
+      plik << "zamawiają dania";
+      break;
 
-//     case SZ::zamawianie_dan:
-//       os << "Klienci:" << endl;
-//       for (unique_ptr<Klient>& klient: zamowienie.klienci)
-//       { os << *klient << endl; }
-//       os << "zamawiają dania";
-//       return os;
+    case SZ::oczekiwanie_na_dania:
+      plik << "Klienci:" << endl;
+      zamowienie.wyswietl_klientow(plik);
+      plik
+      << "Oczekują na dania" << endl
+      << "Postęp w przygotowaniu dań:" << endl;
+      for ( const unique_ptr<Danie>& danie: zamowienie.zamowione_dania  )
+      { plik << *danie << endl  ;}
+      break;
 
-//     case SZ::oczekiwanie_na_dania:
-//       os << "Klienci:" << endl;
-//       for (unique_ptr<Klient>& klient: zamowienie.klienci)
-//       { os << *klient << endl; }
-//       os
-//       << "Oczekują na dania" << endl
-//       << "Postęp w przygotowaniu dań:" << endl;
-//       for ( const unique_ptr<Danie>& danie: zamowienie.zamowione_dania  )
-//       { cout << *danie << endl  ;}
-//       return os;
+    case SZ::jedzenie:
+      plik << "Klienci:" << endl;
+      zamowienie.wyswietl_klientow(plik);
+      plik << "Spożywają posiłek";
+      break;
 
-//     case SZ::jedzenie:
-//       os << "Klienci:" << endl;
-//       for (unique_ptr<Klient>& klient: zamowienie.klienci)
-//       { os << *klient << endl; }
-//       os << "Spożywają posiłek";
-//       return os;
+    case SZ::czekanie_na_rachunek:
+      plik << "Klienci:" << endl;
+      zamowienie.wyswietl_klientow(plik);
+      plik << "Czekają na rachunek";
+      break;
 
-//     case SZ::czekanie_na_rachunek:
-//       os << "Klienci:" << endl;
-//       for (unique_ptr<Klient>& klient: zamowienie.klienci)
-//       { os << *klient << endl; }
-//       os << "Czekają na rachunek";
-//       return os;
+    // case SZ::czekanie_kelnera_na_zaplate:
 
-//     // case SZ::czekanie_kelnera_na_zaplate:
+    //   break;
 
-//     //   return os;
+    case SZ::placenie:
+      plik << "Klienci:" << endl;
+      zamowienie.wyswietl_klientow(plik);
+      plik << "Płacą za jedzenie: " << zamowienie.oblicz_kwote_do_zaplaty();
+      break;
 
-//     case SZ::placenie:
-//       os << "Klienci:" << endl;
-//       for (unique_ptr<Klient>& klient: zamowienie.klienci)
-//       { os << *klient << endl; }
-//       os << "Płacą za jedzenie: " << zamowienie.oblicz_kwote_do_zaplaty();
-//       return os;
+    case SZ::wyjscie_z_restauracji:
+      plik << "Klienci:" << endl;
+      zamowienie.wyswietl_klientow(plik);
+      plik << "Wychodzą z restauracji";
+      break;
 
-//     case SZ::wyjscie_z_restauracji:
-//       os << "Klienci:" << endl;
-//       for (unique_ptr<Klient>& klient: zamowienie.klienci)
-//       { os << *klient << endl; }
-//       os << "Wychodzą z restauracji";
-//       return os;
-
-//     case SZ::sprzatanie_stolika:
-//       os << "Klienci " << endl;
-
-//       return os;
-//   }
-//   return os;
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
+    case SZ::sprzatanie_stolika:
+      plik << zamowienie.daj_nazwisko_kelnera() << " sprząta stolik nr " << zamowienie.daj_numer_stolika();
+      break;
+  }
     plik.close();
+    return wyjscie;
+
   }
   else
-  { } // rzuć wyjątek
-
-  plik.close();
-  return wyjscie;
+  {
+    throw ;
+  } // rzuć wyjątek
 
 }
 

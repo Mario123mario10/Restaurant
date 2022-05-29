@@ -10,7 +10,7 @@ Restauracja::Restauracja()
 {}
 
 
-Restauracja::Restauracja(string nazwa, string nazwa_pliku_wyjscia)
+Restauracja::Restauracja(string nazwa, string nazwa_pliku_wyjscia, unique_ptr<Menu> menu)
 {
   this -> nazwa = nazwa;
   this -> wyjscie = ObslugaWyjsciowa(nazwa_pliku_wyjscia);
@@ -18,16 +18,17 @@ Restauracja::Restauracja(string nazwa, string nazwa_pliku_wyjscia)
 
 
 
-// void Restauracja::uplyw_czasu()
-// {
+void Restauracja::uplyw_czasu()
+{
 
-// }
+
+}
 
 void Restauracja::pokaz_status_kelnerow()
 {
   for (unique_ptr<Kelner>& kelner: kelnerzy)
   {
-    if (not kelner -> czy_zajety())
+    if (kelner -> czy_zajety())
     {
       wyjscie << *kelner;
       wyjscie << "\n";

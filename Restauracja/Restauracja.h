@@ -17,13 +17,13 @@ class Restauracja
     vector <unique_ptr<Stolik>> stoliki;
     vector <unique_ptr<Klient>> nieobslugiwani_klienci;
     string nazwa;
-    Menu menu;
-    int dochod;
+    unique_ptr<Menu> menu;
+    int przychod;
     ObslugaWyjsciowa wyjscie;
 
 public:
     Restauracja();
-    Restauracja(string nazwa, string nazwa_pliku_wyjscia);
+    Restauracja(string nazwa, string nazwa_pliku_wyjscia, unique_ptr<Menu> menu);
     void uplyw_czasu();
 
     void pokaz_status_kelnerow();

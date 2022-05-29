@@ -100,14 +100,16 @@ public:
     vector<unique_ptr<Danie>> zamowione_dania;
     ObslugaZamowienia();
     ObslugaZamowienia(unique_ptr<Stolik> stolik, unique_ptr<Klient> klient);
+    StatusZamowienia daj_status();
     unsigned int daj_numer_zamowienia();
     unsigned int daj_ilosc_osob_przy_stoliku();
-    StatusZamowienia daj_status();
+    unsigned int daj_numer_stolika();
+    string daj_nazwisko_kelnera();
 
     unique_ptr<Stolik> zwolnij_stolik();
     unique_ptr<Kelner> zwolnij_kelnera();
 
-    unsigned int daj_numer_stolika();
+    void wyswietl_klientow(fstream& plik);
 
     bool jest_kelner();
 

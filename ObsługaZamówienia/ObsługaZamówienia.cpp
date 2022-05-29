@@ -130,10 +130,6 @@ std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
       os << "Czekają na rachunek";
       return os;
 
-    // case SZ::czekanie_kelnera_na_zaplate:
-
-    //   return os;
-
     case SZ::placenie:
       os << "Klienci:" << endl;
       for (unique_ptr<Klient>& klient: zamowienie.klienci)
@@ -154,4 +150,16 @@ std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
       return os;
   }
   return os;
+}
+
+
+void ObslugaZamowienia::wyswietl_klientow(fstream& plik)
+{
+  for (unique_ptr<Klient>& klient: klienci)
+  { plik << *klient << endl; }
+}
+
+string ObslugaZamowienia::daj_nazwisko_kelnera()
+{
+  return (przypisany_kelner -> daj_imie());
 }

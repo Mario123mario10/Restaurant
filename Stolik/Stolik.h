@@ -1,19 +1,11 @@
 #pragma once
 
-enum class WielkoscStolika
-{
-    maly,
-    duzy,
-    sredni
-};
-
 
 class Stolik
 {
     unsigned int numer;
     unsigned int ilosc_miejsc;
     bool wolny;
-    WielkoscStolika wielkosc_stolika;
     unsigned int licznik_stolikow;
 
 public:

@@ -11,7 +11,7 @@ class Symulator
     Restauracja restauracja;
     unique_ptr<Menu> menu;
     unsigned int czas_trwania_symulacji;
-    unsigned int liczba_kelnerow;
+
   public:
     Symulator
     (
@@ -28,9 +28,7 @@ class Symulator
       unique_ptr<Menu> menu
     );
     void rozpocznij_symulacje();
-    void inicjuj_restauracje();
-    void losuj_kelnera(unsigned int identyfikator);
-    void losuj_kucharza(unsigned int identyfikator);
+    void losuj_kelnera();
     void losuj_klientow();
     void losuj_klienta();
     string losuj_nazwisko();
