@@ -27,5 +27,6 @@ std::ostream&  operator<<(std::ostream& os, ZimnyNapoj& Danie)
   << (string) Danie.policz_cene()
   << " i ma priorytet: "
   << Danie.policz_priorytet();
+  return os;
 }
 

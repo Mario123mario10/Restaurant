@@ -28,6 +28,6 @@ std::ostream&  operator<<(std::ostream& os, DanieWegetarianskie& Danie)
   << " i ma priorytet: "
   << Danie.policz_priorytet()
   << endl;
-
+  return os;
 }
 
