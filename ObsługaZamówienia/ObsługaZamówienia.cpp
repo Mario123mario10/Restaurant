@@ -2,6 +2,7 @@
 #include <vector>
 #include <map>
 #include <iostream>
+#include <fstream>
 
 #include "ObsługaZamówienia.h"
 #include "../Dania/Danie.hpp"
@@ -17,10 +18,13 @@ ObslugaZamowienia::ObslugaZamowienia()
 
 ObslugaZamowienia::ObslugaZamowienia(unique_ptr<Stolik> stolik, unique_ptr<Klient> klient)
 {
-
-  this -> status = SZ::oczekiwanie_na_menu;
-  this -> przypisany_stolik.swap(stolik);
-  this -> klienci.push_back(move(klient));
+  obsluzeni_klienci = 0;
+  czas_jedzenia = 0;
+  czas_sprzatania = 0;
+  czekajacy = klient -> czy_dosiada_sie();
+  status = SZ::oczekiwanie_na_menu;
+  przypisany_stolik.swap(stolik);
+  klienci.push_back(move(klient));
   numer_zamowienia = licznik_zamowien + 1;
   licznik_zamowien++;
 }
@@ -70,13 +74,19 @@ void ObslugaZamowienia::przydziel_kelnera(unique_ptr<Kelner> kelner)
 }
 
 bool ObslugaZamowienia::przydzielony_kelner()
-{ return przypisany_kelner != nullptr; }
+{
+  return przypisany_kelner != nullptr;
+}
 
 unsigned int ObslugaZamowienia::daj_numer_kelnera()
-{ return przypisany_kelner -> daj_id()  ;}
+{
+  return przypisany_kelner -> daj_id();
+}
 
 unsigned int ObslugaZamowienia::daj_numer_stolika()
-{ return przypisany_stolik -> daj_numer()  ;}
+{
+  return przypisany_stolik -> daj_numer();
+}
 
 string ObslugaZamowienia::daj_nazwisko_kelnera()
 {
@@ -179,10 +189,176 @@ std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
 
 void ObslugaZamowienia::wyswietl_klientow(fstream& plik)
 {
-  // for (unique_ptr<Klient>& klient: klienci)
-  // { plik << *klient << endl; }
+  for (unique_ptr<Klient>& klient: klienci)
+  { plik << *klient << endl; }
 }
 
 
 void ObslugaZamowienia::zamow_potrawe(unique_ptr<Danie> nowa_potrawa)
 { zamowione_dania.push_back(move(nowa_potrawa)) ;}
+
+
+bool ObslugaZamowienia::dla_czekajacych()
+{
+  return czekajacy;
+}
+
+void ObslugaZamowienia::dodaj_klienta(unique_ptr<Klient> klient)
+{
+  klienci.push_back(move(klient));
+}
+
+
+void ObslugaZamowienia::oczekiwanie_na_menu()
+{
+  if (przydzielony_kelner())
+  {
+    status = SZ::zamawianie_dan;
+  }
+}
+
+void ObslugaZamowienia::zamawianie_dan()
+{
+  if (obsluzeni_klienci == klienci.size())
+  {
+    status = SZ::oczekiwanie_na_dania;
+  }
+}
+
+
+void ObslugaZamowienia::oczekiwanie_na_dania()
+{
+  if (dania_gotowe())
+  {
+    status = SZ::przyniesienie_dan;
+    return;
+  }
+  przygotowuj_dania();
+}
+
+void ObslugaZamowienia::przyniesienie_dan()
+{
+  if (przydzielony_kelner())
+  {
+    status = SZ::jedzenie;
+  }
+}
+
+void ObslugaZamowienia::jedzenie()
+{
+  unsigned int czas = policz_czas_jedzenia();
+  if (czas == czas_jedzenia)
+  { status = SZ::czekanie_na_rachunek; }
+  czas_jedzenia++;
+}
+
+void ObslugaZamowienia::czekanie_na_rachunek()
+{
+  if (przydzielony_kelner())
+  {
+    status = SZ::placenie;
+  }
+}
+
+void ObslugaZamowienia::placenie()
+{
+  status = SZ::wyjscie_z_restauracji;
+}
+
+void ObslugaZamowienia::wyjscie_z_restauracji()
+{
+  status = SZ::sprzatanie_stolika;
+}
+
+void ObslugaZamowienia::sprzatanie_stolika()
+{
+  if ( czas_sprzatania == daj_ilosc_osob_przy_stoliku() )
+  {
+    status = SZ::koniec;
+    return;
+  }
+  czas_sprzatania++;
+}
+
+
+// oczekiwanie_na_menu,   przydzielić kelnera
+// zamawianie_dan,        utworzyć dania
+// oczekiwanie_na_dania,  zwolnić kelnera
+// przyniesienie_dan,     przypisać kelnera
+// jedzenie,              zwolnić_kelnera
+// czekanie_na_rachunek,  przypisać kelnera
+// placenie,
+// wyjscie_z_restauracji,
+// sprzatanie_stolika,
+// koniec                 zwolnić kelnera,
+//                        zwolnić stolik
+void ObslugaZamowienia::uplyw_czasu()
+{
+  switch (status)
+  {
+  case SZ::oczekiwanie_na_menu:
+    oczekiwanie_na_menu();
+    break;
+  case SZ::zamawianie_dan:
+    zamawianie_dan();
+    break;
+  case SZ::oczekiwanie_na_dania:
+    oczekiwanie_na_dania();
+    break;
+  case SZ::przyniesienie_dan:
+    przyniesienie_dan();
+    break;
+  case SZ::jedzenie:
+    jedzenie();
+    break;
+  case SZ::czekanie_na_rachunek:
+    czekanie_na_rachunek();
+    break;
+  case SZ::placenie:
+    placenie();
+    break;
+  case SZ::wyjscie_z_restauracji:
+    wyjscie_z_restauracji();
+    break;
+  case SZ::sprzatanie_stolika:
+    sprzatanie_stolika();
+    break;
+  case SZ::koniec:
+  break;
+  }
+}
+
+void ObslugaZamowienia::zamowiono()
+{
+  obsluzeni_klienci += 1;
+}
+
+bool ObslugaZamowienia::dania_gotowe()
+{
+  for (unique_ptr<Danie>& wsk_na_potrawe: zamowione_dania)
+  {
+    if (wsk_na_potrawe -> czy_przygotowane() == false)
+    { return false; }
+  }
+  return true;
+}
+
+void ObslugaZamowienia::przygotowuj_dania()
+{
+  for (unique_ptr<Danie>& wsk_na_potrawe: zamowione_dania)
+  {
+    wsk_na_potrawe -> przygotowuj();
+  }
+}
+
+unsigned int ObslugaZamowienia::policz_czas_jedzenia()
+{
+  unsigned int czas = 0;
+  for (unique_ptr<Danie>& wsk_na_potrawe: zamowione_dania)
+  {
+    czas += (wsk_na_potrawe -> daj_czas_przygotowania());
+  }
+  return czas;
+}
+
+

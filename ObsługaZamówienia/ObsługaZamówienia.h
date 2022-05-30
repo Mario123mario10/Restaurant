@@ -2,7 +2,6 @@
 
 #include <string>
 #include <vector>
-#include <map>
 #include <iostream>
 #include <memory>
 
@@ -35,9 +34,12 @@ class ObslugaZamowienia
     unique_ptr<Stolik> przypisany_stolik;
     unique_ptr<Kelner> przypisany_kelner;
     StatusZamowienia status;
+    bool czekajacy;
+    unsigned int obsluzeni_klienci;
+    unsigned int czas_jedzenia;
+    unsigned int czas_sprzatania;
     unsigned int numer_zamowienia;
-    unsigned int licznik_zamowien;
-
+    static unsigned int licznik_zamowien;
 public:
     vector<unique_ptr<Danie>> zamowione_dania;
     ObslugaZamowienia();
@@ -47,28 +49,31 @@ public:
     unsigned int daj_ilosc_osob_przy_stoliku();
     unsigned int daj_numer_stolika();
     unsigned int daj_numer_kelnera();
+    unsigned int policz_czas_jedzenia();
     string daj_nazwisko_kelnera();
     bool przydzielony_kelner();
-    void przydziel_kelnera(unique_ptr<Kelner> kelner);
+    bool dla_czekajacych();
+    bool dania_gotowe();
     Kwota oblicz_kwote_do_zaplaty();
     unique_ptr<Stolik> zwolnij_stolik();
     unique_ptr<Kelner> zwolnij_kelnera();
+    void przydziel_kelnera(unique_ptr<Kelner> kelner);
     void zamow_potrawe(unique_ptr<Danie> nowa_potrawa);
-
-
-
+    void dodaj_klienta(unique_ptr<Klient> klient);
     void wyswietl_klientow(fstream& plik);
-
-
-
-    void zaplac();
-    void sprzatnij_ze_stolika();
-    void czekanie_na_zaplate();
-    void zakoncz_wszystkie_posilki();
-
+    void zamowiono();
     void uplyw_czasu();
+    void przygotowuj_dania();
+    void oczekiwanie_na_menu();
+    void zamawianie_dan();
+    void oczekiwanie_na_dania();
+    void przyniesienie_dan();
+    void jedzenie();
+    void czekanie_na_rachunek();
+    void placenie();
+    void wyjscie_z_restauracji();
+    void sprzatanie_stolika();
 
     friend std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie);
-
 };
 

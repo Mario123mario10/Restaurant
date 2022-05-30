@@ -1,4 +1,5 @@
 #include <istream>
+#include <fstream>
 #include <string>
 using std::string;
 
@@ -27,3 +28,4 @@ std::ostream& operator<<(std::ostream& os, Klient& klient)
   os << "Klient o nazwisku " << klient.daj_imie() << " i identyfikatorze " << klient.daj_identyfikator();
   return os;
 }
+

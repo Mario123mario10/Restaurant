@@ -11,7 +11,7 @@
 #include "Stolik/Stolik.h"
 #include "Klient/Klient.h"
 #include "Kelner/Kelner.h"
-
+#include "ObsługaZamówienia/ObsługaZamówienia.h"
 
 // Liczniki obiektow
 unsigned int Danie::licznik_dan = 0;
@@ -26,4 +26,5 @@ unsigned int DanieGlowne::licznik_dan = 0;
 unsigned int Stolik::licznik_stolikow = 0;
 unsigned int Klient::licznik_klientow = 0;
 unsigned int Kelner::licznik_kelnerow = 0;
+unsigned int ObslugaZamowienia::licznik_zamowien = 0;
 
