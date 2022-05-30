@@ -34,6 +34,7 @@ int main(int argc, char const *argv[])
         We.daj_srednie_stoliki(),
         We.daj_duze_stoliki(),
         We.daj_liczbe_kelnerow(),
+        We.daj_czas_raportowania(),
         move(zebrane_menu)
       );
     }
@@ -54,7 +55,10 @@ int main(int argc, char const *argv[])
     }
 
     catch(const std::exception& e)
-    { cerr << "Błąd niestandardowy: " << endl << e.what() << endl ;}
+    {
+      drukuj_bl("Błąd niestandardowy: ");
+      drukuj_bl(e.what());
+    }
 
 
   return 0;

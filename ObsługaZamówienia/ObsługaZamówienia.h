@@ -54,6 +54,7 @@ public:
     bool przydzielony_kelner();
     bool dla_czekajacych();
     bool dania_gotowe();
+    bool jest_miejsce();
     Kwota oblicz_kwote_do_zaplaty();
     unique_ptr<Stolik> zwolnij_stolik();
     unique_ptr<Kelner> zwolnij_kelnera();

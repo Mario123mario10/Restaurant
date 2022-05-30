@@ -30,6 +30,7 @@ ObslugaWejsciowa::ObslugaWejsciowa(string sciezka)
 {
   nazwa_pliku_wyjscia = "";
   sciezka_menu = "";
+  sciezka_do_nazwisk = "";
   nazwa_restauracji = "";
   rozmiar_maly = 0;
   rozmiar_sredni = 0;
@@ -39,6 +40,7 @@ ObslugaWejsciowa::ObslugaWejsciowa(string sciezka)
   duze = 0;
   czas_trwania_symulacji = 0;
   liczba_kelnerow = 0;
+  czas_raportowania = 0;
   sciezka_konfiguracyjna = sciezka;
   pobierz_konfiguracje();
   pobierz_menu();
@@ -187,6 +189,9 @@ void ObslugaWejsciowa::pobierz_linie_konfiguracji()
   else if (regex_match(linia, przechwycone, L_CZAS_TRWANIA))
   { czas_trwania_symulacji = stoul(przechwycone[1]) ;}
 
+  else if (regex_match(linia, przechwycone, L_CZAS_RAPORTOWANIA))
+  { czas_raportowania = stoul(przechwycone[1]) ;}
+
   else if (regex_match(linia, przechwycone, L_R_MALYCH_STOLIKOW))
   { rozmiar_maly = stoul(przechwycone[1]) ;}
 
@@ -232,6 +237,7 @@ void ObslugaWejsciowa::sprawdz_konfiguracje()
     and duze
     and czas_trwania_symulacji
     and liczba_kelnerow
+    and czas_raportowania
   )
   { sprawdz_rozmiary()  ;}
   else
@@ -273,8 +279,15 @@ void ObslugaWejsciowa::zdefiniuj_blad_konfiguracji()
   if ( not sciezka_menu.empty() )
   { komunikat += "ścieżki do menu | ";}
 
+  if ( not sciezka_do_nazwisk.empty() )
+  { komunikat += "ścieżki do nazwisk | ";}
+
+
   if (liczba_kelnerow)
   { komunikat += "liczby kelnerów | ";}
+
+  if (czas_raportowania)
+  { komunikat += "czasu raportowania | ";}
 
   throw NiepelnaKonfiguracja(komunikat);
 }
@@ -294,6 +307,9 @@ void ObslugaWejsciowa::sprawdz_rozmiary()
 
 string ObslugaWejsciowa::daj_nazwe_pliku_wyjscia()
 { return nazwa_pliku_wyjscia ;}
+
+string ObslugaWejsciowa::daj_sciezke_do_nazwisk()
+{ return sciezka_do_nazwisk ;}
 
 string ObslugaWejsciowa::daj_nazwe_restauracji()
 { return nazwa_restauracji ;}
@@ -319,8 +335,9 @@ unsigned int ObslugaWejsciowa::daj_duze_stoliki()
 unsigned int ObslugaWejsciowa::daj_czas_symulacji()
 { return czas_trwania_symulacji ;}
 
-
 unsigned int ObslugaWejsciowa::daj_liczbe_kelnerow()
 { return liczba_kelnerow ;}
 
+unsigned int ObslugaWejsciowa::daj_czas_raportowania()
+{ return czas_raportowania ;}
 

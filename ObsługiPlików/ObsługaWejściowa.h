@@ -18,6 +18,7 @@ class ObslugaWejsciowa
     string sciezka_konfiguracyjna;
     string nazwa_pliku_wyjscia;
     string sciezka_menu;
+    string sciezka_do_nazwisk;
     string nazwa_restauracji;
     unsigned int rozmiar_maly;
     unsigned int rozmiar_sredni;
@@ -27,6 +28,7 @@ class ObslugaWejsciowa
     unsigned int duze;
     unsigned int czas_trwania_symulacji;
     unsigned int liczba_kelnerow;
+    unsigned int czas_raportowania;
 
   public:
     Menu menu;
@@ -34,6 +36,7 @@ class ObslugaWejsciowa
     ObslugaWejsciowa(string sciezka);
 
     string daj_nazwe_pliku_wyjscia();
+    string daj_sciezke_do_nazwisk();
     string daj_nazwe_restauracji();
     unsigned int daj_rozmiar_maly();
     unsigned int daj_rozmiar_sredni();
@@ -43,6 +46,7 @@ class ObslugaWejsciowa
     unsigned int daj_duze_stoliki();
     unsigned int daj_czas_symulacji();
     unsigned int daj_liczbe_kelnerow();
+    unsigned int daj_czas_raportowania();
 
     void pobierz_konfiguracje();
     void pobierz_menu();

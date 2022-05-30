@@ -12,7 +12,6 @@ using std::unique_ptr;
 class Restauracja
 {
     vector <ObslugaZamowienia> zamowienia_aktualne;
-    // vector <ObslugaZamowienia> zamowienia_zamkniete;
     vector <unique_ptr<Kelner>> wolni_kelnerzy;
     vector <unique_ptr<Stolik>> wolne_stoliki;
     vector <unique_ptr<Klient>> nieobslugiwani_klienci;
@@ -37,18 +36,18 @@ public:
     void dodaj_stolik(unique_ptr<Stolik> stolik);
     void dodaj_zamowienie(unique_ptr<Klient> klient, unique_ptr<Stolik> stolik);
 
-    void sprawdz_klientow();
-    void sprawdz_kelnerow();
     void sprawdz_zamowienia();
 
     void aktywuj_obslugi_zamowien();
 
     void przydziel_klientow();
+    void posprzataj_klientow();
     void posprzataj_zamowienia();
 
-    void posprzataj_klientow();
 
     unique_ptr<Kelner> przekaz_kelnera();
+    unique_ptr<Stolik> przekaz_stolik();
+
     unsigned int daj_ilosc_aktualnych_zamowien();
 
 };

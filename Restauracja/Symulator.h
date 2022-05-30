@@ -25,9 +25,10 @@ class Symulator
       unsigned int srednie,
       unsigned int duze,
       unsigned int liczba_kelnerow,
+      unsigned int czas_raportowania,
       unique_ptr<Menu> menu
     );
-    void rozpocznij_symulacje();
+    void rozpocznij_symulacje(unsigned int czas_raportowania);
     void losuj_kelnera();
     void losuj_klientow();
     void losuj_klienta();

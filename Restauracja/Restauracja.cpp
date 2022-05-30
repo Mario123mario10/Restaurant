@@ -26,10 +26,7 @@ void Restauracja::uplyw_czasu()
   sprawdz_zamowienia();
   posprzataj_zamowienia();
 
-  for (ObslugaZamowienia& zam: zamowienia_aktualne)
-  {
-    zam.uplyw_czasu();
-  }
+  aktywuj_obslugi_zamowien();
 
   pokaz_bezczynnych_kelnerow();
   pokaz_nieobslugiwanych_klientow();
@@ -102,15 +99,32 @@ void Restauracja::przydziel_klientow()
 {
   for (unique_ptr<Klient>& klient: nieobslugiwani_klienci)
   {
-    for (ObslugaZamowienia& zamowienie: zamowienia_aktualne)
+    if (klient != nullptr)
     {
-      if (
-        (not (zamowienie.dla_czekajacych() xor klient -> czy_dosiada_sie())) and (zamowienie.daj_status() < SZ::jedzenie)
-      )
+      for (ObslugaZamowienia& zamowienie: zamowienia_aktualne)
+      {
+        if (
+          (not (zamowienie.dla_czekajacych() xor klient -> czy_dosiada_sie())) and (zamowienie.daj_status() < SZ::jedzenie) and (zamowienie.jest_miejsce())
+        )
+        {
+          unique_ptr<Klient> wsk;
+          wsk.swap(klient);
+          zamowienie.dodaj_klienta(move(wsk));
+        }
+      }
+    }
+  }
+  if ((not nieobslugiwani_klienci.empty()) and (not nieobslugiwani_klienci.empty()))
+  {
+    for (unique_ptr<Klient>& klient: nieobslugiwani_klienci)
+    {
+      if (klient != nullptr)
       {
         unique_ptr<Klient> wsk;
         wsk.swap(klient);
-        zamowienie.dodaj_klienta(move(wsk));
+        dodaj_zamowienie(move(klient), move(przekaz_stolik()));
+        przydziel_klientow();
+        return;
       }
     }
   }
@@ -229,6 +243,21 @@ unique_ptr<Kelner> Restauracja::przekaz_kelnera()
   }
   return nullptr;
 }
+
+unique_ptr<Stolik> Restauracja::przekaz_stolik()
+{
+  if (not wolne_stoliki.empty())
+  {
+    unique_ptr<Stolik> stolik;
+    wolne_stoliki[wolni_kelnerzy.size() - 1].swap(stolik);
+    wolni_kelnerzy.pop_back();
+    return stolik;
+  }
+  return nullptr;
+
+}
+
+
 
 
 unsigned int Restauracja::daj_ilosc_aktualnych_zamowien()

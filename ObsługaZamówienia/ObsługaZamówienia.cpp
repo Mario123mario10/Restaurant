@@ -362,3 +362,7 @@ unsigned int ObslugaZamowienia::policz_czas_jedzenia()
 }
 
 
+
+bool ObslugaZamowienia::jest_miejsce()
+{ return daj_ilosc_osob_przy_stoliku() < przypisany_stolik -> daj_ilosc_miejsc(); }
+

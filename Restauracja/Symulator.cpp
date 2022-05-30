@@ -9,6 +9,8 @@ using std::ios; using std::fstream; using std::getline;
 
 #include <random>
 #include <chrono>
+#include <thread>
+#include <chrono>
 
 #include "Symulator.h"
 #include "Restauracja.h"
@@ -28,6 +30,7 @@ Symulator::Symulator
   unsigned int srednie,
   unsigned int duze,
   unsigned int liczba_kelnerow,
+  unsigned int czas_raportowania,
   unique_ptr<Menu> menu
 )
 {
@@ -55,21 +58,20 @@ Symulator::Symulator
     restauracja.dodaj_stolik(move(stoliczek));
   }
 
-  rozpocznij_symulacje();
+  rozpocznij_symulacje(czas_raportowania);
 
 }
 
-void Symulator::rozpocznij_symulacje()
+void Symulator::rozpocznij_symulacje(unsigned int czas_raportowania)
 {
   for (int licznik = 0; licznik < czas_trwania_symulacji; licznik++)
   {
     if (losuj_liczbe() % 5 == 0)
     { losuj_klientow()  ;}
     restauracja.uplyw_czasu();
+    std::this_thread::sleep_for(std::chrono::seconds(czas_raportowania));
   }
 }
-
-
 
 void Symulator::losuj_klientow()
 {
