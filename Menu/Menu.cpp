@@ -67,7 +67,7 @@ void Menu::wyswietl_menu()
   {
     cout << "Zawartość menu: " << endl;
     for (const unique_ptr<Danie>& wskaznik: utworzone_dania)
-    { wskaznik -> wyswietl() ;}
+    { cout << *wskaznik ;}
   }
 }
 

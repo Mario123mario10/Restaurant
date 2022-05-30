@@ -224,7 +224,7 @@ void ObslugaZamowienia::zamawianie_dan()
     status = SZ::oczekiwanie_na_dania;
   }
 }
-
+// ROZMIAR STOLIKA UWZGLEDNIC ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 void ObslugaZamowienia::oczekiwanie_na_dania()
 {

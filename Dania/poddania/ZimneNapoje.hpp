@@ -11,7 +11,6 @@ class ZimnyNapoj: public Napoj
       Kwota koszt_przygotowania
     );
 
-    void wyswietl() override;
     friend std::ostream&  operator<<(std::ostream& os, ZimnyNapoj& Danie);
 
 };

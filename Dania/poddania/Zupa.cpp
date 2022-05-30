@@ -6,14 +6,14 @@ using std::cout;	using std::cerr;	using std::endl;
 Zupa::Zupa(string nazwa, Kwota koszt_przygotowania):
   DanieGlowne(nazwa, koszt_przygotowania, 4) {}
 
-void Zupa::wyswietl()
+
+
+std::ostream& operator<<(std::ostream& os, Zupa& Danie)
 {
-  cout
+  os
   << "Zupa o nazwie: "
-  << daj_nazwe()
+  << Danie.daj_nazwe()
   << " kosztuje: "
-  << (string) policz_cene()
-  << " i ma priorytet "
-  << policz_priorytet()
-  << endl;
+  << (string) Danie.policz_cene();
+  return os;
 }

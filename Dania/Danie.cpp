@@ -27,7 +27,6 @@ Danie::Danie
     this -> kategoria = kategoria ;
     this -> koszt_przygotowania = koszt_przygotowania ;
     this -> czas_przygotowania = czas_przygotowania;
-    this -> czas_oczekiwania = 0;
     this -> nazwa = nazwa;
     this -> przygotowane = false;
     this -> postep_przygotowania = 0;
@@ -48,8 +47,6 @@ Kwota Danie::daj_koszt_przygotowania()
 unsigned int Danie::daj_czas_przygotowania()
 { return czas_przygotowania;}
 
-unsigned int Danie::daj_czas_oczekiwania()
-{	return czas_oczekiwania	;}
 
 unsigned int Danie::daj_postep_przygotowania()
 { return postep_przygotowania	;}
@@ -83,9 +80,6 @@ void Danie::ustaw_czas_przygotowania(unsigned int nowy_czas_przygotowania)
 	{ czas_przygotowania = nowy_czas_przygotowania ;}
 }
 
-void Danie::ustaw_czas_oczekiwania(unsigned int nowy_czas_oczekiwania)
-{ czas_oczekiwania = nowy_czas_oczekiwania ;}
-
 void Danie::ustaw_postep_przygotowania(unsigned int nowy_postep_przygotowania)
 {
   if (nowy_postep_przygotowania < czas_przygotowania)
@@ -112,12 +106,6 @@ Kwota Danie::policz_cene()
 	return (koszt_przygotowania + (static_cast<unsigned int>(kategoria) * czas_przygotowania));
 }
 
-int Danie::policz_priorytet()
-{
-	unsigned int priorytet_podstawowy = static_cast<unsigned int>(KP::SUMA) - static_cast<unsigned int>(kategoria);
-	return priorytet_podstawowy + czas_oczekiwania - czas_przygotowania;
-}
-
 void Danie::przygotowuj()
 {
 	if (not przygotowane)
@@ -127,10 +115,6 @@ void Danie::przygotowuj()
 		{ przygotowane = true	;}
 	}
 }
-
-void Danie::wyswietl()
-{}
-
 
 bool Danie::operator== (Danie& inne_danie)
 {

@@ -8,17 +8,6 @@ using std::cout;	using std::cerr;	using std::endl;
 Przystawka::Przystawka(string nazwa, Kwota koszt_przygotowania):
   Danie(nazwa, koszt_przygotowania, 2, KategoriaPotrawy::PRZYSTAWKA) {}
 
-void Przystawka::wyswietl()
-{
-  cout
-  << "Przystawka o nazwie: "
-  << daj_nazwe()
-  << " kosztuje: "
-  << (string) policz_cene()
-  << " i ma priorytet: "
-  << policz_priorytet()
-  << endl;
-}
 
 
 std::ostream&  operator<<(std::ostream& os, Przystawka& Danie)
@@ -27,9 +16,7 @@ std::ostream&  operator<<(std::ostream& os, Przystawka& Danie)
   << "Przystawka o nazwie: "
   << Danie.daj_nazwe()
   << " kosztuje: "
-  << (string) Danie.policz_cene()
-  << " i ma priorytet: "
-  << Danie.policz_priorytet();
+  << (string) Danie.policz_cene();
   return os;
 }
 

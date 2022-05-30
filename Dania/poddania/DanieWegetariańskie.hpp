@@ -13,7 +13,6 @@ class DanieWegetarianskie: public DanieGlowne
       Kwota koszt_przygotowania
     );
 
-    void wyswietl() override;
     friend std::ostream&  operator<<(std::ostream& os, DanieWegetarianskie& Danie);
 
 };

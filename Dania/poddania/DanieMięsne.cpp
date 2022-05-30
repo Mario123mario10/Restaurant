@@ -8,14 +8,12 @@ using std::cout;	using std::cerr;	using std::endl;
 DanieMiesne::DanieMiesne(string nazwa, Kwota koszt_przygotowania):
   DanieGlowne(nazwa, koszt_przygotowania, 8) {}
 
-void DanieMiesne::wyswietl()
+std::ostream&  operator<<(std::ostream& os, DanieMiesne& Danie)
 {
   cout
   << "Danie mięsne o nazwie: "
-  << daj_nazwe()
+  << Danie.daj_nazwe()
   << " kosztuje: "
-  << (string) policz_cene()
-  << " i ma priorytet: "
-  << policz_priorytet()
-  << endl;
+  << (string) Danie.policz_cene();
+  return os;
 }

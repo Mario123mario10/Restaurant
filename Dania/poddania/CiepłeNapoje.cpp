@@ -7,15 +7,13 @@ using std::cout;	using std::cerr;	using std::endl;
 CieplyNapoj::CieplyNapoj(string nazwa, Kwota koszt_przygotowania):
   Napoj(nazwa, koszt_przygotowania, 2) {}
 
-void CieplyNapoj::wyswietl()
+std::ostream&  operator<<(std::ostream& os, CieplyNapoj& Danie)
 {
   cout
   << "Ciepły Napój o nazwie: "
-  << daj_nazwe()
+  << Danie.daj_nazwe()
   << " kosztuje: "
-  << (string) policz_cene()
-  << " i ma priorytet: "
-  << policz_priorytet()
-  << endl;
+  << (string) Danie.policz_cene();
+  return os;
 }
 
