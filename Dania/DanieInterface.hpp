@@ -2,6 +2,7 @@
 #include "Danie.hpp"
 class Danie
 {
+public:
     virtual KategoriaPotrawy    daj_kategorie() = 0;
     virtual Kwota               daj_koszt_przygotowania() = 0;
     virtual unsigned int        daj_czas_przygotowania() = 0;
