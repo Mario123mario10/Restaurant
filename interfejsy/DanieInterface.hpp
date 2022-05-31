@@ -24,4 +24,6 @@ class Danie
     virtual void          przygotowuj() = 0;
     virtual void          wyswietl() = 0;
 
+    virtual ~Danie() = 0;
+
 };
