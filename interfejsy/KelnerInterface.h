@@ -3,6 +3,7 @@
 
 class Kelner
 {
+public:
     virtual bool czy_zajety() = 0;
     virtual string daj_imie() = 0;
     virtual unsigned int daj_id() = 0;
