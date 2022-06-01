@@ -16,7 +16,7 @@ using std::ios; using std::fstream; using std::getline;
 #include "Restauracja.h"
 #include "../FunkcjePomocnicze.h"
 #include "../Menu/Menu.hpp"
-
+#include "../Stałe.cpp"
 
 Symulator::Symulator
 (
@@ -66,7 +66,7 @@ void Symulator::rozpocznij_symulacje(unsigned int czas_raportowania)
 {
   for (int licznik = 0; licznik < czas_trwania_symulacji; licznik++)
   {
-    if (losuj_liczbe() % 5 == 0)
+    if (losuj_liczbe() % SZANSA_NA_BRAK_KLIENTOW == 0)
     { losuj_klientow()  ;}
     restauracja.uplyw_czasu();
     std::this_thread::sleep_for(std::chrono::seconds(czas_raportowania));
@@ -75,7 +75,7 @@ void Symulator::rozpocznij_symulacje(unsigned int czas_raportowania)
 
 void Symulator::losuj_klientow()
 {
-  unsigned int nowi_klienci = losuj_liczbe() % 4;
+  unsigned int nowi_klienci = losuj_liczbe() % MAX_NOWYCH_KLIENTOW;
   while (nowi_klienci != 0)
   {
     losuj_klienta();
@@ -104,7 +104,7 @@ string Symulator::losuj_nazwisko()
   if (plik.is_open())
   {
     string nazwisko;
-    unsigned int numer_linii = losuj_liczbe() % 96;
+    unsigned int numer_linii = losuj_liczbe() % ILOSC_NAZWISK;
     for (int index = 0; index < numer_linii; index++)
     {
       nazwisko.clear();

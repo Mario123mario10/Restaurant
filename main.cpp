@@ -22,7 +22,7 @@ int main(int argc, char const *argv[])
     {
       ObslugaWejsciowa We(argv[1]);
       unique_ptr<Menu> zebrane_menu = make_unique<Menu>();
-      We.menu.przekaz_dania(move(zebrane_menu));
+      zebrane_menu = We.menu.przekaz_dania(move(zebrane_menu));
       Symulator S(
         We.daj_czas_symulacji(),
         We.daj_nazwe_pliku_wyjscia(),

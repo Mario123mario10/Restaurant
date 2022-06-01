@@ -8,7 +8,7 @@
 #include "../Dania/Danie.hpp"
 #include "../Stolik/Stolik.h"
 #include "../Kelner/Kelner.h"
-
+#include "../Restauracja/Symulator.h"
 using namespace std;
 using SZ = StatusZamowienia;
 
@@ -117,7 +117,7 @@ std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
       return os;
 
     case SZ::oczekiwanie_na_dania:
-      os << "Klienci:" << endl;
+      os << endl << "Klienci:" << endl;
       for (unique_ptr<Klient>& klient: zamowienie.klienci)
       { os << *klient << endl; }
       os
@@ -224,7 +224,6 @@ void ObslugaZamowienia::zamawianie_dan()
     status = SZ::oczekiwanie_na_dania;
   }
 }
-// ROZMIAR STOLIKA UWZGLEDNIC ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 void ObslugaZamowienia::oczekiwanie_na_dania()
 {
@@ -247,7 +246,7 @@ void ObslugaZamowienia::przyniesienie_dan()
 void ObslugaZamowienia::jedzenie()
 {
   unsigned int czas = policz_czas_jedzenia();
-  if (czas == czas_jedzenia)
+  if (czas < czas_jedzenia)
   { status = SZ::czekanie_na_rachunek; }
   czas_jedzenia++;
 }
@@ -356,7 +355,7 @@ unsigned int ObslugaZamowienia::policz_czas_jedzenia()
   unsigned int czas = 0;
   for (unique_ptr<Danie>& wsk_na_potrawe: zamowione_dania)
   {
-    czas += (wsk_na_potrawe -> daj_czas_przygotowania());
+    czas += Symulator::losuj_liczbe() % (wsk_na_potrawe -> daj_czas_przygotowania());
   }
   return czas;
 }

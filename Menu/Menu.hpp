@@ -21,7 +21,7 @@ class Menu
     unique_ptr<Danie> wybierz_deser();
     unique_ptr<Danie> wybierz_napoj();
     vector<string> daj_ceny();
-    void przekaz_dania(unique_ptr<Menu> inne_menu);
+    unique_ptr<Menu> przekaz_dania(unique_ptr<Menu> inne_menu);
     void dodaj_danie(unique_ptr<Danie> nowe_danie);
     void policz_ceny();
     void wyswietl_menu();

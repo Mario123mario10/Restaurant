@@ -4,7 +4,6 @@ using std::cout;	using std::cerr;	using std::endl;
 
 #include "DanieMięsne.hpp"
 
-
 DanieMiesne::DanieMiesne(string nazwa, Kwota koszt_przygotowania):
   DanieGlowne(nazwa, koszt_przygotowania, 8) {}
 

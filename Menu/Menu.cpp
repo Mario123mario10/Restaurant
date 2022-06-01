@@ -92,13 +92,14 @@ bool Menu::czy_poprawne()
   return jest_przystawka || jest_glowne || jest_deser || jest_napoj;
 }
 
-void Menu::przekaz_dania(unique_ptr<Menu> inne_menu)
+unique_ptr<Menu> Menu::przekaz_dania(unique_ptr<Menu> inne_menu)
 {
   for (const unique_ptr<Danie>& wskaznik: utworzone_dania)
   {
     unique_ptr<Danie> inny_wskaznik = make_unique<Danie>(*wskaznik);
     inne_menu -> dodaj_danie(move(inny_wskaznik));
   }
+  return inne_menu;
 }
 
 unique_ptr<Danie> Menu::wybierz_przystawke()

@@ -35,6 +35,6 @@ void Stolik::ustaw_status(bool czy_wolny)
 
 std::ostream& operator<<(std::ostream& os, Stolik& stolik)
 {
-    os << "Stolik o numerze " << stolik.daj_numer();
+    os << "Stolik o numerze " << stolik.daj_numer() << " i ilości miejsc: " << stolik.daj_ilosc_miejsc();
     return os;
 }

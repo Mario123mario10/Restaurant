@@ -16,7 +16,7 @@ using std::stoul;
 
 #include "ObsługaWejściowa.h"
 #include "../Błędy.h"
-#include "../Stałe.h"
+#include "../Stałe.cpp"
 #include "../Dania/poddania/ZimneNapoje.hpp"
 #include "../Dania/poddania/CiepłeNapoje.hpp"
 #include "../Dania/poddania/DanieMięsne.hpp"
@@ -180,6 +180,7 @@ void ObslugaWejsciowa::pobierz_linie_konfiguracji()
   string linia;
   smatch przechwycone;
   getline(plik_konfiguracyjny, linia);
+
   if (regex_match(linia, przechwycone, L_NAZWA_RESTAURACJI))
   { nazwa_restauracji = przechwycone[1] ;}
 
@@ -247,46 +248,45 @@ void ObslugaWejsciowa::sprawdz_konfiguracje()
 void ObslugaWejsciowa::zdefiniuj_blad_konfiguracji()
 {
   string komunikat = "| Brakuje następujących danych: ";
-  komunikat.clear();
 
-  if (rozmiar_duzy)
+  if (not rozmiar_duzy)
   { komunikat += "rozmiaru dużych stolików | ";}
 
-  if (rozmiar_maly)
+  if (not rozmiar_maly)
   { komunikat += "rozmiaru małych stolików | ";}
 
-  if (rozmiar_sredni)
+  if (not rozmiar_sredni)
   { komunikat += "rozmiaru średnich stolików | ";}
 
-  if (male)
+  if (not male)
   { komunikat += "liczby małych stolików | ";}
 
-  if (srednie)
+  if (not srednie)
   { komunikat += "liczby średnich stolików | ";}
 
-  if (duze)
+  if (not duze)
   { komunikat += "liczby małych stolików | ";}
 
-  if (czas_trwania_symulacji)
+  if (not czas_trwania_symulacji)
   { komunikat += "czasu trwania symulacji | ";}
 
-  if ( not nazwa_restauracji.empty() )
+  if ( nazwa_restauracji.empty() )
   { komunikat += "nazwy restauracji | ";}
 
-  if ( not nazwa_pliku_wyjscia.empty() )
+  if ( nazwa_pliku_wyjscia.empty() )
   { komunikat += "nazwy pliku wyjścia | ";}
 
-  if ( not sciezka_menu.empty() )
+  if ( sciezka_menu.empty() )
   { komunikat += "ścieżki do menu | ";}
 
-  if ( not sciezka_do_nazwisk.empty() )
+  if ( sciezka_do_nazwisk.empty() )
   { komunikat += "ścieżki do nazwisk | ";}
 
 
-  if (liczba_kelnerow)
+  if (not liczba_kelnerow)
   { komunikat += "liczby kelnerów | ";}
 
-  if (czas_raportowania)
+  if (not czas_raportowania)
   { komunikat += "czasu raportowania | ";}
 
   throw NiepelnaKonfiguracja(komunikat);

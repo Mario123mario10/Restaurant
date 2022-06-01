@@ -4,7 +4,8 @@ using std::cout;	using std::endl;
 
 #include "../ObsługaZamówienia/ObsługaZamówienia.h"
 #include "Restauracja.h"
-
+#include "Symulator.h"
+#include "../Stałe.cpp"
 
 Restauracja::Restauracja()
 {}
@@ -18,6 +19,7 @@ Restauracja::Restauracja(string nazwa, string nazwa_pliku_wyjscia, unique_ptr<Me
 
 void Restauracja::uplyw_czasu()
 {
+  posprzataj_klientow();
   pokaz_wchodzacych_klientow();
 
   przydziel_klientow();
@@ -25,13 +27,15 @@ void Restauracja::uplyw_czasu()
 
   sprawdz_zamowienia();
   posprzataj_zamowienia();
-
+  posprzataj_stoliki();
   aktywuj_obslugi_zamowien();
 
   pokaz_bezczynnych_kelnerow();
   pokaz_nieobslugiwanych_klientow();
   pokaz_wolne_stoliki();
   pokaz_status_zamowien();
+  if (Symulator::losuj_liczbe() % SZANSA_NA_POZOSTANIE == 0)
+  { nieobslugiwani_klienci.clear(); }
 }
 
 void Restauracja::pokaz_wchodzacych_klientow()
@@ -46,7 +50,7 @@ void Restauracja::pokaz_bezczynnych_kelnerow()
 {
   for (unique_ptr<Kelner>& kelner: wolni_kelnerzy)
   {
-    wyjscie << *kelner << " jest nie obsługuje zamówienia" << "\n";
+    wyjscie << *kelner << " nie obsługuje zamówienia" << "\n";
   }
 }
 
@@ -97,11 +101,11 @@ void Restauracja::dodaj_zamowienie(unique_ptr<Klient> klient, unique_ptr<Stolik>
 
 void Restauracja::przydziel_klientow()
 {
-  for (unique_ptr<Klient>& klient: nieobslugiwani_klienci)
+  for (ObslugaZamowienia& zamowienie: zamowienia_aktualne)
   {
-    if (klient != nullptr)
+    for (unique_ptr<Klient>& klient: nieobslugiwani_klienci)
     {
-      for (ObslugaZamowienia& zamowienie: zamowienia_aktualne)
+      if (klient != nullptr and (not(nieobslugiwani_klienci.empty())))
       {
         if (
           (not (zamowienie.dla_czekajacych() xor klient -> czy_dosiada_sie())) and (zamowienie.daj_status() < SZ::jedzenie) and (zamowienie.jest_miejsce())
@@ -114,21 +118,35 @@ void Restauracja::przydziel_klientow()
       }
     }
   }
-  if ((not nieobslugiwani_klienci.empty()) and (not nieobslugiwani_klienci.empty()))
+  if ((not nieobslugiwani_klienci.empty()) and (not wolne_stoliki.empty()))
   {
     for (unique_ptr<Klient>& klient: nieobslugiwani_klienci)
     {
-      if (klient != nullptr)
+      if (klient != nullptr and (not(nieobslugiwani_klienci.empty())) and (not wolne_stoliki.empty()))
       {
         unique_ptr<Klient> wsk;
         wsk.swap(klient);
-        dodaj_zamowienie(move(klient), move(przekaz_stolik()));
+        dodaj_zamowienie(move(wsk), move(przekaz_stolik()));
         przydziel_klientow();
         return;
       }
     }
   }
 }
+
+void Restauracja::posprzataj_stoliki()
+{
+  for (int index = 0; index < wolne_stoliki.size(); index++)
+  {
+    if (wolne_stoliki[index] == nullptr)
+    {
+      wolne_stoliki.erase(wolne_stoliki.begin() + index);
+      posprzataj_stoliki();
+      return;
+    }
+  }
+}
+
 
 void Restauracja::posprzataj_klientow()
 {
@@ -249,8 +267,8 @@ unique_ptr<Stolik> Restauracja::przekaz_stolik()
   if (not wolne_stoliki.empty())
   {
     unique_ptr<Stolik> stolik;
-    wolne_stoliki[wolni_kelnerzy.size() - 1].swap(stolik);
-    wolni_kelnerzy.pop_back();
+    wolne_stoliki[wolne_stoliki.size() - 1].swap(stolik);
+    wolne_stoliki.pop_back();
     return stolik;
   }
   return nullptr;

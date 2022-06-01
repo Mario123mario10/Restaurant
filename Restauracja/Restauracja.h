@@ -43,7 +43,7 @@ public:
     void przydziel_klientow();
     void posprzataj_klientow();
     void posprzataj_zamowienia();
-
+    void posprzataj_stoliki();
 
     unique_ptr<Kelner> przekaz_kelnera();
     unique_ptr<Stolik> przekaz_stolik();

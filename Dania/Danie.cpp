@@ -1,5 +1,6 @@
 #include <string>
 using std::string;
+#include <iomanip>
 
 #include "Danie.hpp"
 #include "../Błędy.h"
@@ -144,5 +145,30 @@ bool Danie::operator<= (Danie& inne_Danie)
 { return (*this < inne_Danie) or (*this == inne_Danie); }
 
 std::ostream&  operator<<(std::ostream& os, Danie& Danie)
-{	return os;	}
+{
+  string kategoria;
+  switch (Danie.daj_kategorie())
+  {
+  case KP::PRZYSTAWKA:
+    kategoria = "Przystawka";
+    break;
+  case KP::DESER:
+    kategoria = "Deser";
+    break;
+  case KP::DANIE_GLOWNE:
+    kategoria = "Danie główne";
+    break;
+  case KP::NAPOJ:
+    kategoria = "Napój";
+    break;
+  }
+
+	os
+  << std::left << std::setw(14)  << kategoria
+	<< " o nazwie: "
+	<< Danie.daj_nazwe()
+	<< std::left << std::setw(26)  << " kosztuje: "
+	<< (string) Danie.policz_cene();
+	return os;
+}
 

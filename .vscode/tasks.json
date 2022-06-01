@@ -20,7 +20,6 @@
 				"${fileDirname}/Restauracja/**.cpp",
 				"${fileDirname}/Stolik/**.cpp",
 
-				// "${fileDirname}/Testowanie/**.cpp",
 				// "${fileDirname}/test.cpp",
 
 				"-o",
