@@ -175,8 +175,6 @@ void Restauracja::posprzataj_zamowienia()
 }
 
 
-
-
 void Restauracja::sprawdz_zamowienia()
 {
   for (ObslugaZamowienia& zamowienie: zamowienia_aktualne)

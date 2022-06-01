@@ -34,5 +34,6 @@ class Symulator
     void losuj_klienta();
     string losuj_nazwisko();
     static unsigned int losuj_liczbe();
+    unsigned int daj_czas_trwania_symulacji();
 
 };

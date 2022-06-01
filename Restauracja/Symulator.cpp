@@ -61,6 +61,11 @@ Symulator::Symulator
   rozpocznij_symulacje(czas_raportowania);
 
 }
+unsigned int Symulator::daj_czas_trwania_symulacji()
+{
+  return czas_trwania_symulacji;
+}
+
 
 void Symulator::rozpocznij_symulacje(unsigned int czas_raportowania)
 {
