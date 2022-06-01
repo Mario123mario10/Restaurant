@@ -49,7 +49,7 @@ void Restauracja::pokaz_bezczynnych_kelnerow()
 {
   for (unique_ptr<Kelner>& kelner: wolni_kelnerzy)
   {
-    wyjscie << *kelner << " jest nie obsługuje zamówienia" << "\n";
+    wyjscie << *kelner << " nie obsługuje zamówienia" << "\n";
   }
 }
 
@@ -141,8 +141,6 @@ void Restauracja::posprzataj_zamowienia()
     }
   }
 }
-
-
 
 
 void Restauracja::sprawdz_zamowienia()

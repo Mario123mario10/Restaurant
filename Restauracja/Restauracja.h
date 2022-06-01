@@ -37,6 +37,7 @@ public:
     void dodaj_stolik(unique_ptr<Stolik> stolik);
     void dodaj_zamowienie(unique_ptr<Klient> klient, unique_ptr<Stolik> stolik);
 
+    
     void sprawdz_klientow();
     void sprawdz_kelnerow();
     void sprawdz_zamowienia();
