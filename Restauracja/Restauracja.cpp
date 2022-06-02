@@ -35,7 +35,13 @@ void Restauracja::uplyw_czasu()
   pokaz_wolne_stoliki();
   pokaz_status_zamowien();
   if (Symulator::losuj_liczbe() % SZANSA_NA_POZOSTANIE == 0)
-  { nieobslugiwani_klienci.clear(); }
+  {
+    for (unique_ptr<Klient>& klient: nieobslugiwani_klienci)
+    { wyjscie << *klient << " wychodzi z restauracji" << "\n";}
+    nieobslugiwani_klienci.clear();
+  }
+  wyjscie << "Na koniec tej tury przychód restauracji wyniósł: " << przychod << "\n";
+
 }
 
 void Restauracja::pokaz_wchodzacych_klientow()

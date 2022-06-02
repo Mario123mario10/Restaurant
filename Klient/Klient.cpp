@@ -25,7 +25,10 @@ unsigned int Klient::daj_identyfikator()
 
 std::ostream& operator<<(std::ostream& os, Klient& klient)
 {
-  os << "Klient o nazwisku " << klient.daj_imie() << " i identyfikatorze " << klient.daj_identyfikator();
+  string czeka = (klient.czy_dosiada_sie())? "czeka": "nie czeka";
+  os
+  << "Klient o nazwisku " << klient.daj_imie() << " i identyfikatorze " << klient.daj_identyfikator()
+  << ", który na kogoś " << czeka;
   return os;
 }
 

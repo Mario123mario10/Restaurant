@@ -134,8 +134,7 @@ std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
       os << "Czekają na gotowe dania" << endl;
       if (zamowienie.przydzielony_kelner())
       {
-        os
-        << zamowienie.daj_nazwisko_kelnera() << " o numerze " << zamowienie.daj_numer_kelnera() << " niesie dania";
+        os << zamowienie.daj_nazwisko_kelnera() << " o numerze " << zamowienie.daj_numer_kelnera() << " niesie dania";
       }
       return os;
 
@@ -143,7 +142,7 @@ std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
       os << "Klienci:" << endl;
       for (unique_ptr<Klient>& klient: zamowienie.klienci)
       { os << *klient << endl; }
-      os << "Spożywają posiłek";
+      os << "Spożywają posiłek -> pozostało " << zamowienie.policz_czas_jedzenia() - zamowienie.czas_jedzenia << " tur";
       return os;
 
     case SZ::czekanie_na_rachunek:

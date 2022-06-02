@@ -34,6 +34,6 @@ TEST_CASE("Konstruktor Symulatora", "[Symulator]")
     menu->dodaj_danie(move(h));
     menu->dodaj_danie(move(r));
     menu->dodaj_danie(move(k));
-    Symulator symulator(1000, "plik.txt", "restauracja1", 2, 4, 8, 10, 8, 2, 10, 8, move(menu));
+    Symulator symulator(1000, "plik.txt", "restauracja1", "kupa.txt", 2, 4, 8, 10, 8, 2, 10, 8, move(menu));
     CHECK(symulator.daj_czas_trwania_symulacji() == 1000);
 };
