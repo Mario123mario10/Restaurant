@@ -23,13 +23,13 @@ const regex L_L_SREDNICH_STOLIKOW (" *stoliki *średnie: *(\\d+) *");
 const regex L_L_DUZYCH_STOLIKOW   (" *stoliki *duże: *(\\d+) *");
 const regex L_L_KELNEROW          (" *liczba *kelnerów: *(\\d+) *");
 // Linie menu
-const regex L_M_PRZYSTAWKA        ("^ *P *(.+) *(\\d+) *zł *(\\d+) *gr *$");
-const regex L_M_ZUPA              ("^ *Z *(.+) *(\\d+) *zł *(\\d+) *gr *$");
-const regex L_M_DANIE_MIESNE      ("^ *M *(.+) *(\\d+) *zł *(\\d+) *gr *$");
-const regex L_M_DANIE_WEGE        ("^ *W *(.+) *(\\d+) *zł *(\\d+) *gr *$");
-const regex L_M_DESER             ("^ *D *(.+) *(\\d+) *zł *(\\d+) *gr *$");
-const regex L_M_NAPOJ_CIEPLY      ("^ *Z *(.+) *(\\d+) *zł *(\\d+) *gr *$");
-const regex L_M_NAPOJ_ZIMNY       ("^ *C *(.+) *(\\d+) *zł *(\\d+) *gr *$");
+const regex L_M_PRZYSTAWKA        ("^ *P *(.+) * (\\d+) *zł * (\\d+) *gr *$");
+const regex L_M_ZUPA              ("^ *Z *(.+) * (\\d+) *zł * (\\d+) *gr *$");
+const regex L_M_DANIE_MIESNE      ("^ *M *(.+) * (\\d+) *zł * (\\d+) *gr *$");
+const regex L_M_DANIE_WEGE        ("^ *W *(.+) * (\\d+) *zł * (\\d+) *gr *$");
+const regex L_M_DESER             ("^ *D *(.+) * (\\d+) *zł * (\\d+) *gr *$");
+const regex L_M_NAPOJ_CIEPLY      ("^ *Z *(.+) * (\\d+) *zł * (\\d+) *gr *$");
+const regex L_M_NAPOJ_ZIMNY       ("^ *C *(.+) * (\\d+) *zł * (\\d+) *gr *$");
 
 
 // Stałe symulacji

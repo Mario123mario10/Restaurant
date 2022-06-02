@@ -6,7 +6,7 @@ using std::string;
 #include "../Stolik/Stolik.h"
 #include "../Kelner/Kelner.h"
 #include "../ObsługaZamówienia/ObsługaZamówienia.h"
-
+#include "../Dania/Danie.hpp"
 
 
 class ObslugaWyjsciowa
@@ -24,8 +24,10 @@ class ObslugaWyjsciowa
     friend ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Kelner& kelner);
     friend ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Klient& kelner);
 		friend ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Stolik& stolik);
+		friend ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Danie& danie);
 		friend ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Kwota kwota);
 		friend ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, string napis);
+
 };
 
 

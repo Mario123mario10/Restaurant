@@ -62,6 +62,7 @@ public:
     void zamow_potrawe(unique_ptr<Danie> nowa_potrawa);
     void dodaj_klienta(unique_ptr<Klient> klient);
     void wyswietl_klientow(fstream& plik);
+    // void wyswietl_klientow(fstream& plik);
     void zamowiono();
     void uplyw_czasu();
     void przygotowuj_dania();

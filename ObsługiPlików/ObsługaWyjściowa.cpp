@@ -134,3 +134,20 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Klient& kelner)
   return wyjscie;
 }
 
+ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Danie& danie)
+{
+    fstream plik;
+  cout << danie;
+  plik.open(wyjscie.daj_nazwe_pliku_wyjscia(), ios::out | ios::app);
+  if (plik.is_open())
+  {
+    plik << danie;
+    plik.close();
+  }
+  else
+  { throw NieZnalezionoPliku(wyjscie.daj_nazwe_pliku_wyjscia()); }
+
+  return wyjscie;
+
+}
+

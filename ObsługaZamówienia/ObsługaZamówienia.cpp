@@ -124,7 +124,7 @@ std::ostream& operator<<(std::ostream& os, ObslugaZamowienia& zamowienie)
       << "Oczekują na dania" << endl
       << "Postęp w przygotowaniu dań:" << endl;
       for ( const unique_ptr<Danie>& danie: zamowienie.zamowione_dania  )
-      { cout << *danie << endl  ;}
+      { os << *danie << endl  ;}
       return os;
 
     case SZ::przyniesienie_dan:
