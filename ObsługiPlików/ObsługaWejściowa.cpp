@@ -217,6 +217,9 @@ void ObslugaWejsciowa::pobierz_linie_konfiguracji()
   else if (regex_match(linia, przechwycone, L_NAZWA_PLIKU_MENU))
   { sciezka_menu = przechwycone[1] ;}
 
+  else if (regex_match(linia, przechwycone, L_SCIEZKA_DO_NAZWISK))
+  { sciezka_do_nazwisk = przechwycone[1] ;}
+
   linia.clear();
 }
 
@@ -230,6 +233,7 @@ void ObslugaWejsciowa::sprawdz_konfiguracje()
     ( not nazwa_restauracji.empty() )
     and ( not nazwa_pliku_wyjscia.empty() )
     and ( not sciezka_menu.empty() )
+    and ( not sciezka_do_nazwisk.empty() )
     and rozmiar_duzy
     and rozmiar_sredni
     and rozmiar_maly

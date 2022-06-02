@@ -10,6 +10,7 @@ class Symulator
   private:
     Restauracja restauracja;
     unique_ptr<Menu> menu;
+    string sciezka_do_nazwisk;
     unsigned int czas_trwania_symulacji;
 
   public:
@@ -18,6 +19,7 @@ class Symulator
       unsigned int czas_trwania_symulacji,
       string nazwa_pliku_wyjscia,
       string nazwa_restauracji,
+      string sciezka_do_nazwisk,
       unsigned int rozmiar_maly,
       unsigned int rozmiar_sredni,
       unsigned int rozmiar_duzy,

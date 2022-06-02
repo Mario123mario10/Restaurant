@@ -17,12 +17,14 @@ using std::ios; using std::fstream; using std::getline;
 #include "../FunkcjePomocnicze.h"
 #include "../Menu/Menu.hpp"
 #include "../Stałe.cpp"
+#include "../Błędy.h"
 
 Symulator::Symulator
 (
   unsigned int czas_trwania_symulacji,
   string nazwa_pliku_wyjscia,
   string nazwa_restauracji,
+  string sciezka_do_nazwisk,
   unsigned int rozmiar_maly,
   unsigned int rozmiar_sredni,
   unsigned int rozmiar_duzy,
@@ -36,6 +38,7 @@ Symulator::Symulator
 {
   restauracja = Restauracja(nazwa_restauracji, nazwa_pliku_wyjscia, move(menu));
   this -> czas_trwania_symulacji = czas_trwania_symulacji;
+  this -> sciezka_do_nazwisk = sciezka_do_nazwisk;
 
   for (int licznik = 1; licznik <= liczba_kelnerow; licznik++)
   { losuj_kelnera() ;}
@@ -105,11 +108,20 @@ void Symulator::losuj_klienta()
 string Symulator::losuj_nazwisko()
 {
   std::fstream plik;
-  plik.open("pliki_konfiguracyjne/spis_nazwisk", ios::in);
+  plik.open(sciezka_do_nazwisk, ios::in);
   if (plik.is_open())
   {
+    unsigned int ilosc_nazwisk = 0;
     string nazwisko;
-    unsigned int numer_linii = losuj_liczbe() % ILOSC_NAZWISK;
+    while (not plik.eof())
+    {
+      getline(plik, nazwisko);
+      if (not nazwisko.empty())
+      { ilosc_nazwisk += 1; }
+    }
+    plik.clear();
+    plik.seekg(0);
+    unsigned int numer_linii = losuj_liczbe() % ilosc_nazwisk;
     for (int index = 0; index < numer_linii; index++)
     {
       nazwisko.clear();
@@ -119,7 +131,7 @@ string Symulator::losuj_nazwisko()
     return nazwisko;
   }
   else
-  { throw  ;} // Dodać wyjatek
+  { throw NieZnalezionoPliku(sciezka_do_nazwisk);} // Dodać wyjatek
 
 
 }

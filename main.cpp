@@ -27,6 +27,7 @@ int main(int argc, char const *argv[])
         We.daj_czas_symulacji(),
         We.daj_nazwe_pliku_wyjscia(),
         We.daj_nazwe_restauracji(),
+        We.daj_sciezke_do_nazwisk(),
         We.daj_rozmiar_maly(),
         We.daj_rozmiar_sredni(),
         We.daj_rozmiar_duzy(),
@@ -53,14 +54,46 @@ int main(int argc, char const *argv[])
       drukuj_bl(blad.what());
       return 1;
     }
-
+    catch(const NieprawidloweRozmiary& blad)
+    {
+      drukuj_bl(blad.what());
+      return 1;
+    }
+    catch(const NiepoprawnaNazwa& blad)
+    {
+      drukuj_bl(blad.what());
+      return 1;
+    }
+    catch(const DanieJuzIstnieje& blad)
+    {
+      drukuj_bl(blad.what());
+      return 1;
+    }
+    catch(const NiepoprawnyKoszt& blad)
+    {
+      drukuj_bl(blad.what());
+      return 1;
+    }
+    catch(const NiepoprawnyCzasPrzygotowania& blad)
+    {
+      drukuj_bl(blad.what());
+      return 1;
+    }
+    catch(const NiepoprawnyPostepPrzygotowania& blad)
+    {
+      drukuj_bl(blad.what());
+      return 1;
+    }
+    catch(const NiepoprawnaKwota& blad)
+    {
+      drukuj_bl(blad.what());
+      return 1;
+    }
     catch(const std::exception& e)
     {
       drukuj_bl("Błąd niestandardowy: ");
       drukuj_bl(e.what());
     }
-
-
   return 0;
   }
 }

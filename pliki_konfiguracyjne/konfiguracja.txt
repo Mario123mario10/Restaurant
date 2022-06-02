@@ -2,8 +2,8 @@ czas trwania: 1000
 czas raportowania: 1
 nazwa restauracji: Epicka restauracja
 ścieżka menu: pliki_konfiguracyjne/menu.txt
-zapisz do: testowa_restauracja
-
+zapisz do: testowa_restauracja.txt
+nazwiska w: pliki_konfiguracyjne/spis_nazwisk.txt
 rozmiary stolików:
     mały: 2
     średni: 4

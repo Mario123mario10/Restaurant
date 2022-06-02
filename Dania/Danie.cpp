@@ -164,11 +164,10 @@ std::ostream&  operator<<(std::ostream& os, Danie& Danie)
   }
 
 	os
-  << std::left << std::setw(14)  << kategoria
+  << std::left << std::setw(16)  << kategoria
 	<< " o nazwie: "
-	<< Danie.daj_nazwe()
-	<< std::left << std::setw(26)  << " kosztuje: "
-	<< (string) Danie.policz_cene();
+	<< std::left << std::setw(20)  << Danie.daj_nazwe()
+  << " kosztuje: " 	<< std::left << std::setw(10)  << (string) Danie.policz_cene()
+  << " i jest przygotowane w " << (Danie.daj_postep_przygotowania()*100)/Danie.daj_czas_przygotowania() << " procentach";
 	return os;
 }
-

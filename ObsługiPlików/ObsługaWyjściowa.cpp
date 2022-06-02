@@ -3,6 +3,7 @@
 using std::string;
 #include <fstream>
 using std::ios; using std::fstream;
+#include "../Błędy.h"
 
 
 #include "ObsługaWyjściowa.h"
@@ -25,7 +26,8 @@ void ObslugaWyjsciowa::ustaw_nazwe_pliku_wyjscia(string nowa_nazwa)
   if (not nowa_nazwa.empty())
   { nazwa_pliku_wyjscia = nowa_nazwa  ;}
   else
-  { } // rzuć wyjątek
+  { throw NiepoprawnaNazwa(nowa_nazwa); }
+
 }
 
 ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Kelner& kelner)
@@ -39,7 +41,7 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Kelner& kelner)
     plik.close();
   }
   else
-  { } // rzuć wyjątek
+  { throw NieZnalezionoPliku(wyjscie.daj_nazwe_pliku_wyjscia()); }
   plik.close();
   return wyjscie;
 }
@@ -55,7 +57,8 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Stolik& stolik)
     plik.close();
   }
   else
-  { } // rzuć wyjątek
+  { throw NieZnalezionoPliku(wyjscie.daj_nazwe_pliku_wyjscia()); }
+
   plik.close();
   return wyjscie;
 }
@@ -73,9 +76,8 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, ObslugaZamowienia& zamow
     return wyjscie;
   }
   else
-  {
-    throw ;
-  } // rzuć wyjątek
+  { throw NieZnalezionoPliku(wyjscie.daj_nazwe_pliku_wyjscia()); }
+
 
 }
 
@@ -90,7 +92,7 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Kwota kwota)
     plik.close();
   }
   else
-  { } // rzuć wyjątek
+  { throw NieZnalezionoPliku(wyjscie.daj_nazwe_pliku_wyjscia()); }
 
 
   return wyjscie;
@@ -108,7 +110,7 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, string napis)
     plik.close();
   }
   else
-  { } // rzuć wyjątek
+  { throw NieZnalezionoPliku(wyjscie.daj_nazwe_pliku_wyjscia()); }
 
   plik.close();
 
@@ -127,7 +129,8 @@ ObslugaWyjsciowa& operator<<(ObslugaWyjsciowa& wyjscie, Klient& kelner)
     plik.close();
   }
   else
-  { } // rzuć wyjątek
+  { throw NieZnalezionoPliku(wyjscie.daj_nazwe_pliku_wyjscia()); }
+
   return wyjscie;
 }
 

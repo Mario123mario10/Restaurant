@@ -14,7 +14,7 @@ using std::to_string;
 
 
 NieZnalezionoPliku::NieZnalezionoPliku(string zla_sciezka):
-invalid_argument("Nie znaleziono pliku o podanej scieżce: " + zla_sciezka){}
+invalid_argument(("Nie znaleziono pliku o podanej scieżce: " + zla_sciezka)){}
 
 NiepelnaKonfiguracja::NiepelnaKonfiguracja(string komunikat):
 invalid_argument(komunikat) {}
